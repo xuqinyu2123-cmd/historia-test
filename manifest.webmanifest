@@ -1,7 +1,7 @@
 {
   "name": "AEVEMORA",
   "short_name": "AEVEMORA",
-  "description": "AEVEMORA V9.0：最终答题页定稿版，融合杂志专题、博物馆展陈与电影史诗光影。",
+  "description": "AEVEMORA V9.1：修复最终答题页雕塑视觉，并让历史背景每道题都切换。",
   "lang": "zh-CN",
   "start_url": "./index.html",
   "scope": "./",
