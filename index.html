@@ -1,0 +1,715 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>HISTORIA · 历史人格原型测试</title>
+
+<link rel="manifest" href="manifest.webmanifest">
+<meta name="theme-color" content="#0b0b0e">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="HISTORIA">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="format-detection" content="telephone=no">
+
+<style>
+:root{
+  --bg:#0b0b0d;--panel:#131319;--panel2:#18181f;--text:#f1ede6;--muted:#a9a39b;
+  --gold:#c9a76d;--gold2:#8b6d3f;--line:#2c2a2c;--paper:#d8c5a3;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;color:var(--text);font-family:"Microsoft YaHei","PingFang SC",system-ui,sans-serif;
+  background:
+    radial-gradient(1000px 520px at 10% -5%,rgba(201,167,109,.12),transparent 60%),
+    radial-gradient(900px 560px at 100% 15%,rgba(89,56,33,.14),transparent 60%),
+    linear-gradient(180deg,#090a0d,#111016 48%,#0b0b0e);
+  min-height:100vh;overflow-x:hidden;
+}
+body:before{
+  content:"";position:fixed;inset:0;pointer-events:none;opacity:.13;
+  background-image:
+    linear-gradient(rgba(255,255,255,.018) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(255,255,255,.012) 1px,transparent 1px);
+  background-size:27px 27px;mask-image:linear-gradient(to bottom,#000,transparent 72%);
+}
+.wrap{max-width:1180px;margin:auto;padding:22px 16px 64px;position:relative;z-index:1}
+.top{display:flex;justify-content:space-between;align-items:center;padding:6px 2px 18px}
+.brand{font-family:Georgia,serif;letter-spacing:.28em;color:#dfc18a;font-weight:700;font-size:14px}
+.version{font-size:11px;color:#756f68;letter-spacing:.08em}
+.card{
+  background:linear-gradient(180deg,rgba(255,255,255,.028),rgba(255,255,255,.008)),var(--panel);
+  border:1px solid var(--line);border-radius:28px;box-shadow:0 26px 80px rgba(0,0,0,.34);overflow:hidden
+}
+.hero{min-height:720px;display:grid;grid-template-columns:1.15fr .85fr;gap:42px;align-items:center;padding:64px 52px;position:relative}
+.hero:after{content:"HISTORIA";position:absolute;right:-18px;bottom:-34px;font:700 110px/1 Georgia,serif;letter-spacing:.08em;color:rgba(255,255,255,.018)}
+.kicker{color:#d7b67c;letter-spacing:.22em;font-size:11px;margin-bottom:14px}
+h1{font-family:Georgia,"Songti SC",serif;font-size:66px;line-height:1.03;margin:0 0 20px;font-weight:600}
+.hero p{color:#cbc4ba;font-size:17px;line-height:1.95;margin:0}
+.quote{margin-top:24px;padding:13px 0 0 18px;border-left:2px solid rgba(201,167,109,.45);color:#999187;line-height:1.9;font-family:Georgia,"Songti SC",serif}
+.mode-title{margin-top:30px;font-size:12px;color:#817970;letter-spacing:.08em}
+.modes{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:12px}
+.mode{
+  cursor:pointer;border:1px solid #302e31;background:#15151a;border-radius:16px;padding:15px 12px;
+  transition:.18s;text-align:left;color:#bdb6ad
+}
+.mode b{display:block;color:#e7dfd3;font-size:14px;margin-bottom:4px}
+.mode small{font-size:11px;color:#777069;line-height:1.5}
+.mode.active{border-color:#8d6b39;background:linear-gradient(180deg,rgba(201,167,109,.09),rgba(201,167,109,.025));box-shadow:inset 0 0 0 1px rgba(201,167,109,.08)}
+.btn{border:0;border-radius:999px;padding:15px 25px;font-weight:700;font-size:14px;cursor:pointer;transition:.2s}
+.primary{background:linear-gradient(#e1c28c,#c49a5d);color:#14110d;box-shadow:0 12px 30px rgba(201,167,109,.16)}
+.primary:hover{transform:translateY(-1px)}
+.ghost{background:transparent;color:#ddd5ca;border:1px solid #3b3839}
+.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:24px}
+.meta{font-size:11px;color:#6e6963;margin-top:15px;letter-spacing:.05em}
+.visual{display:flex;justify-content:center}
+.poster-seal{width:min(100%,390px);aspect-ratio:.86;border:1px solid rgba(201,167,109,.25);border-radius:26px;position:relative;background:
+  radial-gradient(circle at 50% 26%,rgba(201,167,109,.14),transparent 36%),
+  linear-gradient(180deg,rgba(255,255,255,.02),transparent),#101015;display:flex;align-items:center;justify-content:center}
+.poster-seal:before{content:"";position:absolute;inset:22px;border:1px solid rgba(201,167,109,.13);border-radius:20px}
+.poster-seal:after{content:"";width:58%;aspect-ratio:1;border-radius:50%;border:1px solid rgba(201,167,109,.15);box-shadow:0 0 0 24px rgba(201,167,109,.025),0 0 0 48px rgba(201,167,109,.012)}
+.sealtext{position:absolute;text-align:center;font-family:Georgia,"Songti SC",serif;color:#d8b97f}
+.sealtext strong{font-size:84px;font-weight:500}
+.sealtext span{display:block;font-size:11px;letter-spacing:.35em;color:#7f6e52;margin-top:8px}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:22px}
+.stat{padding:13px;border:1px solid rgba(255,255,255,.05);border-radius:14px;background:rgba(255,255,255,.018)}
+.stat b{display:block;font:22px Georgia,serif;color:#d9b97f} .stat span{font-size:11px;color:#8d857c}
+.quiz{display:none;padding:30px;max-width:900px;margin:auto}
+.sticky{position:sticky;top:8px;z-index:8;background:rgba(13,13,17,.88);backdrop-filter:blur(12px);padding:10px;border-radius:14px;border:1px solid rgba(255,255,255,.05)}
+.prow{display:flex;align-items:center;gap:12px} .pbar{height:5px;flex:1;background:#24242a;border-radius:99px;overflow:hidden} .pbar i{display:block;height:100%;width:0;background:linear-gradient(90deg,#8a6939,#dfbf87);transition:.25s}
+.qnum{font-size:11px;color:#837c74;min-width:58px;text-align:right}
+.question{font-size:28px;line-height:1.55;margin:28px 0 22px;font-weight:650}
+.answers{display:grid;gap:11px}
+.answer{width:100%;border:1px solid #302f35;background:#191920;color:#ddd7cf;border-radius:16px;padding:17px 18px;text-align:left;display:flex;gap:13px;line-height:1.7;cursor:pointer;transition:.18s}
+.answer:hover{border-color:#816238;transform:translateX(3px)}
+.letter{flex:0 0 27px;width:27px;height:27px;border:1px solid #5d4d34;color:#d7b67b;border-radius:50%;display:grid;place-items:center;font-size:11px}
+.note{font-size:11px;color:#706b65;margin-top:18px;line-height:1.8}
+.result{display:none}
+.resultHero{padding:48px;display:grid;grid-template-columns:1fr .9fr;gap:34px;align-items:center}
+.resultName{font:600 58px/1.05 Georgia,"Songti SC",serif;margin:8px 0}
+.era{color:#8f887f;font-size:13px}
+.badges{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}
+.badge{padding:7px 10px;border-radius:999px;border:1px solid rgba(201,167,109,.16);background:rgba(255,255,255,.022);font-size:11px;color:#bfb5a6}
+.match{display:flex;align-items:end;gap:10px;margin:18px 0}
+.match strong{font:58px Georgia,serif;color:#dfbf87} .match span{font-size:12px;color:#887f75;padding-bottom:9px}
+.tagline{border-left:2px solid rgba(201,167,109,.48);padding-left:16px;color:#d1c8bc;line-height:1.9}
+#radar{width:100%;height:auto;display:block}
+.radarBox{border:1px solid #29272d;border-radius:22px;background:#0f0f14;padding:14px}
+.section{margin-top:16px;padding:30px}
+.section h2{font:28px Georgia,"Songti SC",serif;margin:0 0 16px}
+.section h3{margin:0 0 10px;font-size:17px}
+.section p{color:#c6beb4;line-height:1.95;margin:0}
+.chapter{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-top:16px}
+.mini{padding:24px}
+.dims{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:20px}
+.dim{background:#17171d;border:1px solid #2a292f;border-radius:14px;padding:14px}
+.dimTop{display:flex;justify-content:space-between;color:#b8b1a8;font-size:12px}
+.bar{height:5px;background:#24242a;border-radius:99px;overflow:hidden;margin-top:9px} .bar i{display:block;height:100%;background:linear-gradient(90deg,#89693c,#d8b77e)}
+.longread{display:grid;gap:14px}
+.block{padding:18px;border-radius:16px;background:#15151b;border:1px solid #29272d}
+.block b{display:block;margin-bottom:8px;color:#e0d7cb} .block p{font-size:13px}
+.ranklist{display:grid;gap:9px;margin-top:16px}
+.rank{display:flex;justify-content:space-between;gap:12px;align-items:center;padding:13px 15px;border:1px solid #2c2a2f;border-radius:13px;background:#17171c}
+.rank small{color:#77706a} .rank span{color:#d9b97f;white-space:nowrap}
+.switcher{display:flex;gap:8px;flex-wrap:wrap;margin-top:16px}
+.switcher button{padding:8px 12px;border-radius:999px;border:1px solid #343136;background:#15151a;color:#bfb6ab;cursor:pointer;font-size:12px}
+.switcher button.active{border-color:#8e6b39;color:#e2c38d;background:rgba(201,167,109,.07)}
+.disclaimer{font-size:11px;color:#6f6962;line-height:1.8;margin-top:22px}
+.posterModal{display:none;position:fixed;inset:0;background:rgba(0,0,0,.82);z-index:50;padding:24px;overflow:auto}
+.posterModal.open{display:flex;align-items:flex-start;justify-content:center}
+.modalInner{max-width:720px;width:100%;margin:auto;text-align:center}
+.modalInner img{max-width:100%;border-radius:18px;box-shadow:0 25px 70px rgba(0,0,0,.4)}
+.modalActions{display:flex;justify-content:center;gap:10px;flex-wrap:wrap;margin-top:14px}
+footer{text-align:center;color:#5f5a55;font-size:11px;margin-top:20px}
+.fade{animation:fade .42s ease both} @keyframes fade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+@media(max-width:900px){
+  .hero,.resultHero{grid-template-columns:1fr} .hero{padding:40px 24px;min-height:auto}
+  h1{font-size:48px} .visual{margin-top:8px} .resultHero,.section,.mini{padding:22px}
+}
+@media(max-width:600px){
+  .wrap{padding:10px 10px 36px} .top{padding:4px 2px 12px}
+  .hero{border-radius:22px} h1{font-size:40px} .hero p{font-size:15px}
+  .modes,.stats,.dims{grid-template-columns:1fr} .chapter{grid-template-columns:1fr}
+  .question{font-size:23px} .quiz{padding:18px} .resultName{font-size:44px}
+  .resultHero{padding:20px} .match strong{font-size:48px}
+}
+
+/* ===== V4 Mobile H5 / PWA polish ===== */
+html,body{overscroll-behavior-y:none}
+button{-webkit-tap-highlight-color:transparent}
+.safe-bottom{padding-bottom:max(14px,env(safe-area-inset-bottom))}
+#splash{
+  position:fixed;inset:0;z-index:9999;display:flex;align-items:center;justify-content:center;
+  background:
+    radial-gradient(700px 500px at 50% 18%,rgba(218,184,126,.12),transparent 55%),
+    linear-gradient(180deg,#09090c 0%,#121017 52%,#090a0d 100%);
+  transition:opacity .55s ease,visibility .55s ease;
+}
+#splash.hide{opacity:0;visibility:hidden}
+.splashNoise{position:absolute;inset:0;opacity:.09;pointer-events:none;background-image:
+  repeating-linear-gradient(0deg,rgba(255,255,255,.035) 0,rgba(255,255,255,.035) 1px,transparent 1px,transparent 3px)}
+.splashCore{position:relative;text-align:center;padding:24px}
+.splashRing{
+  width:176px;height:176px;margin:0 auto 28px;border-radius:50%;border:1px solid rgba(218,184,126,.27);
+  display:grid;place-items:center;box-shadow:0 0 0 22px rgba(218,184,126,.025),0 0 0 44px rgba(218,184,126,.012);
+}
+.splashRing b{font:500 78px/1 Georgia,"Songti SC",serif;color:#d8b77e}
+.splashBrand{font:700 24px/1.2 Georgia,serif;letter-spacing:.32em;color:#ead7b4;margin-left:.32em}
+.splashSub{margin-top:12px;color:#857b70;font-size:12px;letter-spacing:.16em}
+.splashLine{width:120px;height:1px;background:linear-gradient(90deg,transparent,#9b7948,transparent);margin:28px auto 0;position:relative;overflow:hidden}
+.splashLine i{display:block;width:35%;height:100%;background:#e0bd81;animation:loadline 1.5s ease-in-out infinite}
+@keyframes loadline{0%{transform:translateX(-120%)}100%{transform:translateX(410%)}}
+
+.mobileHeroTop{display:none}
+.mobileBottomCTA{display:none}
+.installBtn{position:relative}
+.installBtn::after{content:"";position:absolute;inset:-5px;border-radius:999px;border:1px solid rgba(217,184,126,.10);pointer-events:none}
+.installHint{font-size:11px;color:#706960;margin-top:9px;line-height:1.7}
+
+#installSheet{
+  display:none;position:fixed;inset:0;z-index:120;background:rgba(0,0,0,.72);backdrop-filter:blur(8px);
+  align-items:flex-end;justify-content:center;
+}
+#installSheet.open{display:flex}
+.sheet{
+  width:min(100%,620px);background:linear-gradient(180deg,#1a181e,#111116);border:1px solid #343038;
+  border-radius:26px 26px 0 0;padding:22px 20px max(24px,env(safe-area-inset-bottom));
+  box-shadow:0 -30px 80px rgba(0,0,0,.45)
+}
+.sheetHandle{width:44px;height:4px;border-radius:99px;background:#39353b;margin:0 auto 18px}
+.sheet h3{margin:0 0 8px;font-size:19px}.sheet p{margin:0;color:#a9a096;line-height:1.75;font-size:13px}
+.steps{display:grid;gap:10px;margin-top:16px}
+.step{display:flex;gap:12px;align-items:flex-start;padding:13px;border:1px solid #2d2a30;border-radius:14px;background:#15151a}
+.step b{flex:0 0 28px;width:28px;height:28px;border-radius:50%;display:grid;place-items:center;background:rgba(207,173,109,.1);color:#d7b77d}
+.step span{font-size:13px;color:#cbc2b6;line-height:1.65}
+.closeSheet{width:100%;margin-top:16px}
+
+.shareAppBtn{display:inline-flex;align-items:center;gap:7px}
+.pwaPill{display:inline-flex;align-items:center;gap:6px;padding:7px 10px;border:1px solid rgba(204,169,108,.18);border-radius:999px;font-size:11px;color:#b9ad9e;background:rgba(255,255,255,.02)}
+
+@media(max-width:600px){
+  body{background:
+    radial-gradient(550px 340px at 50% -40px,rgba(206,171,108,.12),transparent 67%),
+    linear-gradient(180deg,#09090c,#101016 52%,#090a0d)}
+  .wrap{padding:0 0 94px}
+  .top{display:none}
+  .hero{min-height:100svh;border-radius:0;border-left:0;border-right:0;padding:26px 18px 102px;display:block;background:
+    radial-gradient(520px 360px at 50% 0%,rgba(203,169,108,.09),transparent 67%),
+    linear-gradient(180deg,rgba(255,255,255,.015),transparent),#0d0d11}
+  .hero:after{font-size:72px;right:-54px;bottom:54px}
+  .mobileHeroTop{display:flex;justify-content:space-between;align-items:center;margin-bottom:38px}
+  .mobileHeroTop .miniBrand{font:700 13px Georgia,serif;letter-spacing:.28em;color:#d9bb84}
+  .hero .kicker{font-size:10px;margin-bottom:12px}
+  h1{font-size:46px;letter-spacing:-.02em}
+  .hero p{font-size:15px;line-height:1.9}
+  .quote{font-size:13px;margin-top:18px}
+  .mode-title{margin-top:25px}
+  .modes{gap:8px}
+  .mode{padding:13px 12px;border-radius:14px}
+  .mode b{font-size:13px}.mode small{font-size:10px}
+  .hero>.actions{display:none}
+  .visual{display:none}
+  .stats{grid-template-columns:repeat(3,1fr);gap:7px;margin-top:18px}
+  .stat{padding:10px 8px;text-align:center}.stat b{font-size:20px}.stat span{font-size:10px}
+  .mobileBottomCTA{
+    display:block;position:fixed;left:0;right:0;bottom:0;z-index:30;
+    padding:10px 14px max(12px,env(safe-area-inset-bottom));
+    background:linear-gradient(180deg,rgba(9,9,12,0),rgba(9,9,12,.88) 25%,rgba(9,9,12,.98));
+    pointer-events:none
+  }
+  .mobileBottomCTA .ctaRow{display:grid;grid-template-columns:1fr auto;gap:9px;max-width:560px;margin:auto;pointer-events:auto}
+  .mobileBottomCTA button{height:50px;padding:0 20px}
+  .mobileBottomCTA .primary{width:100%}
+  .quiz{border-radius:0;border-left:0;border-right:0;min-height:100svh;padding:16px 14px 100px}
+  .sticky{top:0;border-radius:12px}
+  .question{margin-top:25px}
+  .result{padding:0 10px}
+  .resultHero{border-radius:20px;margin-top:10px}
+  .posterModal{padding:10px}
+  .modalInner{padding-bottom:max(20px,env(safe-area-inset-bottom))}
+}
+
+</style>
+</head>
+<body>
+
+<div id="splash" aria-hidden="true">
+  <div class="splashNoise"></div>
+  <div class="splashCore">
+    <div class="splashRing"><b>史</b></div>
+    <div class="splashBrand">HISTORIA</div>
+    <div class="splashSub">PERSONALITY · HISTORY · ARCHETYPE</div>
+    <div class="splashLine"><i></i></div>
+  </div>
+</div>
+
+<div class="wrap">
+  <div class="top"><div class="brand">HISTORIA</div><div class="version">V3 · 120 FIGURES</div></div>
+
+  <section id="hero" class="card hero fade">
+    <div class="mobileHeroTop">
+      <div class="miniBrand">HISTORIA</div>
+      <span class="pwaPill">H5 · PWA</span>
+    </div>
+    <div>
+      <div class="kicker">PERSONALITY × HISTORY × WORLD FIGURES</div>
+      <h1>寻找你的<br>历史人格原型</h1>
+      <p>通过 36 个情境问题，把你的选择转成六维行为向量，再与 120 位中外历史人物的“原型化行为模型”进行匹配。</p>
+      <div class="quote">不是“你就是谁”，而是：当世界变得复杂时，你更接近哪一种判断、坚持、创造与行动方式。</div>
+
+      <div class="mode-title">选择匹配范围</div>
+      <div class="modes">
+        <button class="mode active" data-mode="mixed" onclick="setMode('mixed')"><b>中外混合</b><small>120 位人物一起匹配</small></button>
+        <button class="mode" data-mode="china" onclick="setMode('china')"><b>只看中国</b><small>60 位中国人物</small></button>
+        <button class="mode" data-mode="foreign" onclick="setMode('foreign')"><b>只看外国</b><small>60 位外国人物</small></button>
+      </div>
+
+      <div class="actions">
+        <button class="btn primary" onclick="startQuiz()">开始测试</button>
+        <button class="btn ghost installBtn" onclick="installApp()">添加到桌面</button>
+        <button class="btn ghost shareAppBtn" onclick="shareApp()">分享测试</button>
+      </div>
+      <div class="installHint">添加到桌面后可像独立 App 一样从主屏幕打开；完整离线安装功能需要通过 HTTPS 部署。</div>
+      <div class="meta">36 QUESTIONS · 约 6–8 MIN · 本地运行 · 不上传答案</div>
+      <div class="stats">
+        <div class="stat"><b>120</b><span>人物原型</span></div>
+        <div class="stat"><b>36</b><span>测试问题</span></div>
+        <div class="stat"><b>6</b><span>行为维度</span></div>
+      </div>
+    </div>
+    <div class="visual">
+      <div class="poster-seal"><div class="sealtext"><strong>史</strong><span>ARCHETYPE</span></div></div>
+    </div>
+  </section>
+
+  <section id="quiz" class="card quiz">
+    <div class="sticky"><div class="prow"><div class="pbar"><i id="progress"></i></div><div id="qnum" class="qnum">01 / 36</div></div></div>
+    <div id="question" class="question"></div>
+    <div id="answers" class="answers"></div>
+    <div class="note">请选“你平时更可能真的会怎么做”，而不是“你觉得正确答案应该是什么”。</div>
+  </section>
+
+  <section id="result" class="result fade">
+    <div class="card resultHero">
+      <div>
+        <div class="kicker">YOUR HISTORICAL ARCHETYPE</div>
+        <div id="personName" class="resultName"></div>
+        <div id="personEra" class="era"></div>
+        <div class="badges"><span id="regionBadge" class="badge"></span><span id="typeBadge" class="badge"></span><span id="modeBadge" class="badge"></span></div>
+        <div class="match"><strong id="matchPct"></strong><span>人格相似度</span></div>
+        <div id="tagline" class="tagline"></div>
+        <div class="actions">
+          <button class="btn primary" onclick="openPoster()">生成分享海报</button>
+          <button class="btn ghost" onclick="copySummary()">复制结果文案</button>
+          <button class="btn ghost" onclick="restart()">重新测试</button>
+        </div>
+      </div>
+      <div class="radarBox"><svg id="radar" viewBox="0 0 520 480"></svg></div>
+    </div>
+
+    <div class="card section">
+      <h2>你的行为画像</h2>
+      <p id="portrait"></p>
+      <div id="dims" class="dims"></div>
+    </div>
+
+    <div class="chapter">
+      <div class="card mini"><h3>01｜你的判断路径</h3><p id="pathText"></p></div>
+      <div class="card mini"><h3>02｜你的优势</h3><p id="strengthText"></p></div>
+      <div class="card mini"><h3>03｜你的性格盲区</h3><p id="blindText"></p></div>
+      <div class="card mini"><h3>04｜更适合你的环境</h3><p id="envText"></p></div>
+    </div>
+
+    <div class="card section">
+      <h2>为什么你会匹配到这个人</h2>
+      <div id="longRead" class="longread"></div>
+    </div>
+
+    <div class="card section">
+      <h2>最接近你的五个历史原型</h2>
+      <div class="switcher">
+        <button id="sMixed" onclick="rerank('mixed')">中外混合</button>
+        <button id="sChina" onclick="rerank('china')">中国人物</button>
+        <button id="sForeign" onclick="rerank('foreign')">外国人物</button>
+      </div>
+      <div id="top5" class="ranklist"></div>
+      <div class="disclaimer">本测试用于自我观察与娱乐性人格探索，不属于临床心理测评。人物向量是基于公开历史叙事进行的“原型化抽象”，用于比较行为风格，不代表对历史人物的心理诊断，也不代表你与其人生经历、价值立场完全一致。</div>
+    </div>
+  </section>
+  
+<div id="mobileCTA" class="mobileBottomCTA">
+  <div class="ctaRow">
+    <button class="btn primary" onclick="startQuiz()">开始测试</button>
+    <button class="btn ghost" onclick="installApp()">添加到桌面</button>
+  </div>
+</div>
+
+<footer>HISTORIA · Mobile H5 · PWA · V4</footer>
+</div>
+
+
+<div id="installSheet" onclick="installSheetBg(event)">
+  <div class="sheet">
+    <div class="sheetHandle"></div>
+    <h3 id="installTitle">添加 HISTORIA 到桌面</h3>
+    <p id="installDesc">安装后可以从手机主屏幕直接打开，界面更接近独立 App。</p>
+    <div id="installSteps" class="steps"></div>
+    <button class="btn ghost closeSheet" onclick="closeInstallSheet()">关闭</button>
+  </div>
+</div>
+
+<div id="posterModal" class="posterModal" onclick="modalBg(event)">
+  <div class="modalInner">
+    <img id="posterImg" alt="分享海报预览">
+    <div class="modalActions">
+      <button class="btn primary" onclick="downloadPoster()">下载 PNG</button>
+      <button class="btn ghost" onclick="closePoster()">关闭</button>
+    </div>
+  </div>
+</div>
+
+<script>
+const PEOPLE=[{"name": "孔子", "era": "春秋 · 思想家", "region": "中国", "type": "思想 / 教育", "archetype": "teacher", "v": [59, 73, 85, 95, 60, 86], "tag": "以礼与秩序组织人与社会，也重视长期自我修养。"}, {"name": "老子", "era": "春秋 · 思想家", "region": "中国", "type": "哲学 / 观察", "archetype": "thinker", "v": [42, 80, 83, 65, 44, 94], "tag": "比起强行控制，更擅长从更大的规律中寻找最省力的路径。"}, {"name": "孙子", "era": "春秋 · 军事家", "region": "中国", "type": "战略 / 军事", "archetype": "strategist", "v": [81, 72, 86, 61, 82, 89], "tag": "先判断胜负条件，再决定是否出手；能不战而胜最好。"}, {"name": "管仲", "era": "春秋 · 政治家", "region": "中国", "type": "治理 / 经济", "archetype": "statesman", "v": [93, 63, 84, 69, 87, 96], "tag": "从资源、制度和长期竞争力理解国家与组织。"}, {"name": "商鞅", "era": "战国 · 改革家", "region": "中国", "type": "制度 / 改革", "archetype": "institutionalist", "v": [98, 44, 90, 55, 86, 86], "tag": "相信明确规则与高执行力能够重塑一个系统。"}, {"name": "孟子", "era": "战国 · 思想家", "region": "中国", "type": "伦理 / 思想", "archetype": "humanist", "v": [57, 74, 90, 93, 67, 82], "tag": "原则感强，同时相信人的潜力与道义能够塑造秩序。"}, {"name": "庄子", "era": "战国 · 思想家", "region": "中国", "type": "哲学 / 自由", "archetype": "thinker", "v": [48, 85, 84, 62, 39, 95], "tag": "不愿被单一标准绑住，更擅长换一个视角理解得失。"}, {"name": "屈原", "era": "战国 · 诗人", "region": "中国", "type": "理想 / 文学", "archetype": "creator", "v": [46, 99, 76, 70, 60, 81], "tag": "强烈价值感与表达欲并存，宁愿忠于内在标准。"}, {"name": "秦始皇", "era": "秦 · 皇帝", "region": "中国", "type": "统治 / 制度", "archetype": "institutionalist", "v": [99, 42, 87, 44, 84, 94], "tag": "追求统一、标准化与高强度控制，把分散结构压成一个系统。"}, {"name": "汉武帝", "era": "西汉 · 皇帝", "region": "中国", "type": "统治 / 扩张", "archetype": "statesman", "v": [90, 67, 89, 78, 83, 87], "tag": "进取心强，愿意为长期战略承担高成本。"}, {"name": "司马迁", "era": "西汉 · 史学家", "region": "中国", "type": "观察 / 记录", "archetype": "thinker", "v": [49, 79, 85, 61, 39, 99], "tag": "把长期忍耐、观察和判断转化为对时代的系统记录。"}, {"name": "刘邦", "era": "西汉 · 开国皇帝", "region": "中国", "type": "组织 / 人心", "archetype": "statesman", "v": [95, 72, 92, 70, 90, 86], "tag": "擅长识人、用人和在复杂关系中整合资源。"}, {"name": "韩信", "era": "西汉 · 军事家", "region": "中国", "type": "军事 / 破局", "archetype": "strategist", "v": [91, 71, 81, 55, 82, 92], "tag": "善于在非标准局面里重新设计空间与路径。"}, {"name": "张良", "era": "西汉 · 谋臣", "region": "中国", "type": "谋略 / 节奏", "archetype": "strategist", "v": [80, 72, 76, 58, 84, 94], "tag": "重视时机和关键节点，不追求每一步都亲自掌控。"}, {"name": "萧何", "era": "西汉 · 丞相", "region": "中国", "type": "组织 / 后勤", "archetype": "organizer", "v": [90, 60, 92, 70, 81, 90], "tag": "擅长把宏大事业转化为稳定、可持续的组织系统。"}, {"name": "曹操", "era": "东汉末 · 政治家", "region": "中国", "type": "政治 / 军事", "archetype": "strategist", "v": [81, 72, 75, 51, 85, 96], "tag": "在高度不确定中快速整合信息、资源与机会。"}, {"name": "刘备", "era": "蜀汉 · 皇帝", "region": "中国", "type": "关系 / 韧性", "archetype": "humanist", "v": [62, 64, 92, 94, 59, 87], "tag": "依靠信用、关系和长期坚持，在逆境中不断重建。"}, {"name": "诸葛亮", "era": "蜀汉 · 丞相", "region": "中国", "type": "治理 / 谋略", "archetype": "organizer", "v": [93, 56, 91, 66, 74, 93], "tag": "把复杂问题拆成秩序，用系统性降低失控概率。"}, {"name": "司马懿", "era": "三国 · 政治家", "region": "中国", "type": "谋略 / 韧性", "archetype": "strategist", "v": [91, 69, 85, 53, 82, 99], "tag": "不抢每一步，但很少在真正关键的节点失去耐心。"}, {"name": "周瑜", "era": "东汉末 · 将领", "region": "中国", "type": "军事 / 创造", "archetype": "strategist", "v": [88, 74, 86, 61, 81, 99], "tag": "执行快、判断强，也愿意选择更聪明的结构性方案。"}, {"name": "陶渊明", "era": "东晋 · 诗人", "region": "中国", "type": "审美 / 内省", "archetype": "artist", "v": [37, 99, 72, 86, 52, 78], "tag": "比起外部扩张，更重视自主生活与内在秩序。"}, {"name": "王羲之", "era": "东晋 · 书法家", "region": "中国", "type": "艺术 / 表达", "archetype": "artist", "v": [41, 96, 61, 83, 49, 86], "tag": "在高度控制与自然流动之间寻找形式上的自由。"}, {"name": "李世民", "era": "唐 · 皇帝", "region": "中国", "type": "统治 / 决策", "archetype": "statesman", "v": [97, 70, 85, 78, 83, 89], "tag": "敢决断，也重视把高质量意见纳入决策系统。"}, {"name": "武则天", "era": "唐 · 政治家", "region": "中国", "type": "权力 / 机会", "archetype": "statesman", "v": [94, 61, 82, 76, 88, 88], "tag": "对权力结构和机会窗口敏感，敢于突破既有边界。"}, {"name": "李白", "era": "唐 · 诗人", "region": "中国", "type": "文学 / 想象", "archetype": "artist", "v": [43, 99, 62, 78, 60, 83], "tag": "创造力与自由感极强，更相信灵感和精神伸展。"}, {"name": "杜甫", "era": "唐 · 诗人", "region": "中国", "type": "现实 / 悲悯", "archetype": "humanist", "v": [53, 75, 92, 97, 66, 82], "tag": "把现实观察、共情与长期坚持转化为深刻表达。"}, {"name": "王维", "era": "唐 · 诗人画家", "region": "中国", "type": "审美 / 内省", "archetype": "artist", "v": [43, 99, 68, 79, 54, 86], "tag": "安静、克制、审美化，善于从复杂中抽离精神空间。"}, {"name": "韩愈", "era": "唐 · 文学家", "region": "中国", "type": "思想 / 改革", "archetype": "reformer", "v": [93, 74, 88, 62, 95, 89], "tag": "重视原则与表达，愿意用清晰立场推动文化与制度变化。"}, {"name": "白居易", "era": "唐 · 诗人", "region": "中国", "type": "文学 / 共情", "archetype": "humanist", "v": [64, 71, 89, 92, 65, 89], "tag": "表达清晰，重视普通人的处境与现实可理解性。"}, {"name": "范仲淹", "era": "北宋 · 政治家", "region": "中国", "type": "责任 / 治理", "archetype": "humanist", "v": [59, 66, 84, 91, 56, 94], "tag": "把个人选择放进更大的公共责任与长期秩序里。"}, {"name": "王安石", "era": "北宋 · 改革家", "region": "中国", "type": "改革 / 制度", "archetype": "reformer", "v": [87, 76, 87, 57, 86, 91], "tag": "相信结构性改变，愿意承受阻力换取长期变化。"}, {"name": "司马光", "era": "北宋 · 史学家", "region": "中国", "type": "秩序 / 判断", "archetype": "thinker", "v": [54, 89, 87, 56, 40, 96], "tag": "重视制度连续性、历史经验与谨慎判断。"}, {"name": "苏轼", "era": "北宋 · 文学家", "region": "中国", "type": "文学 / 适应", "archetype": "creator", "v": [47, 96, 68, 66, 56, 83], "tag": "开放、通透，能在逆境中重新建立意义与生活感。"}, {"name": "岳飞", "era": "南宋 · 将领", "region": "中国", "type": "军事 / 原则", "archetype": "warrior", "v": [75, 51, 85, 56, 95, 80], "tag": "纪律、坚持与价值感很强，原则往往高于机会主义。"}, {"name": "朱熹", "era": "南宋 · 思想家", "region": "中国", "type": "体系 / 教育", "archetype": "teacher", "v": [65, 73, 89, 85, 52, 86], "tag": "喜欢把零散知识整合为完整体系，再反复验证与修炼。"}, {"name": "忽必烈", "era": "元 · 皇帝", "region": "中国", "type": "统治 / 整合", "archetype": "statesman", "v": [90, 73, 86, 71, 87, 89], "tag": "擅长在跨文化、跨区域结构里做资源和制度整合。"}, {"name": "朱元璋", "era": "明 · 开国皇帝", "region": "中国", "type": "生存 / 控制", "archetype": "survivor", "v": [79, 59, 99, 74, 79, 88], "tag": "极强生存韧性与执行力，面对混乱时优先抓住确定性。"}, {"name": "朱棣", "era": "明 · 皇帝", "region": "中国", "type": "扩张 / 统治", "archetype": "statesman", "v": [96, 66, 91, 74, 82, 87], "tag": "行动性和扩张意识强，倾向于主动塑造更大的格局。"}, {"name": "郑和", "era": "明 · 航海家", "region": "中国", "type": "探索 / 外交", "archetype": "explorer", "v": [63, 85, 82, 66, 85, 84], "tag": "在陌生世界中保持组织能力，以探索连接更大的网络。"}, {"name": "王阳明", "era": "明 · 思想家", "region": "中国", "type": "思想 / 行动", "archetype": "thinker", "v": [51, 88, 76, 58, 49, 95], "tag": "内在判断一旦确认，就倾向于把认知直接转化为行动。"}, {"name": "张居正", "era": "明 · 改革家", "region": "中国", "type": "改革 / 执行", "archetype": "reformer", "v": [84, 74, 79, 55, 92, 92], "tag": "目标明确、组织强硬，擅长把制度变成现实执行。"}, {"name": "戚继光", "era": "明 · 将领", "region": "中国", "type": "军事 / 训练", "archetype": "organizer", "v": [99, 57, 86, 69, 81, 82], "tag": "重训练、重系统、重复制，把经验固化成方法。"}, {"name": "李时珍", "era": "明 · 医药学家", "region": "中国", "type": "科学 / 观察", "archetype": "scientist", "v": [60, 89, 96, 57, 65, 95], "tag": "以长期采集、验证与分类建立可靠知识体系。"}, {"name": "徐霞客", "era": "明 · 地理学家", "region": "中国", "type": "探索 / 观察", "archetype": "explorer", "v": [62, 84, 77, 55, 89, 80], "tag": "依靠好奇心与长期实践，把未知世界变成亲自验证的经验。"}, {"name": "康熙", "era": "清 · 皇帝", "region": "中国", "type": "治理 / 学习", "archetype": "statesman", "v": [94, 71, 84, 71, 79, 96], "tag": "兼顾长期治理、学习新知与多重力量平衡。"}, {"name": "雍正", "era": "清 · 皇帝", "region": "中国", "type": "执行 / 治理", "archetype": "institutionalist", "v": [99, 47, 97, 45, 81, 86], "tag": "高标准、高执行，追求系统持续稳定运转。"}, {"name": "乾隆", "era": "清 · 皇帝", "region": "中国", "type": "统治 / 表达", "archetype": "statesman", "v": [98, 72, 89, 75, 78, 87], "tag": "资源整合与表达欲强，重视规模、秩序与呈现。"}, {"name": "林则徐", "era": "清 · 政治家", "region": "中国", "type": "原则 / 执行", "archetype": "reformer", "v": [86, 80, 81, 62, 92, 94], "tag": "面对结构性问题时更愿意采取明确、可执行的行动。"}, {"name": "曾国藩", "era": "晚清 · 政治家", "region": "中国", "type": "修身 / 组织", "archetype": "organizer", "v": [99, 53, 90, 63, 81, 89], "tag": "稳住基本盘，再用长期主义把复杂局面一点点做成。"}, {"name": "左宗棠", "era": "晚清 · 政治家", "region": "中国", "type": "军事 / 执行", "archetype": "warrior", "v": [84, 52, 95, 50, 99, 84], "tag": "目标明确、执行坚决，重视现实推进和边疆秩序。"}, {"name": "李鸿章", "era": "晚清 · 政治家", "region": "中国", "type": "外交 / 平衡", "archetype": "statesman", "v": [89, 61, 80, 72, 81, 91], "tag": "在高度受限的现实里寻找可操作空间与折中方案。"}, {"name": "梁启超", "era": "近代 · 思想家", "region": "中国", "type": "启蒙 / 改革", "archetype": "visionary", "v": [54, 99, 84, 61, 82, 88], "tag": "接受新知速度快，擅长把观念转化为公共表达。"}, {"name": "蔡元培", "era": "近代 · 教育家", "region": "中国", "type": "教育 / 包容", "archetype": "teacher", "v": [60, 80, 89, 91, 54, 95], "tag": "重视开放环境、人格独立与制度中的多元共存。"}, {"name": "鲁迅", "era": "近代 · 作家", "region": "中国", "type": "批判 / 文学", "archetype": "thinker", "v": [44, 88, 76, 56, 50, 99], "tag": "对人性与社会结构高度敏感，不愿用温和表象遮住问题。"}, {"name": "胡适", "era": "近代 · 学者", "region": "中国", "type": "思想 / 实证", "archetype": "thinker", "v": [49, 88, 81, 62, 51, 96], "tag": "更偏好可验证、可讨论、可渐进改进的路径。"}, {"name": "徐悲鸿", "era": "近现代 · 画家", "region": "中国", "type": "艺术 / 训练", "archetype": "artist", "v": [46, 99, 65, 82, 52, 78], "tag": "把创作自由与长期专业训练结合起来。"}, {"name": "齐白石", "era": "近现代 · 画家", "region": "中国", "type": "艺术 / 个性", "archetype": "artist", "v": [38, 95, 69, 76, 61, 83], "tag": "在长期积累后形成极具个人辨识度的表达。"}, {"name": "钱学森", "era": "现代 · 科学家", "region": "中国", "type": "科学 / 系统", "archetype": "scientist", "v": [54, 92, 89, 50, 56, 96], "tag": "擅长把复杂技术问题放入大系统中规划与推进。"}, {"name": "邓稼先", "era": "现代 · 科学家", "region": "中国", "type": "科学 / 责任", "archetype": "scientist", "v": [54, 91, 85, 58, 57, 97], "tag": "低调、长期、强责任感，能在高压条件下持续完成艰难任务。"}, {"name": "袁隆平", "era": "现代 · 农学家", "region": "中国", "type": "科学 / 实践", "archetype": "scientist", "v": [52, 91, 88, 52, 57, 99], "tag": "关注真实问题，以长期实验和务实迭代换取可靠突破。"}, {"name": "苏格拉底", "era": "古希腊 · 哲学家", "region": "外国", "type": "哲学 / 追问", "archetype": "thinker", "v": [42, 78, 78, 58, 48, 99], "tag": "通过持续追问逼近真相，不急着接受未经检验的答案。"}, {"name": "柏拉图", "era": "古希腊 · 哲学家", "region": "外国", "type": "思想 / 结构", "archetype": "thinker", "v": [53, 82, 87, 66, 41, 99], "tag": "倾向于用更高层抽象结构理解现实秩序。"}, {"name": "亚里士多德", "era": "古希腊 · 哲学家", "region": "外国", "type": "知识 / 分类", "archetype": "scientist", "v": [58, 91, 91, 52, 62, 96], "tag": "喜欢观察、分类与归纳，把世界整理成系统知识。"}, {"name": "亚历山大大帝", "era": "古马其顿 · 征服者", "region": "外国", "type": "军事 / 扩张", "archetype": "warrior", "v": [77, 60, 84, 53, 98, 81], "tag": "野心、速度与扩张意识极强，愿意把边界不断向外推。"}, {"name": "尤利乌斯·凯撒", "era": "古罗马 · 政治家", "region": "外国", "type": "政治 / 军事", "archetype": "strategist", "v": [84, 74, 78, 58, 74, 89], "tag": "在关键窗口迅速集结资源，并把判断转化为行动。"}, {"name": "奥古斯都", "era": "古罗马 · 皇帝", "region": "外国", "type": "制度 / 治理", "archetype": "statesman", "v": [86, 68, 87, 73, 78, 90], "tag": "比起持续冒险，更擅长把胜利转化为长期稳定结构。"}, {"name": "马可·奥勒留", "era": "古罗马 · 皇帝哲学家", "region": "外国", "type": "哲学 / 自律", "archetype": "thinker", "v": [45, 82, 88, 60, 45, 94], "tag": "强调内在秩序、自律与对不可控事物的接受。"}, {"name": "克娄巴特拉七世", "era": "古埃及 · 女王", "region": "外国", "type": "政治 / 外交", "archetype": "strategist", "v": [84, 68, 83, 58, 78, 95], "tag": "善于在强国夹缝中利用关系、形象与判断争取空间。"}, {"name": "查理曼", "era": "法兰克 · 皇帝", "region": "外国", "type": "统治 / 整合", "archetype": "statesman", "v": [91, 72, 83, 72, 90, 93], "tag": "倾向于把分散力量整合为更大的政治与文化秩序。"}, {"name": "圣女贞德", "era": "法国 · 军事人物", "region": "外国", "type": "信念 / 行动", "archetype": "warrior", "v": [73, 55, 94, 57, 95, 81], "tag": "强烈信念驱动行动，面对不利局面仍能迅速投入。"}, {"name": "达·芬奇", "era": "意大利 · 艺术家与发明家", "region": "外国", "type": "艺术 / 科学", "archetype": "visionary", "v": [54, 99, 72, 65, 78, 92], "tag": "把艺术、科学与观察连接起来，在跨界中产生新结构。"}, {"name": "米开朗基罗", "era": "意大利 · 艺术家", "region": "外国", "type": "艺术 / 意志", "archetype": "artist", "v": [43, 94, 60, 85, 53, 80], "tag": "高标准与强意志并存，愿意长期投入直到作品成形。"}, {"name": "拉斐尔", "era": "意大利 · 画家", "region": "外国", "type": "艺术 / 协调", "archetype": "artist", "v": [41, 99, 69, 85, 49, 86], "tag": "重视和谐、秩序与审美统一，善于把复杂元素协调起来。"}, {"name": "马基雅维利", "era": "意大利 · 思想家", "region": "外国", "type": "政治 / 现实", "archetype": "strategist", "v": [85, 72, 75, 57, 86, 98], "tag": "穿透表象看权力结构，更重现实机制而非理想叙事。"}, {"name": "伽利略", "era": "意大利 · 科学家", "region": "外国", "type": "科学 / 质疑", "archetype": "scientist", "v": [59, 85, 92, 51, 61, 99], "tag": "愿意挑战传统判断，用观察与验证重建结论。"}, {"name": "牛顿", "era": "英国 · 科学家", "region": "外国", "type": "科学 / 深度", "archetype": "scientist", "v": [60, 84, 88, 52, 59, 99], "tag": "深度专注与抽象能力极强，更愿意先把规律看清。"}, {"name": "莎士比亚", "era": "英国 · 剧作家", "region": "外国", "type": "文学 / 人性", "archetype": "creator", "v": [41, 96, 71, 67, 67, 81], "tag": "对人性复杂度敏感，擅长把冲突转化为多层表达。"}, {"name": "伊丽莎白一世", "era": "英国 · 女王", "region": "外国", "type": "统治 / 平衡", "archetype": "statesman", "v": [86, 69, 83, 71, 87, 92], "tag": "擅长在多方压力之间维持平衡并塑造长期稳定。"}, {"name": "彼得大帝", "era": "俄罗斯 · 沙皇", "region": "外国", "type": "改革 / 扩张", "archetype": "reformer", "v": [87, 81, 76, 58, 88, 94], "tag": "强烈推动制度和技术现代化，愿意用高压方式改变结构。"}, {"name": "叶卡捷琳娜二世", "era": "俄罗斯 · 女皇", "region": "外国", "type": "统治 / 文化", "archetype": "statesman", "v": [89, 64, 91, 76, 87, 91], "tag": "权力现实、文化兴趣与扩张意识并存。"}, {"name": "乔治·华盛顿", "era": "美国 · 建国者", "region": "外国", "type": "统帅 / 克制", "archetype": "statesman", "v": [96, 61, 92, 74, 81, 92], "tag": "重秩序、克制和长期制度，而不是只追求个人权力。"}, {"name": "托马斯·杰斐逊", "era": "美国 · 政治家", "region": "外国", "type": "思想 / 建制", "archetype": "visionary", "v": [64, 95, 75, 66, 84, 94], "tag": "重视理念设计，也关注如何把原则写进制度。"}, {"name": "本杰明·富兰克林", "era": "美国 · 政治家与科学家", "region": "外国", "type": "实用 / 创造", "archetype": "creator", "v": [47, 92, 69, 69, 65, 87], "tag": "好奇、务实、跨界，喜欢把想法变成可用工具。"}, {"name": "亚伯拉罕·林肯", "era": "美国 · 总统", "region": "外国", "type": "政治 / 伦理", "archetype": "humanist", "v": [52, 76, 85, 96, 64, 88], "tag": "在巨大分裂中守住原则，同时让系统继续前进。"}, {"name": "拿破仑", "era": "法国 · 皇帝与军事家", "region": "外国", "type": "军事 / 治理", "archetype": "strategist", "v": [89, 75, 78, 49, 80, 97], "tag": "高密度判断、高压执行与快速决断结合。"}, {"name": "俾斯麦", "era": "德国 · 政治家", "region": "外国", "type": "政治 / 谋略", "archetype": "strategist", "v": [83, 67, 82, 59, 77, 99], "tag": "现实主义强，善于在力量、利益与时机间做精确平衡。"}, {"name": "丘吉尔", "era": "英国 · 首相", "region": "外国", "type": "政治 / 动员", "archetype": "warrior", "v": [72, 55, 94, 48, 93, 85], "tag": "危机中依靠语言、意志与行动组织集体抵抗。"}, {"name": "富兰克林·罗斯福", "era": "美国 · 总统", "region": "外国", "type": "治理 / 危机", "archetype": "statesman", "v": [88, 65, 84, 69, 79, 89], "tag": "擅长在系统危机里逐步重建信心、规则与社会协作。"}, {"name": "甘地", "era": "印度 · 社会活动家", "region": "外国", "type": "伦理 / 动员", "archetype": "humanist", "v": [52, 70, 88, 99, 60, 91], "tag": "以长期坚持、道德力量和群众连接推动变化。"}, {"name": "纳尔逊·曼德拉", "era": "南非 · 政治家", "region": "外国", "type": "和解 / 韧性", "archetype": "humanist", "v": [60, 71, 82, 95, 63, 91], "tag": "在漫长压迫后仍把目标放在和解、制度与共同未来上。"}, {"name": "马丁·路德·金", "era": "美国 · 民权领袖", "region": "外国", "type": "理想 / 动员", "archetype": "humanist", "v": [53, 73, 88, 99, 59, 89], "tag": "把价值理想、公共表达与持续行动组织在一起。"}, {"name": "达尔文", "era": "英国 · 生物学家", "region": "外国", "type": "观察 / 理论", "archetype": "scientist", "v": [54, 84, 92, 49, 59, 92], "tag": "长期观察、耐心积累，再用理论完成大的解释跃迁。"}, {"name": "玛丽·居里", "era": "波兰 / 法国 · 科学家", "region": "外国", "type": "科学 / 韧性", "archetype": "scientist", "v": [51, 91, 95, 48, 64, 94], "tag": "依靠长期高强度投入与冷静判断完成突破。"}, {"name": "爱因斯坦", "era": "德国 / 美国 · 科学家", "region": "外国", "type": "科学 / 想象", "archetype": "visionary", "v": [63, 96, 79, 68, 77, 90], "tag": "把想象力与洞察结合起来，从新视角重写旧问题。"}, {"name": "尼古拉·特斯拉", "era": "塞尔维亚裔美国发明家", "region": "外国", "type": "发明 / 灵感", "archetype": "visionary", "v": [53, 99, 83, 62, 79, 97], "tag": "思维超前，偏好构想与创造，常把现实重新想象一遍。"}, {"name": "托马斯·爱迪生", "era": "美国 · 发明家", "region": "外国", "type": "发明 / 实验", "archetype": "organizer", "v": [96, 48, 85, 66, 73, 83], "tag": "通过大量试验、迭代和组织化研发把想法推到可用。"}, {"name": "迈克尔·法拉第", "era": "英国 · 科学家", "region": "外国", "type": "实验 / 发现", "archetype": "scientist", "v": [59, 89, 93, 46, 54, 99], "tag": "依靠实验直觉、好奇心和长期专注不断逼近规律。"}, {"name": "詹姆斯·麦克斯韦", "era": "英国 · 科学家", "region": "外国", "type": "理论 / 统一", "archetype": "scientist", "v": [51, 93, 94, 49, 59, 97], "tag": "擅长把分散现象压缩进统一的抽象框架。"}, {"name": "艾达·洛芙莱斯", "era": "英国 · 数学家", "region": "外国", "type": "计算 / 想象", "archetype": "visionary", "v": [63, 99, 77, 63, 74, 95], "tag": "能从机械计算中看到更广阔的符号与创造可能。"}, {"name": "弗洛伦斯·南丁格尔", "era": "英国 · 护理先驱", "region": "外国", "type": "组织 / 关怀", "archetype": "humanist", "v": [59, 75, 86, 99, 62, 90], "tag": "把关怀转化为数据、制度与实际改善。"}, {"name": "巴赫", "era": "德国 · 作曲家", "region": "外国", "type": "音乐 / 结构", "archetype": "creator", "v": [49, 94, 76, 71, 56, 82], "tag": "在高度结构化的形式中持续创造复杂而稳定的秩序。"}, {"name": "莫扎特", "era": "奥地利 · 作曲家", "region": "外国", "type": "音乐 / 灵感", "archetype": "artist", "v": [34, 99, 65, 80, 61, 85], "tag": "灵感流动极快，善于让复杂结构显得自然轻盈。"}, {"name": "贝多芬", "era": "德国 · 作曲家", "region": "外国", "type": "音乐 / 意志", "archetype": "artist", "v": [34, 99, 67, 86, 56, 78], "tag": "强烈表达与长期意志结合，越在限制中越寻求突破。"}, {"name": "梵高", "era": "荷兰 · 画家", "region": "外国", "type": "艺术 / 强感受", "archetype": "artist", "v": [44, 96, 70, 77, 54, 80], "tag": "感受强度高，把孤独、冲突与观察压缩为极端个人化表达。"}, {"name": "毕加索", "era": "西班牙 · 画家", "region": "外国", "type": "艺术 / 破框", "archetype": "creator", "v": [47, 99, 70, 77, 57, 87], "tag": "不断推翻自己的旧语言，以变化本身维持创造力。"}, {"name": "托尔斯泰", "era": "俄国 · 作家", "region": "外国", "type": "文学 / 道德", "archetype": "humanist", "v": [55, 71, 80, 95, 58, 93], "tag": "通过宏大叙事理解人性、道德与社会结构。"}, {"name": "陀思妥耶夫斯基", "era": "俄国 · 作家", "region": "外国", "type": "文学 / 深层心理", "archetype": "thinker", "v": [44, 80, 81, 57, 39, 99], "tag": "对人的矛盾、欲望和极端处境有异常深入的观察。"}, {"name": "维克多·雨果", "era": "法国 · 作家", "region": "外国", "type": "文学 / 人道", "archetype": "humanist", "v": [64, 74, 89, 97, 68, 92], "tag": "把个人命运与社会正义连接，表达充满公共关怀。"}, {"name": "尼采", "era": "德国 · 哲学家", "region": "外国", "type": "哲学 / 价值重估", "archetype": "thinker", "v": [52, 79, 88, 64, 43, 94], "tag": "不满足于既有价值体系，倾向于重新定义强弱与意义。"}, {"name": "康德", "era": "德国 · 哲学家", "region": "外国", "type": "哲学 / 体系", "archetype": "thinker", "v": [47, 90, 77, 63, 47, 97], "tag": "高度重视逻辑边界、原则与完整思想体系。"}, {"name": "亚当·斯密", "era": "苏格兰 · 思想家", "region": "外国", "type": "经济 / 社会观察", "archetype": "thinker", "v": [45, 85, 85, 60, 49, 99], "tag": "从分散个体行为中寻找宏观秩序与制度逻辑。"}, {"name": "凯恩斯", "era": "英国 · 经济学家", "region": "外国", "type": "经济 / 政策", "archetype": "reformer", "v": [92, 79, 84, 58, 91, 94], "tag": "重视现实波动与政策干预，强调在危机中及时行动。"}, {"name": "弗洛伊德", "era": "奥地利 · 心理学家", "region": "外国", "type": "心理 / 解释", "archetype": "thinker", "v": [45, 84, 79, 58, 44, 95], "tag": "倾向于从表面行为背后寻找隐藏动机与结构。"}, {"name": "荣格", "era": "瑞士 · 心理学家", "region": "外国", "type": "心理 / 象征", "archetype": "thinker", "v": [54, 85, 88, 56, 40, 95], "tag": "对人格、象征与原型的深层结构特别敏感。"}, {"name": "路易·巴斯德", "era": "法国 · 科学家", "region": "外国", "type": "科学 / 应用", "archetype": "scientist", "v": [57, 90, 90, 58, 54, 98], "tag": "把实验科学转化为可验证、可推广的现实改善。"}, {"name": "亚历山大·弗莱明", "era": "英国 · 科学家", "region": "外国", "type": "科学 / 发现", "archetype": "scientist", "v": [56, 83, 89, 52, 59, 98], "tag": "对意外现象保持敏感，并愿意追踪其背后的意义。"}, {"name": "艾伦·图灵", "era": "英国 · 数学家", "region": "外国", "type": "计算 / 抽象", "archetype": "scientist", "v": [52, 85, 92, 54, 58, 99], "tag": "在高度抽象问题中寻找可计算结构与可执行规则。"}, {"name": "冯·诺依曼", "era": "匈牙利裔美国数学家", "region": "外国", "type": "数学 / 系统", "archetype": "scientist", "v": [50, 84, 94, 51, 54, 96], "tag": "极强抽象速度与系统化能力，擅长跨领域建立模型。"}, {"name": "格蕾丝·霍珀", "era": "美国 · 计算机科学家", "region": "外国", "type": "计算 / 实用创新", "archetype": "reformer", "v": [94, 78, 86, 55, 95, 89], "tag": "不仅理解复杂系统，也重视让系统更易用、更可推广。"}, {"name": "沃尔特·迪士尼", "era": "美国 · 创作者与企业家", "region": "外国", "type": "创意 / 组织", "archetype": "visionary", "v": [56, 92, 74, 59, 78, 90], "tag": "把想象力、叙事与组织执行结合成可持续的创造系统。"}];
+const QUESTIONS=[["面对一个复杂任务，你更倾向于：", [["先拆目标、排优先级，再逐项推进", {"control": 3, "insight": 1}], ["先动手做，在过程中不断修正", {"drive": 3, "creative": 1}], ["先观察环境，判断真实约束", {"insight": 3, "resilience": 1}], ["先找合适的人一起讨论", {"empathy": 3, "creative": 1}]]], ["当计划突然被打乱时，你通常：", [["迅速重排资源，把损失压到最低", {"control": 3, "resilience": 1}], ["觉得新情况也可能带来机会", {"creative": 3, "drive": 1}], ["先接受变化，再恢复节奏", {"resilience": 3, "insight": 1}], ["先确认变化会不会影响团队", {"empathy": 3, "control": 1}]]], ["你更容易被哪类问题吸引？", [["如何把一群人组织得更有效", {"control": 3, "empathy": 1}], ["有没有完全不同的新解法", {"creative": 3, "insight": 1}], ["怎样长期坚持并把事情做稳", {"resilience": 3, "control": 1}], ["事情背后的真实原因是什么", {"insight": 3, "creative": 1}]]], ["出现争论时，你更可能：", [["迅速明确规则和底线", {"control": 3, "drive": 1}], ["找到双方都能接受的方案", {"empathy": 3, "insight": 1}], ["先多听几轮信息", {"insight": 3, "resilience": 1}], ["直接推进，用结果验证", {"drive": 3, "control": 1}]]], ["面对一件回报很慢但有价值的事，你：", [["能接受，长期收益更重要", {"resilience": 3, "insight": 1}], ["给自己设置阶段性里程碑", {"control": 3, "resilience": 1}], ["如果长期无反馈会换路径", {"creative": 2, "drive": 2}], ["找人一起做，避免独自消耗", {"empathy": 3, "resilience": 1}]]], ["你最不能忍受的是：", [["混乱、失控、没有责任边界", {"control": 3}], ["重复、僵化、没有新鲜感", {"creative": 3}], ["反复横跳、缺乏耐心", {"resilience": 3}], ["冷漠、自私、不顾他人", {"empathy": 3}]]], ["一个机会出现，但信息并不完整，你会：", [["先小规模试错，不等信息完全", {"drive": 3, "creative": 1}], ["继续搜集证据", {"insight": 3, "resilience": 1}], ["评估最坏情况并设计兜底", {"control": 3, "insight": 1}], ["咨询可信的人，综合不同视角", {"empathy": 2, "insight": 2}]]], ["在团队里，你通常自然承担：", [["分工、定节奏、盯结果", {"control": 3, "drive": 1}], ["提出新点子、改方案", {"creative": 3}], ["协调情绪和关系", {"empathy": 3}], ["发现风险和逻辑漏洞", {"insight": 3}]]], ["如果连续失败几次，你更可能：", [["继续做，但会调整方法", {"resilience": 3, "insight": 1}], ["很快切换赛道找突破", {"creative": 2, "drive": 2}], ["复盘每一步找系统原因", {"insight": 3, "control": 1}], ["找人一起承担和推进", {"empathy": 2, "drive": 2}]]], ["你做决定最重视：", [["可执行性", {"drive": 3, "control": 1}], ["长期稳定性", {"resilience": 3}], ["是否有更高效的新路径", {"creative": 3}], ["信息是否足够可靠", {"insight": 3}]]], ["当别人质疑你的方案时，你通常：", [["要求对方拿出更好的证据", {"insight": 3, "control": 1}], ["愿意马上试试对方思路", {"creative": 3, "empathy": 1}], ["方向没错就不轻易改", {"resilience": 3, "control": 1}], ["先理解对方为什么这样想", {"empathy": 3, "insight": 1}]]], ["你更欣赏哪种人？", [["能把局面稳住的人", {"control": 2, "resilience": 2}], ["敢做别人没做过的事的人", {"creative": 3, "drive": 1}], ["耐得住寂寞、长期积累的人", {"resilience": 3}], ["能洞察人心和趋势的人", {"insight": 3, "empathy": 1}]]], ["临近截止时间，你通常：", [["提前完成并留缓冲", {"control": 3, "resilience": 1}], ["压力越大效率越高", {"drive": 3}], ["临时优化出更聪明的做法", {"creative": 2, "insight": 2}], ["优先保证协作不出问题", {"empathy": 2, "control": 2}]]], ["如果你发现规则明显不合理，你会：", [["先遵守，找时机再推动改变", {"resilience": 2, "control": 2}], ["直接质疑并尝试改变", {"drive": 3, "creative": 1}], ["研究规则为什么存在", {"insight": 3}], ["先看它对不同人的影响", {"empathy": 3, "insight": 1}]]], ["你更偏好的成长方式是：", [["系统训练、反复打磨", {"resilience": 3, "control": 1}], ["大量尝试、快速迭代", {"creative": 3, "drive": 1}], ["找高手讨论并吸收反馈", {"empathy": 2, "insight": 2}], ["独立研究，形成自己的判断体系", {"insight": 3, "resilience": 1}]]], ["朋友遇到问题来找你，你更常做：", [["帮他拆成可执行步骤", {"control": 2, "drive": 2}], ["先听完整，再判断真正卡点", {"empathy": 2, "insight": 2}], ["给出一个没想到的新角度", {"creative": 3}], ["陪他稳住状态，不急着解决", {"empathy": 3, "resilience": 1}]]], ["你对风险的态度更接近：", [["可控风险可以主动承担", {"drive": 3, "control": 1}], ["只要上限够高愿意赌一把", {"creative": 2, "drive": 2}], ["先确保下限，再谈上限", {"resilience": 2, "control": 2}], ["关键是风险是否被低估", {"insight": 3}]]], ["如果没有外界监督，你：", [["照样按自己的节奏长期推进", {"resilience": 3, "control": 1}], ["容易去尝试别的新东西", {"creative": 3}], ["会自己设目标和期限", {"control": 3, "drive": 1}], ["需要确认这件事是否值得做", {"insight": 3}]]], ["面对陌生环境，你首先会：", [["观察规则和关键人物", {"insight": 3, "control": 1}], ["主动认识人，快速融入", {"empathy": 2, "drive": 2}], ["先找到自己能掌控的一小块", {"control": 2, "resilience": 2}], ["主动探索新可能", {"creative": 3, "drive": 1}]]], ["你更像哪种执行者？", [["计划型：先定路线再走", {"control": 3}], ["冲锋型：先行动抢先机", {"drive": 3}], ["耐力型：慢一点但很少停", {"resilience": 3}], ["侦察型：先判断再下注", {"insight": 3}]]], ["遇到长期没有反馈的学习，你：", [["继续按计划积累", {"resilience": 3}], ["换教材、换方法找突破", {"creative": 2, "drive": 1, "insight": 1}], ["重新评估是不是方向错了", {"insight": 3}], ["找同伴或老师获得反馈", {"empathy": 2, "drive": 1, "insight": 1}]]], ["你做事情最容易过度的是：", [["控制细节", {"control": 3}], ["不断换新思路", {"creative": 3}], ["忍太久、扛太久", {"resilience": 3}], ["照顾别人感受", {"empathy": 3}]]], ["如果必须在速度和准确之间选，你通常：", [["先准后快", {"insight": 2, "resilience": 2}], ["先快起来，再修正", {"drive": 3, "creative": 1}], ["看任务性质决定", {"insight": 2, "control": 2}], ["看团队是否跟得上", {"empathy": 2, "control": 2}]]], ["你最有成就感的时刻是：", [["把混乱局面整理清楚", {"control": 3}], ["做出别人没想到的东西", {"creative": 3}], ["熬过困难后终于见效", {"resilience": 3}], ["带着一群人一起完成", {"empathy": 2, "drive": 2}]]], ["当信息互相矛盾时，你会：", [["寻找更高质量的信息源", {"insight": 3}], ["先建立临时判断继续推进", {"drive": 2, "control": 2}], ["允许结论暂时开放", {"creative": 2, "insight": 2}], ["找不同立场的人聊", {"empathy": 2, "insight": 2}]]], ["你对“坚持”的理解更接近：", [["方向对就不要轻易动", {"resilience": 3, "control": 1}], ["坚持目标，不坚持方法", {"creative": 2, "resilience": 2}], ["只坚持经过验证有效的东西", {"insight": 3}], ["坚持到团队形成共同节奏", {"empathy": 2, "control": 2}]]], ["你在压力下通常：", [["更冷静，先处理最关键的", {"control": 2, "insight": 2}], ["立刻行动，边做边解决", {"drive": 3}], ["先稳住情绪，再推进", {"resilience": 3}], ["更关注身边人的状态", {"empathy": 3}]]], ["你更愿意成为：", [["能掌舵的人", {"control": 3, "drive": 1}], ["能破局的人", {"creative": 2, "drive": 2}], ["能守住长期价值的人", {"resilience": 3}], ["能看懂局势的人", {"insight": 3}]]], ["别人最可能怎么评价你？", [["靠谱，有条理", {"control": 2, "resilience": 2}], ["想法多，不按常规", {"creative": 3}], ["能熬、能扛", {"resilience": 3}], ["看问题比较透", {"insight": 3}]]], ["如果未来五年只能强化一种能力，你会选：", [["组织和管理复杂系统", {"control": 3}], ["创造别人没有的新可能", {"creative": 3}], ["把一件事做到极深", {"resilience": 3}], ["提升判断力，减少重大误判", {"insight": 3}]]], ["你理想中的领导更接近：", [["能建立秩序和规则的人", {"control": 3}], ["能激发灵感和新可能的人", {"creative": 3}], ["能一起承担压力的人", {"resilience": 2, "empathy": 2}], ["能指出关键方向的人", {"insight": 3, "drive": 1}]]], ["你学习一个新领域时，最常见的第一步是：", [["建立目录和框架", {"control": 3}], ["先找最有趣的切入口", {"creative": 3}], ["先理解核心规律", {"insight": 3}], ["先看别人怎么学、向谁请教", {"empathy": 2, "insight": 2}]]], ["面对重复但重要的工作，你：", [["能坚持，因为系统稳定更重要", {"resilience": 3, "control": 1}], ["尝试优化或自动化", {"creative": 2, "control": 1, "insight": 1}], ["意义明确就能接受", {"insight": 2, "resilience": 2}], ["如果能让团队更轻松会更愿意做", {"empathy": 2, "resilience": 2}]]], ["你对“天赋”的理解更接近：", [["天赋要变成结构化能力才有价值", {"control": 2, "resilience": 2}], ["天赋就是找到别人想不到的路径", {"creative": 3}], ["天赋需要时间打磨才真正显现", {"resilience": 3}], ["天赋最重要的是少走大弯路", {"insight": 3}]]], ["如果你被放进一个全新团队做核心成员，你最先想确认：", [["目标和分工", {"control": 3}], ["有没有足够创新空间", {"creative": 3}], ["能不能长期稳定配合", {"resilience": 3}], ["关键决策权和信息流向", {"insight": 3}]]], ["你更容易被什么打动？", [["宏大的秩序感和组织力", {"control": 3}], ["独特想象力与创造表达", {"creative": 3}], ["长期忍耐后完成逆转", {"resilience": 3}], ["深刻的人性理解与悲悯", {"empathy": 3}]]]];
+const DIM_KEYS=["control","creative","resilience","empathy","drive","insight"];
+const DIM_NAMES={control:"统筹掌控",creative:"开放创造",resilience:"稳定韧性",empathy:"共情协作",drive:"行动进取",insight:"判断洞察"};
+let mode="mixed", current=0, scores={control:0,creative:0,resilience:0,empathy:0,drive:0,insight:0}, last=null, posterDataUrl=null;
+
+function setMode(m){
+  mode=m;
+  document.querySelectorAll(".mode").forEach(x=>x.classList.toggle("active",x.dataset.mode===m));
+}
+function modeName(m){return m==="china"?"只看中国":m==="foreign"?"只看外国":"中外混合"}
+function poolFor(m){
+  if(m==="china") return PEOPLE.filter(p=>p.region==="中国");
+  if(m==="foreign") return PEOPLE.filter(p=>p.region==="外国");
+  return PEOPLE;
+}
+function startQuiz(){
+  document.getElementById("hero").style.display="none";
+  document.getElementById("result").style.display="none";
+  document.getElementById("quiz").style.display="block";
+  current=0;scores={control:0,creative:0,resilience:0,empathy:0,drive:0,insight:0};
+  renderQuestion();window.scrollTo({top:0,behavior:"smooth"});
+}
+function renderQuestion(){
+  const q=QUESTIONS[current];
+  document.getElementById("question").textContent=q[0];
+  document.getElementById("qnum").textContent=String(current+1).padStart(2,"0")+" / "+QUESTIONS.length;
+  document.getElementById("progress").style.width=(current/QUESTIONS.length*100)+"%";
+  const box=document.getElementById("answers");box.innerHTML="";
+  q[1].forEach((a,i)=>{
+    const b=document.createElement("button");b.className="answer";
+    b.innerHTML='<span class="letter">'+String.fromCharCode(65+i)+'</span><span>'+a[0]+'</span>';
+    b.onclick=()=>choose(a[1]);box.appendChild(b);
+  });
+}
+function choose(d){
+  Object.entries(d).forEach(([k,v])=>scores[k]+=v);
+  current++; current>=QUESTIONS.length?showResult():renderQuestion();
+}
+function normalize(){
+  const vals=DIM_KEYS.map(k=>scores[k]),mn=Math.min(...vals),mx=Math.max(...vals),o={};
+  DIM_KEYS.forEach(k=>o[k]=Math.round(mx===mn?60:28+(scores[k]-mn)/(mx-mn)*66));
+  return o;
+}
+function similarity(u,p){
+  const arr=DIM_KEYS.map(k=>u[k]);
+  const dist=Math.sqrt(arr.reduce((s,x,i)=>s+(x-p.v[i])**2,0)/6);
+  return Math.max(52,Math.min(97,100-dist*.72));
+}
+function rank(u,m){
+  return poolFor(m).map(p=>({...p,sim:similarity(u,p)})).sort((a,b)=>b.sim-a.sim);
+}
+function showResult(){
+  const user=normalize(), ranked=rank(user,mode), best=ranked[0];
+  last={user,best,ranked,mode};
+  localStorage.setItem("historia_v3_last",JSON.stringify(last));
+  document.getElementById("quiz").style.display="none";
+  document.getElementById("result").style.display="block";
+  document.getElementById("personName").textContent=best.name;
+  document.getElementById("personEra").textContent=best.era;
+  document.getElementById("regionBadge").textContent=best.region;
+  document.getElementById("typeBadge").textContent=best.type;
+  document.getElementById("modeBadge").textContent=modeName(mode);
+  document.getElementById("matchPct").textContent=best.sim.toFixed(1)+"%";
+  document.getElementById("tagline").textContent="“"+best.tag+"”";
+  renderRadar(user,best);renderDims(user);renderCoreTexts(user,best);renderLongRead(user,best);renderTop5(ranked.slice(0,5));
+  setSwitcher(mode);window.scrollTo({top:0,behavior:"smooth"});
+}
+function topDims(user){return Object.entries(user).sort((a,b)=>b[1]-a[1])}
+function renderCoreTexts(user,best){
+  const t=topDims(user),a=t[0][0],b=t[1][0],low=t[t.length-1][0];
+  const P={
+    control:"你倾向于先把复杂问题结构化，明确目标、边界和资源，再推进。",
+    creative:"你对新路径与非常规解法更敏感，容易从旧框架外寻找突破。",
+    resilience:"你更擅长长期投入和节奏保持，不容易因为短期波动立刻改向。",
+    empathy:"你会自然把他人的立场、关系成本与合作质量纳入决策。",
+    drive:"你对行动、速度和窗口期更敏感，不愿无限等待完美条件。",
+    insight:"你习惯先判断变量、风险与真实因果，再决定是否行动。"
+  };
+  document.getElementById("portrait").textContent=P[a]+" "+P[b]+" 这两项共同构成了你与「"+best.name+"」最主要的相似来源。";
+  const path={
+    control:"确定目标 → 划边界 → 排优先级 → 分配资源 → 稳定推进",
+    creative:"发现限制 → 打破假设 → 生成新路径 → 快速验证 → 重组方案",
+    resilience:"确认方向 → 建立节奏 → 忍受波动 → 持续积累 → 等待复利",
+    empathy:"理解各方 → 判断关系成本 → 找共同利益 → 协作推进 → 修正冲突",
+    drive:"捕捉窗口 → 快速判断 → 立即行动 → 接收反馈 → 继续迭代",
+    insight:"收集信息 → 找关键变量 → 排除噪音 → 判断概率 → 决策"
+  };
+  document.getElementById("pathText").textContent=path[a]+"。第二高维度「"+DIM_NAMES[b]+"」会在关键节点修正你的路径。";
+  const S={
+    control:"你擅长让混乱变得可管理，适合承担目标、节奏与资源协调责任。",
+    creative:"当常规方案失效时，你更可能找到替代路径，适合创新与破局任务。",
+    resilience:"你的优势在长期项目与逆风期更明显，别人放弃后你仍能积累。",
+    empathy:"你能读到合作关系里的隐性信号，适合需要信任与协作的环境。",
+    drive:"你不会长期停留在“知道”，更容易把机会转成真实行动与反馈。",
+    insight:"你擅长降低重大误判概率，对信息质量、因果关系和风险结构更敏感。"
+  };
+  document.getElementById("strengthText").textContent=S[a]+" "+S[b];
+  const B={
+    control:"控制感过强时，你可能把本可灵活处理的问题也做成制度问题。",
+    creative:"新鲜感过强时，你可能过早放弃仍需要时间验证的方案。",
+    resilience:"坚持过度时，你可能把沉没成本误认为长期主义。",
+    empathy:"过度考虑他人时，你可能推迟必要冲突与明确边界。",
+    drive:"行动过快时，你容易在信息不足阶段承担不必要风险。",
+    insight:"分析过度时，你可能等待一个现实中永远不会出现的“足够确定”。"
+  };
+  document.getElementById("blindText").textContent="你的最低维度是「"+DIM_NAMES[low]+"」。它不等于缺点；更值得警惕的是优势被过度使用。"+B[a];
+  const E={
+    control:"目标明确、责任边界清晰、允许你掌控流程",
+    creative:"问题开放、容忍试错、允许提出新路线",
+    resilience:"可以长期积累、评价周期较长、噪音较少",
+    empathy:"协作密集、信任重要、需要持续沟通",
+    drive:"节奏快、窗口期明显、能快速获得反馈",
+    insight:"信息复杂、判断价值高、允许深度分析"
+  };
+  document.getElementById("envText").textContent="更适合你的环境通常具备两个条件："+E[a]+"；以及"+E[b]+"。";
+}
+function renderLongRead(user,best){
+  const t=topDims(user),a=t[0][0],b=t[1][0],low=t[t.length-1][0];
+  const figPairs=DIM_KEYS.map((k,i)=>[k,best.v[i]]).sort((x,y)=>y[1]-x[1]);
+  const fa=figPairs[0][0],fb=figPairs[1][0],flow=figPairs[figPairs.length-1][0];
+  const overlap=[a,b].filter(k=>[fa,fb].includes(k));
+  const overlapText=overlap.length?overlap.map(k=>"「"+DIM_NAMES[k]+"」").join("与"):"整体结构与节奏";
+  const gapKey=DIM_KEYS.slice().sort((x,y)=>Math.abs(user[y]-best.v[DIM_KEYS.indexOf(y)])-Math.abs(user[x]-best.v[DIM_KEYS.indexOf(x)]))[0];
+  const box=document.getElementById("longRead");
+  box.innerHTML=`
+    <div class="block"><b>① 原型核心</b><p>${best.name}（${best.era}）在本测试中被抽象为「${best.type}」型人物。其核心不是某段具体历史，而是：${best.tag} 你与 TA 的匹配，主要来自 ${overlapText} 上的相近结构。</p></div>
+    <div class="block"><b>② 你们最像的地方</b><p>你的最高维度是「${DIM_NAMES[a]}」与「${DIM_NAMES[b]}」，而 ${best.name} 原型最突出的维度是「${DIM_NAMES[fa]}」与「${DIM_NAMES[fb]}」。这意味着你们处理复杂问题时，都更容易优先调用这些能力，而不是平均使用所有能力。</p></div>
+    <div class="block"><b>③ 你和 TA 并不完全一样</b><p>相似度不是复制。你们差异相对更明显的维度是「${DIM_NAMES[gapKey]}」。因此，你可能会在某些情境里做出与 ${best.name} 原型不同的选择：同样的目标，你更可能用自己的节奏、关系处理方式或风险偏好完成。</p></div>
+    <div class="block"><b>④ 这个原型对你的实际意义</b><p>把 ${best.name} 当成一面镜子，而不是标签。真正有价值的不是“像谁”，而是识别你天然更会用的能力，并判断它们在什么环境里会变成优势、在什么情况下会被用过头。尤其要留意你的低维度「${DIM_NAMES[low]}」和人物原型的低维度「${DIM_NAMES[flow]}」：它们往往就是盲区出现的地方。</p></div>`;
+}
+function renderDims(user){
+  const box=document.getElementById("dims");box.innerHTML="";
+  DIM_KEYS.forEach(k=>{
+    const d=document.createElement("div");d.className="dim";
+    d.innerHTML='<div class="dimTop"><span>'+DIM_NAMES[k]+'</span><b>'+user[k]+'</b></div><div class="bar"><i style="width:'+user[k]+'%"></i></div>';
+    box.appendChild(d);
+  });
+}
+function renderTop5(arr){
+  const box=document.getElementById("top5");box.innerHTML="";
+  arr.forEach((x,i)=>{
+    const r=document.createElement("div");r.className="rank";
+    r.innerHTML='<b>0'+(i+1)+' · '+x.name+' <small>'+x.era+' · '+x.region+'</small></b><span>'+x.sim.toFixed(1)+'%</span>';
+    box.appendChild(r);
+  });
+}
+function rerank(m){
+  if(!last)return; renderTop5(rank(last.user,m).slice(0,5));setSwitcher(m);
+}
+function setSwitcher(m){
+  document.getElementById("sMixed").classList.toggle("active",m==="mixed");
+  document.getElementById("sChina").classList.toggle("active",m==="china");
+  document.getElementById("sForeign").classList.toggle("active",m==="foreign");
+}
+function poly(vals,cx,cy,r){
+  return vals.map((v,i)=>{const a=-Math.PI/2+i*Math.PI*2/6,rr=r*v/100;return (cx+Math.cos(a)*rr).toFixed(1)+","+(cy+Math.sin(a)*rr).toFixed(1)}).join(" ");
+}
+function renderRadar(user,best){
+  const svg=document.getElementById("radar"),cx=260,cy=235,r=150;let s="";
+  [20,40,60,80,100].forEach(l=>s+='<polygon points="'+poly([l,l,l,l,l,l],cx,cy,r)+'" fill="none" stroke="rgba(201,167,109,'+(l===100?'.28':'.11')+')" />');
+  for(let i=0;i<6;i++){const a=-Math.PI/2+i*Math.PI*2/6,x=cx+Math.cos(a)*r,y=cy+Math.sin(a)*r;s+='<line x1="'+cx+'" y1="'+cy+'" x2="'+x+'" y2="'+y+'" stroke="rgba(201,167,109,.12)"/>'}
+  s+='<polygon points="'+poly(best.v,cx,cy,r)+'" fill="rgba(255,255,255,.015)" stroke="rgba(200,190,170,.35)" stroke-width="2" stroke-dasharray="6 5"/>';
+  s+='<polygon points="'+poly(DIM_KEYS.map(k=>user[k]),cx,cy,r)+'" fill="rgba(201,167,109,.18)" stroke="#ddbd85" stroke-width="3"/>';
+  DIM_KEYS.forEach((k,i)=>{const a=-Math.PI/2+i*Math.PI*2/6,x=cx+Math.cos(a)*(r+36),y=cy+Math.sin(a)*(r+36);s+='<text x="'+x+'" y="'+y+'" fill="#b9b2aa" font-size="13" text-anchor="middle" dominant-baseline="middle">'+DIM_NAMES[k]+'</text>'});
+  s+='<text x="260" y="452" fill="#6f6962" font-size="11" text-anchor="middle">实线：你 · 虚线：'+best.name+'原型</text>';
+  svg.innerHTML=s;
+}
+function restart(){
+  document.getElementById("result").style.display="none";
+  document.getElementById("hero").style.display="grid";
+  window.scrollTo({top:0,behavior:"smooth"});
+}
+function copySummary(){
+  if(!last)return;const t=topDims(last.user).slice(0,2).map(x=>DIM_NAMES[x[0]]).join(" × ");
+  const text="HISTORIA 历史人格原型测试 V3\n我的历史人格原型："+last.best.name+"\n匹配模式："+modeName(last.mode)+"\n相似度："+last.best.sim.toFixed(1)+"%\n核心维度："+t+"\n"+last.best.tag;
+  navigator.clipboard?.writeText(text).then(()=>alert("结果文案已复制")).catch(()=>prompt("复制下面的结果：",text));
+}
+function roundRect(ctx,x,y,w,h,r,fill,stroke){
+  ctx.beginPath();ctx.moveTo(x+r,y);ctx.arcTo(x+w,y,x+w,y+h,r);ctx.arcTo(x+w,y+h,x,y+h,r);ctx.arcTo(x,y+h,x,y,r);ctx.arcTo(x,y,x+w,y,r);
+  if(fill)ctx.fill();if(stroke)ctx.stroke();
+}
+function wrapText(ctx,text,x,y,maxWidth,lineHeight,maxLines=99){
+  let lines=[],line="";
+  for(const ch of text){const test=line+ch;if(ctx.measureText(test).width>maxWidth&&line){lines.push(line);line=ch}else line=test}
+  if(line)lines.push(line);if(lines.length>maxLines){lines=lines.slice(0,maxLines);lines[maxLines-1]=lines[maxLines-1].slice(0,-1)+"…"}
+  lines.forEach((l,i)=>ctx.fillText(l,x,y+i*lineHeight));return y+lines.length*lineHeight;
+}
+function makePoster(){
+  if(!last)return null;
+  const c=document.createElement("canvas");c.width=1080;c.height=1440;const x=c.getContext("2d");
+  const g=x.createLinearGradient(0,0,1080,1440);g.addColorStop(0,"#0b0b0e");g.addColorStop(.55,"#151219");g.addColorStop(1,"#0b0c10");x.fillStyle=g;x.fillRect(0,0,1080,1440);
+  // subtle paper/noise-like stars
+  x.fillStyle="rgba(221,189,133,.045)";
+  for(let i=0;i<220;i++){const px=(i*97)%1080,py=(i*173)%1440;x.fillRect(px,py,2,2)}
+  x.strokeStyle="rgba(221,189,133,.24)";x.lineWidth=2;roundRect(x,58,58,964,1324,34,false,true);
+  x.fillStyle="#d9bb85";x.font="700 30px Georgia";x.fillText("HISTORIA",90,118);
+  x.fillStyle="#81776a";x.font="22px Microsoft YaHei";x.fillText("历史人格原型测试 · V3",90,158);
+  x.fillStyle="#f0e9df";x.font="600 66px Microsoft YaHei";x.fillText("我的历史人格原型",90,292);
+  x.fillStyle="#e0bf84";x.font="600 116px Microsoft YaHei";x.fillText(last.best.name,90,432);
+  x.fillStyle="#9a9185";x.font="26px Microsoft YaHei";x.fillText(last.best.era+" · "+last.best.region+" · "+last.best.type,92,482);
+  x.fillStyle="#e0bf84";x.font="700 102px Georgia";x.fillText(last.best.sim.toFixed(1)+"%",90,635);
+  x.fillStyle="#8c8377";x.font="24px Microsoft YaHei";x.fillText("人格相似度 · "+modeName(last.mode),92,677);
+
+  x.strokeStyle="rgba(224,191,132,.35)";x.beginPath();x.moveTo(92,735);x.lineTo(988,735);x.stroke();
+  x.fillStyle="#e6ded3";x.font="34px Microsoft YaHei";wrapText(x,"“"+last.best.tag+"”",92,806,850,52,4);
+
+  const td=topDims(last.user).slice(0,3);
+  x.fillStyle="#8f867a";x.font="24px Microsoft YaHei";x.fillText("你的核心维度",92,1000);
+  td.forEach((d,i)=>{
+    const yy=1060+i*72;x.fillStyle="#d6cbbd";x.font="28px Microsoft YaHei";x.fillText(DIM_NAMES[d[0]],92,yy);
+    x.fillStyle="#e0bf84";x.font="700 32px Georgia";x.fillText(String(d[1]),300,yy);
+    x.fillStyle="#2a282d";roundRect(x,360,yy-23,570,12,6,true,false);
+    const gg=x.createLinearGradient(360,0,930,0);gg.addColorStop(0,"#8a6a3d");gg.addColorStop(1,"#d9b87e");x.fillStyle=gg;roundRect(x,360,yy-23,570*d[1]/100,12,6,true,false);
+  });
+  x.fillStyle="#756d63";x.font="20px Microsoft YaHei";x.fillText("120 位中外人物 · 36 题 · 6 维行为向量",92,1322);
+  x.fillStyle="#574f48";x.font="18px Microsoft YaHei";x.fillText("仅用于自我观察与娱乐性人格探索",92,1356);
+  return c.toDataURL("image/png");
+}
+function openPoster(){
+  posterDataUrl=makePoster();if(!posterDataUrl)return;
+  document.getElementById("posterImg").src=posterDataUrl;document.getElementById("posterModal").classList.add("open");
+}
+function closePoster(){document.getElementById("posterModal").classList.remove("open")}
+function modalBg(e){if(e.target.id==="posterModal")closePoster()}
+function downloadPoster(){
+  if(!posterDataUrl)posterDataUrl=makePoster();const a=document.createElement("a");a.href=posterDataUrl;a.download="HISTORIA_"+last.best.name+"_人格原型.png";a.click();
+}
+
+// ===== V4 PWA / Mobile H5 =====
+let deferredInstallPrompt=null;
+
+window.addEventListener("beforeinstallprompt",(e)=>{
+  e.preventDefault();
+  deferredInstallPrompt=e;
+});
+
+window.addEventListener("appinstalled",()=>{
+  deferredInstallPrompt=null;
+  closeInstallSheet();
+});
+
+function isiOS(){
+  return /iphone|ipad|ipod/i.test(navigator.userAgent);
+}
+function isStandalone(){
+  return window.matchMedia("(display-mode: standalone)").matches || window.navigator.standalone===true;
+}
+function openInstallSheet(type="generic"){
+  const sheet=document.getElementById("installSheet");
+  const title=document.getElementById("installTitle");
+  const desc=document.getElementById("installDesc");
+  const steps=document.getElementById("installSteps");
+  if(type==="ios"){
+    title.textContent="添加到 iPhone / iPad 主屏幕";
+    desc.textContent="Safari 不会弹出自动安装按钮，请按下面 3 步操作。";
+    steps.innerHTML=`
+      <div class="step"><b>1</b><span>使用 Safari 打开这个测试页面。</span></div>
+      <div class="step"><b>2</b><span>点击底部或顶部的“分享”按钮。</span></div>
+      <div class="step"><b>3</b><span>向下找到“添加到主屏幕”，确认名称后点击“添加”。</span></div>`;
+  }else if(type==="android"){
+    title.textContent="安装 HISTORIA";
+    desc.textContent="如果浏览器没有自动弹出安装窗口，可以使用浏览器菜单手动添加。";
+    steps.innerHTML=`
+      <div class="step"><b>1</b><span>点击浏览器右上角菜单。</span></div>
+      <div class="step"><b>2</b><span>选择“安装应用”或“添加到主屏幕”。</span></div>
+      <div class="step"><b>3</b><span>确认后即可从桌面以独立窗口打开。</span></div>`;
+  }else{
+    title.textContent="添加 HISTORIA 到桌面";
+    desc.textContent="部署到 HTTPS 后，Chrome / Edge / Safari 可以把它作为 PWA 添加到主屏幕。";
+    steps.innerHTML=`
+      <div class="step"><b>1</b><span>先把本文件夹部署到 HTTPS 网站。</span></div>
+      <div class="step"><b>2</b><span>手机浏览器打开网址后点击“添加到桌面”。</span></div>
+      <div class="step"><b>3</b><span>安装后可获得独立启动图标、全屏窗口和离线缓存。</span></div>`;
+  }
+  sheet.classList.add("open");
+}
+function closeInstallSheet(){document.getElementById("installSheet").classList.remove("open")}
+function installSheetBg(e){if(e.target.id==="installSheet")closeInstallSheet()}
+
+async function installApp(){
+  if(isStandalone()){
+    alert("HISTORIA 已经以桌面应用模式运行。");
+    return;
+  }
+  if(deferredInstallPrompt){
+    deferredInstallPrompt.prompt();
+    try{
+      await deferredInstallPrompt.userChoice;
+    }catch(e){}
+    deferredInstallPrompt=null;
+    return;
+  }
+  if(isiOS()) openInstallSheet("ios");
+  else if(/android/i.test(navigator.userAgent)) openInstallSheet("android");
+  else openInstallSheet("generic");
+}
+
+async function shareApp(){
+  const data={
+    title:"HISTORIA · 历史人格原型测试",
+    text:"36 道题，在 120 位中外历史人物中寻找与你最接近的行为原型。",
+    url:location.protocol.startsWith("http")?location.href:undefined
+  };
+  if(navigator.share){
+    try{await navigator.share(data);return}catch(e){}
+  }
+  if(data.url && navigator.clipboard){
+    await navigator.clipboard.writeText(data.url);
+    alert("测试链接已复制。");
+  }else{
+    alert("当前是本地文件。部署到网站后即可直接分享测试链接。");
+  }
+}
+
+// Splash
+window.addEventListener("load",()=>{
+  setTimeout(()=>document.getElementById("splash")?.classList.add("hide"),950);
+  setTimeout(()=>{const s=document.getElementById("splash"); if(s) s.style.display="none"},1600);
+});
+
+// Hide mobile global CTA once the quiz/result starts.
+const _startQuizV4=startQuiz;
+startQuiz=function(){
+  document.getElementById("mobileCTA").style.display="none";
+  _startQuizV4();
+}
+const _restartV4=restart;
+restart=function(){
+  _restartV4();
+  if(window.innerWidth<=600) document.getElementById("mobileCTA").style.display="block";
+}
+
+// Service worker only works on http(s), not file://
+if("serviceWorker" in navigator && location.protocol.startsWith("http")){
+  window.addEventListener("load",()=>navigator.serviceWorker.register("./sw.js").catch(()=>{}));
+}
+
+</script>
+</body>
+</html>
