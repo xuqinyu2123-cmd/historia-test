@@ -1,7 +1,7 @@
 {
   "name": "AEVEMORA",
   "short_name": "AEVEMORA",
-  "description": "AEVEMORA V9.3.1：多文明动态答题版，120 位人物肖像已内嵌，适配 GitHub 网页端上传限制。",
+  "description": "AEVEMORA V9.4：真实历史影像修复版。答题页使用多文明真实历史影像，人物肖像优先真实照片/经典画像。",
   "lang": "zh-CN",
   "start_url": "./index.html",
   "scope": "./",

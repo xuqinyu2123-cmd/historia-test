@@ -1,4 +1,4 @@
-const CACHE="aevemora-v9-3-1-github-lite-20260903";
+const CACHE="aevemora-v9-4-real-imagery-20260903";
 const CORE=[
   "./",
   "./index.html",
