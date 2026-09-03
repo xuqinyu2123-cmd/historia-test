@@ -921,7 +921,7 @@ body:after{
 @keyframes portraitShimmer{to{background-position-x:-220%}}
 
 
-/* ===== AEVEMORA V8.5 BRAND EDITION ===== */
+/* ===== AEVEMORA V8.9 BRAND EDITION ===== */
 .portraitWrap{
   isolation:isolate;
 }
@@ -1126,6 +1126,371 @@ body:after{
 
 
 body.quizMode .footer{opacity:0;pointer-events:none;height:0;margin:0;padding:0;overflow:hidden}
+
+/* ===== V8.6 Historical Backdrop for Quiz ===== */
+.quiz{
+  --quiz-bg-image:url("./quiz-bg-1.svg");
+}
+.quizBackdrop{
+  position:absolute;
+  inset:0;
+  z-index:0;
+  pointer-events:none;
+  overflow:hidden;
+}
+.quizBackdrop:before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background-image:var(--quiz-bg-image);
+  background-size:cover;
+  background-position:center;
+  opacity:.48;
+  transform:scale(1.02);
+  filter:saturate(.84) contrast(1.02) brightness(.76);
+}
+.quizBackdropCaption{
+  position:absolute;
+  right:34px;
+  bottom:18px;
+  z-index:1;
+  color:rgba(229,200,142,.24);
+  font:500 10px/1 Georgia,serif;
+  letter-spacing:.28em;
+  pointer-events:none;
+}
+.quizBackdrop:after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:
+    linear-gradient(90deg, rgba(9,9,12,.90) 0%, rgba(13,13,17,.68) 16%, rgba(13,13,17,.42) 38%, rgba(13,13,17,.64) 100%),
+    linear-gradient(180deg, rgba(9,9,12,.22), rgba(9,9,12,.16) 36%, rgba(9,9,12,.42) 100%);
+}
+.quizTopbar,.quizLayout,.quizAside,.quizMain{position:relative;z-index:1}
+.quizAside{
+  background:
+    linear-gradient(180deg,rgba(207,174,118,.052),transparent 38%),
+    linear-gradient(180deg,rgba(10,10,14,.55),rgba(10,10,14,.34));
+  backdrop-filter:blur(2px);
+}
+.quizMain{
+  background:linear-gradient(90deg,rgba(18,18,23,.22),rgba(18,18,23,.10));
+}
+.answer{
+  background:
+    linear-gradient(90deg,rgba(207,174,118,.026),transparent 22%),
+    rgba(20,20,27,.82);
+  backdrop-filter:blur(4px);
+}
+.answer:hover{
+  background:
+    linear-gradient(90deg,rgba(207,174,118,.08),transparent 30%),
+    rgba(28,28,35,.92);
+}
+.note{
+  padding-top:2px;
+  border-top:1px solid rgba(255,255,255,.05);
+}
+@media(max-width:700px){
+  .quizBackdrop:before{
+    background-position:62% center;
+    opacity:.28;
+  }
+  .quizBackdrop:after{
+    background:
+      linear-gradient(180deg,rgba(9,9,12,.74),rgba(9,9,12,.60) 34%,rgba(9,9,12,.76) 100%),
+      linear-gradient(90deg, rgba(9,9,12,.24), rgba(9,9,12,.14));
+  }
+  .quizAside,.quizMain{background:none;backdrop-filter:none}
+}
+
+
+
+/* ===== V8.9 视觉旗舰版 ===== */
+.quiz{
+  width:min(1320px,calc(100% - 28px));
+  min-height:730px;
+  background:
+    radial-gradient(780px 420px at 8% 20%,rgba(226,190,127,.10),transparent 70%),
+    radial-gradient(760px 460px at 92% 84%,rgba(89,65,101,.08),transparent 76%),
+    linear-gradient(145deg,rgba(255,255,255,.030),rgba(255,255,255,.008)),
+    #111217;
+  border:1px solid rgba(255,255,255,.07);
+  box-shadow:0 34px 110px rgba(0,0,0,.32), inset 0 0 0 1px rgba(255,255,255,.02);
+}
+.quiz:before{
+  right:-60px;
+  top:94px;
+  color:rgba(224,191,132,.05);
+  letter-spacing:.40em;
+}
+.quizTopbar{
+  padding:22px 30px 16px;
+  background:linear-gradient(180deg,rgba(10,10,14,.62),rgba(10,10,14,.28));
+}
+.quizProgressMeta span{font-size:10px;letter-spacing:.30em;color:#8c8172}
+.quizProgressMeta b{font-size:12px;color:#b7aa99}
+.pbar{height:4px;background:#23242b}
+.pbar i{background:linear-gradient(90deg,#9b733d,#e1bd80)}
+.quizLayout{grid-template-columns:290px minmax(0,1fr);min-height:660px}
+.quizAside{
+  padding:58px 34px 46px;
+  background:
+    linear-gradient(180deg,rgba(223,187,122,.08),transparent 34%),
+    linear-gradient(180deg,rgba(10,10,14,.76),rgba(10,10,14,.44));
+  backdrop-filter:blur(8px);
+}
+.quizAsideLabel{color:#b49869;font-size:10px;letter-spacing:.36em}
+.quizIndex strong{font-size:78px;color:#e5c78f}
+.quizGlyph{margin:54px auto 42px}
+.quizGlyphRing{border-color:rgba(224,191,132,.18)}
+.quizGlyph .ring2{border-color:rgba(224,191,132,.22)}
+.quizGlyph .ring3{border-color:rgba(224,191,132,.16)}
+.quizAside p{color:#aaa193;font-size:13px;line-height:1.95;max-width:190px}
+.quizMain{
+  padding:56px 58px 42px;
+  background:
+    linear-gradient(90deg,rgba(16,16,22,.44),rgba(16,16,22,.20)),
+    radial-gradient(620px 360px at 100% 0%,rgba(224,191,132,.04),transparent 70%);
+}
+.questionEyebrow{
+  display:flex;align-items:center;gap:14px;
+  margin-bottom:14px;
+  color:#c69f60;
+  font:600 11px Georgia,serif;
+  letter-spacing:.34em;
+}
+.questionEyebrow:after{
+  content:"";display:block;width:112px;height:1px;
+  background:linear-gradient(90deg,rgba(215,184,127,.55),rgba(215,184,127,0));
+}
+.questionMetaBand{
+  display:flex;justify-content:space-between;align-items:center;gap:18px;flex-wrap:wrap;
+  max-width:920px;margin-bottom:18px;
+  padding:14px 18px;border-radius:16px;
+  border:1px solid rgba(255,255,255,.06);
+  background:linear-gradient(90deg,rgba(207,174,118,.08),rgba(255,255,255,.02));
+  box-shadow:inset 0 0 0 1px rgba(255,255,255,.01);
+}
+.questionMetaBand span:first-child{
+  color:#ead2a3;font:600 12px Georgia,serif;letter-spacing:.26em;
+}
+.questionMetaBand span:last-child{
+  color:#988d7f;font:500 11px Georgia,serif;letter-spacing:.18em;
+}
+.questionStage{
+  max-width:940px;
+  padding:30px 30px 26px;
+  border-radius:28px;
+  border:1px solid rgba(255,255,255,.06);
+  background:
+    linear-gradient(180deg,rgba(255,255,255,.025),rgba(255,255,255,.008)),
+    rgba(13,13,18,.58);
+  box-shadow:0 18px 50px rgba(0,0,0,.22);
+}
+.question{
+  max-width:800px;
+  margin:0 0 30px;
+  color:#f5eee6;
+  font-size:44px;
+  line-height:1.28;
+  font-weight:650;
+  letter-spacing:-.03em;
+}
+.answers{gap:14px;max-width:860px}
+.answer{
+  min-height:82px;
+  border:1px solid rgba(255,255,255,.08);
+  background:
+    linear-gradient(90deg,rgba(207,174,118,.05),transparent 24%),
+    rgba(22,22,29,.84);
+  padding:21px 24px;
+  border-radius:18px;
+  gap:18px;
+  box-shadow:0 10px 24px rgba(0,0,0,.10);
+}
+.answer:before{
+  content:"";
+  position:absolute;right:18px;top:50%;width:9px;height:9px;margin-top:-6px;
+  border-top:1px solid rgba(225,196,139,.4);border-right:1px solid rgba(225,196,139,.4);
+  transform:rotate(45deg);
+  opacity:.0;transition:opacity .18s ease,transform .18s ease;
+}
+.answer:hover{
+  transform:translateX(7px) translateY(-1px);
+  border-color:rgba(207,174,118,.42);
+  background:
+    linear-gradient(90deg,rgba(207,174,118,.10),transparent 28%),
+    rgba(27,27,34,.97);
+}
+.answer:hover:before{opacity:.9;transform:translateX(4px) rotate(45deg)}
+.letter{
+  width:38px;height:38px;flex:0 0 38px;
+  background:rgba(207,174,118,.04);
+  border-color:rgba(198,155,91,.76);
+  color:#efc983;
+  font-size:13px;
+}
+.note{margin-top:22px;font-size:12px;color:#8e857b;max-width:780px}
+.note span{color:#e1bc79}
+.quizBackdropCaption{
+  right:38px;bottom:20px;color:rgba(229,200,142,.30);font-size:11px;letter-spacing:.34em;
+}
+.quizBackdrop:before{opacity:.56;transform:scale(1.04);filter:saturate(.88) contrast(1.04) brightness(.78)}
+.quizBackdrop:after{
+  background:
+    linear-gradient(90deg, rgba(9,9,12,.90) 0%, rgba(13,13,17,.70) 18%, rgba(13,13,17,.34) 42%, rgba(13,13,17,.62) 100%),
+    linear-gradient(180deg, rgba(9,9,12,.18), rgba(9,9,12,.10) 34%, rgba(9,9,12,.42) 100%);
+}
+
+.magazine{
+  position:relative;
+  grid-template-columns:452px 1fr;
+  min-height:790px;
+  background:
+    radial-gradient(720px 360px at 0% 0%,rgba(224,191,132,.07),transparent 70%),
+    linear-gradient(180deg,rgba(255,255,255,.018),rgba(255,255,255,.008));
+}
+.magazine:before{
+  content:"FLAGSHIP FEATURE";
+  position:absolute;right:-44px;top:110px;transform:rotate(90deg);
+  color:rgba(224,191,132,.05);font:700 12px Georgia,serif;letter-spacing:.42em;pointer-events:none;
+}
+.leftPage{
+  padding:38px 34px 34px;
+  background:
+    radial-gradient(420px 260px at 50% 0%,rgba(207,174,118,.12),transparent 70%),
+    linear-gradient(180deg,rgba(255,255,255,.03),transparent),#101015;
+}
+.frame{
+  margin-top:20px;padding:18px;border-radius:28px;
+  border:1px solid rgba(207,174,118,.18);
+  background:linear-gradient(180deg,rgba(255,255,255,.024),rgba(255,255,255,.012));
+  box-shadow:0 24px 62px rgba(0,0,0,.25), inset 0 0 0 1px rgba(255,255,255,.02);
+}
+.portraitWrap{
+  border-radius:24px;
+  border:1px solid rgba(207,174,118,.16);
+  background:#0f1014;
+  box-shadow:inset 0 0 0 1px rgba(255,255,255,.018);
+}
+.portraitWrap img{object-position:center 18%}
+.leftQuote{
+  margin-top:20px;padding-left:16px;border-left:2px solid rgba(207,174,118,.5);
+  color:#c2b7a8;font-size:15px;line-height:1.95;
+}
+.factGrid{gap:12px;margin-top:20px}
+.fact{
+  padding:16px;border-radius:18px;border:1px solid rgba(255,255,255,.06);
+  background:linear-gradient(180deg,rgba(255,255,255,.028),rgba(255,255,255,.012));
+}
+.fact b{font-size:24px;margin-bottom:6px}
+.fact span{font-size:11px;letter-spacing:.06em}
+.v6PortraitIntro,.fastPortraitHint{
+  border-radius:16px;
+  background:linear-gradient(180deg,rgba(207,174,118,.05),rgba(255,255,255,.012));
+}
+.rightPage{
+  padding:42px 44px 38px;
+  background:
+    radial-gradient(540px 320px at 100% 0%,rgba(207,174,118,.06),transparent 65%),
+    linear-gradient(180deg,rgba(255,255,255,.022),rgba(255,255,255,.008)),#121218;
+}
+.kicker{font-size:12px;letter-spacing:.30em;color:#e0bb7a}
+.resultEdition{
+  margin-top:10px;
+  color:#8f8478;
+  font:500 11px/1.4 Georgia,serif;
+  letter-spacing:.24em;
+}
+.titleLine{margin-top:18px;gap:24px;align-items:flex-end}
+.name{
+  font-size:76px;
+  line-height:1.02;
+  letter-spacing:-.04em;
+  text-wrap:balance;
+}
+.era{margin-top:10px;font-size:15px;color:#9a9288}
+.badges{margin-top:16px;gap:10px}
+.badge{
+  padding:8px 12px;
+  background:rgba(255,255,255,.03);
+  border-color:rgba(207,174,118,.20);
+}
+.simBlock{
+  min-width:200px;
+  padding-left:26px;
+  border-left:1px solid rgba(255,255,255,.06);
+}
+.simBlock strong{font-size:74px;color:#ebca8b}
+.simBlock span{font-size:13px;color:#9f9589}
+.editorial{
+  margin-top:24px;padding:24px 26px;border-radius:24px;
+  border:1px solid rgba(255,255,255,.06);
+  background:
+    radial-gradient(280px 180px at 0% 0%,rgba(224,191,132,.06),transparent 80%),
+    linear-gradient(180deg,rgba(255,255,255,.02),rgba(255,255,255,.01));
+  color:#ddd4c8;
+}
+.editorial .dropcap:first-letter{font-size:78px;padding-right:12px;padding-top:2px}
+.actionsRow{margin-top:26px;gap:12px}
+.actionsRow .btn{padding:15px 24px}
+.section,.mini,.rankCard,.tipBox,.block,.radarBox,.dim{
+  background:
+    linear-gradient(180deg,rgba(255,255,255,.022),rgba(255,255,255,.010)),
+    #14151a;
+  border:1px solid rgba(255,255,255,.055);
+  box-shadow:0 16px 40px rgba(0,0,0,.16);
+}
+.section{padding:34px;border-radius:28px}
+.section h2{font-size:32px;margin-bottom:18px}
+.section p,.mini p,.block p{color:#d0c8bc}
+.radarBox{padding:18px;border-radius:24px}
+.dim{padding:16px;border-radius:16px}
+.columns{gap:18px}
+.mini{padding:26px;border-radius:24px}
+.mini h3{font-size:18px;color:#ede3d3}
+.rankGrid{gap:14px}
+.rankCard{padding:14px;border-radius:20px}
+.rankInfo b{color:#ece3d4}
+.tipBox{padding:22px;border-radius:22px}
+.tipBox h4{font-size:17px;color:#edd9b6}
+.disclaimer{margin-top:22px;color:#7e756b}
+.footer{margin-top:24px;color:#72695f;letter-spacing:.08em}
+.posterModal{background:rgba(0,0,0,.86)}
+.modalInner{max-width:800px}
+.modalInner img{border-radius:22px;box-shadow:0 36px 90px rgba(0,0,0,.42)}
+
+@media(max-width:1100px){
+  .quizLayout{grid-template-columns:1fr}
+  .quizAside{border-right:0;border-bottom:1px solid rgba(255,255,255,.045)}
+  .quizAside p{max-width:none}
+  .quizMain{padding:40px 30px 34px}
+  .questionStage{padding:26px 24px 22px}
+  .magazine{grid-template-columns:1fr}
+  .magazine:before{display:none}
+  .leftPage:after{display:none}
+  .simBlock{padding-left:0;border-left:0;min-width:0}
+}
+@media(max-width:700px){
+  .quiz{width:min(100%,calc(100% - 16px));margin:10px auto 20px}
+  .quizTopbar{padding:16px 16px 12px}
+  .quizAside{padding:26px 20px 24px}
+  .quizIndex strong{font-size:56px}
+  .quizMain{padding:24px 16px 20px}
+  .questionMetaBand{padding:11px 13px;margin-bottom:14px}
+  .questionStage{padding:18px 14px 16px;border-radius:20px}
+  .question{font-size:30px;line-height:1.35;margin-bottom:22px}
+  .answer{min-height:70px;padding:17px 16px 17px 16px;gap:14px;border-radius:16px}
+  .answer:before{display:none}
+  .magazine{min-height:auto}
+  .leftPage,.rightPage{padding:20px 16px}
+  .name{font-size:44px}
+  .simBlock strong{font-size:52px}
+  .editorial{padding:18px 16px;border-radius:20px}
+  .section{padding:22px;border-radius:22px}
+}
 </style>
 
 <link rel="preconnect" href="https://zh.wikipedia.org" crossorigin>
@@ -1246,6 +1611,8 @@ body.quizMode .footer{opacity:0;pointer-events:none;height:0;margin:0;padding:0;
   </section>
 
   <section id="quiz" class="card quiz">
+    <div class="quizBackdrop" aria-hidden="true"></div>
+    <div class="quizBackdropCaption">EDITORIAL FEATURE</div>
     <div class="quizTopbar">
       <div class="quizProgressMeta">
         <span>AEVEMORA · DECISION PROFILE</span>
@@ -1276,9 +1643,15 @@ body.quizMode .footer{opacity:0;pointer-events:none;height:0;margin:0;padding:0;
 
       <div class="quizMain">
         <div class="questionEyebrow">WHEN YOU HAVE TO DECIDE</div>
-        <div id="question" class="question"></div>
-        <div id="answers" class="answers"></div>
-        <div class="note"><span>提示</span> 不要选择“理想中的自己”，而选择“平时真正会做的自己”。</div>
+        <div class="questionMetaBand">
+          <span id="questionTheme">PORTRAIT ISSUE</span>
+          <span id="questionPhase">FEATURE / 01 · Q01</span>
+        </div>
+        <div class="questionStage">
+          <div id="question" class="question"></div>
+          <div id="answers" class="answers"></div>
+          <div class="note"><span>提示</span> 不要选择“理想中的自己”，而选择“平时真正会做的自己”。</div>
+        </div>
       </div>
     </div>
   </section>
@@ -1308,6 +1681,7 @@ body.quizMode .footer{opacity:0;pointer-events:none;height:0;margin:0;padding:0;
 
       <div class="rightPage">
         <div class="kicker">YOUR HISTORICAL ARCHETYPE</div>
+        <div id="resultEdition" class="resultEdition">COVER FEATURE · HISTORICAL PORTRAIT DOSSIER</div>
         <div class="titleLine">
           <div>
             <h2 id="personName" class="name"></h2>
@@ -1384,7 +1758,7 @@ body.quizMode .footer{opacity:0;pointer-events:none;height:0;margin:0;padding:0;
   </div>
 
   <div class="footer">
-    <span>AEVEMORA · Quiz Edition · V8.5</span>
+    <span>AEVEMORA · Visual Flagship Edition · V8.9</span>
     <button class="footLink" onclick="openInfo('about')">关于测试</button>
     <button class="footLink" onclick="openInfo('privacy')">隐私说明</button>
     <button class="footLink" onclick="openInfo('sources')">图片与资料来源</button>
@@ -1441,6 +1815,7 @@ function poolFor(m){
 function startQuiz(){
   document.body.classList.add("quizMode");
   document.getElementById("hero").style.display="none";
+  setQuizBackdrop(current);
   document.getElementById("result").style.display="none";
   document.getElementById("quiz").style.display="block";
   const cta=document.getElementById("mobileCTA"); if(cta) cta.style.display="none";
@@ -1460,10 +1835,14 @@ function renderQuestion(){
     quiz.classList.add("quizStepIn");
   }
 
+  setQuizBackdrop(current);
   question.textContent=q[0];
   const no=String(current+1).padStart(2,"0");
   if(qnum) qnum.textContent=no+" / "+QUESTIONS.length;
   if(qnumBig) qnumBig.textContent=no;
+  const meta=QUIZ_EDITORIAL_META[Math.floor(current/6)%QUIZ_EDITORIAL_META.length]||QUIZ_EDITORIAL_META[0];
+  const phase=document.getElementById("questionPhase");
+  if(phase) phase.textContent=meta.phase+" · Q"+no;
 
   document.getElementById("progress").style.width=(current/QUESTIONS.length*100)+"%";
 
@@ -1540,6 +1919,8 @@ function renderResultState(state){
   document.getElementById("coreDimB").textContent=DIM_NAMES[top[1][0]];
   document.getElementById("poolSize").textContent=poolFor(stateMode).length;
   document.getElementById("issueLabel").textContent="ISSUE / "+String(PEOPLE.findIndex(x=>x.name===best.name)+1).padStart(3,"0");
+  const edition=document.getElementById("resultEdition");
+  if(edition) edition.textContent="COVER FEATURE · "+best.region+" · "+best.type+" · "+modeName(stateMode);
 
   document.getElementById("portraitMain").alt=best.name+"人物肖像";
 
@@ -1760,7 +2141,7 @@ function restart(){
 function copySummary(){
   if(!last) return;
   const t=topDims(last.user).slice(0,2).map(x=>DIM_NAMES[x[0]]).join(" × ");
-  const text="AEVEMORA 历史人格原型测试 V8.5\n我的历史人格原型："+last.best.name+"\n匹配模式："+modeName(last.mode)+"\n相似度："+last.best.sim.toFixed(1)+"%\n核心维度："+t+"\n"+last.best.tag;
+  const text="AEVEMORA 历史人格原型测试 V8.9\n我的历史人格原型："+last.best.name+"\n匹配模式："+modeName(last.mode)+"\n相似度："+last.best.sim.toFixed(1)+"%\n核心维度："+t+"\n"+last.best.tag;
   navigator.clipboard?.writeText(text).then(()=>alert("结果文案已复制")).catch(()=>prompt("复制下面的结果：",text));
 }
 
@@ -1830,143 +2211,186 @@ function drawPosterPortrait(ctx,img,x,y,w,h,r){
   roundRect(ctx,x,y,w,h,r,false,true);
 }
 
+function posterStatCard(ctx,x,y,w,h,title,value,label){
+  ctx.fillStyle="rgba(255,255,255,.018)";
+  roundRect(ctx,x,y,w,h,22,true,false);
+  ctx.strokeStyle="rgba(224,191,132,.14)";
+  ctx.lineWidth=2;
+  roundRect(ctx,x,y,w,h,22,false,true);
+  ctx.fillStyle="#9b9081";
+  ctx.font="22px Microsoft YaHei";
+  ctx.fillText(title,x+24,y+42);
+  ctx.fillStyle="#e7c88f";
+  ctx.font="700 60px Georgia";
+  ctx.fillText(String(value),x+24,y+116);
+  ctx.fillStyle="#8b8175";
+  ctx.font="20px Microsoft YaHei";
+  ctx.fillText(label,x+24,y+h-28);
+  ctx.fillStyle="#2a282d";
+  roundRect(ctx,x+24,y+h-56,w-48,12,7,true,false);
+  const gg=ctx.createLinearGradient(x+24,0,x+w-24,0);
+  gg.addColorStop(0,"#8f6737");
+  gg.addColorStop(1,"#e1bd80");
+  ctx.fillStyle=gg;
+  roundRect(ctx,x+24,y+h-56,(w-48)*Math.max(0,Math.min(1,Number(value)/100)),12,7,true,false);
+}
+
+function renderPosterCanvas(x,img,compactFallback=false){
+  const c=x.canvas;
+  const best=last.best;
+  const user=last.user;
+  const top=topDims(user).slice(0,3);
+
+  const bg=x.createLinearGradient(0,0,0,c.height);
+  bg.addColorStop(0,"#090a0d");
+  bg.addColorStop(.42,"#101117");
+  bg.addColorStop(1,"#0a0b0f");
+  x.fillStyle=bg;
+  x.fillRect(0,0,c.width,c.height);
+
+  const glow=x.createRadialGradient(200,260,40,200,260,780);
+  glow.addColorStop(0,"rgba(224,191,132,.18)");
+  glow.addColorStop(.36,"rgba(224,191,132,.06)");
+  glow.addColorStop(1,"rgba(224,191,132,0)");
+  x.fillStyle=glow;
+  x.fillRect(0,0,c.width,c.height);
+
+  const glow2=x.createRadialGradient(960,520,10,960,520,620);
+  glow2.addColorStop(0,"rgba(122,88,148,.08)");
+  glow2.addColorStop(1,"rgba(122,88,148,0)");
+  x.fillStyle=glow2;
+  x.fillRect(0,0,c.width,c.height);
+
+  x.fillStyle="rgba(224,191,132,.035)";
+  for(let i=0;i<420;i++){x.fillRect((i*97)%1170,(i*173)%2532,2,2)}
+
+  x.strokeStyle="rgba(224,191,132,.24)";
+  x.lineWidth=2;
+  roundRect(x,56,56,1058,2420,36,false,true);
+  x.strokeStyle="rgba(255,255,255,.045)";
+  roundRect(x,74,74,1022,2384,30,false,true);
+
+  x.fillStyle="#dfc48b";
+  x.font="700 36px Georgia";
+  x.fillText("AEVEMORA",96,124);
+  x.fillStyle="#7e756b";
+  x.font="22px Georgia";
+  x.fillText("FLAGSHIP VISUAL ISSUE",96,162);
+  x.textAlign="right";
+  x.fillStyle="#6f675f";
+  x.font="22px Georgia";
+  x.fillText("ISSUE / "+String(PEOPLE.findIndex(p=>p.name===best.name)+1).padStart(3,"0"),1076,124);
+  x.textAlign="left";
+
+  x.fillStyle="rgba(255,255,255,.014)";
+  roundRect(x,90,204,990,1050,34,true,false);
+  if(img) drawPosterPortrait(x,img,104,218,962,1022,28);
+
+  x.fillStyle="rgba(12,12,17,.54)";
+  roundRect(x,124,246,236,46,23,true,false);
+  x.strokeStyle="rgba(224,191,132,.16)";
+  roundRect(x,124,246,236,46,23,false,true);
+  x.fillStyle="#e3c690";
+  x.font="600 18px Georgia";
+  x.fillText("COVER FEATURE",152,276);
+
+  const vg=x.createLinearGradient(0,1020,0,1240);
+  vg.addColorStop(0,"rgba(10,10,14,0)");
+  vg.addColorStop(1,"rgba(10,10,14,.48)");
+  x.fillStyle=vg;
+  roundRect(x,104,218,962,1022,28,true,false);
+
+  x.fillStyle="#f3ece2";
+  x.font="600 66px Microsoft YaHei";
+  x.fillText("我的历史人格原型",96,1366);
+  x.fillStyle="#e6c78e";
+  x.font="700 114px Microsoft YaHei";
+  x.fillText(best.name,96,1506);
+  x.fillStyle="#a0978b";
+  x.font="29px Microsoft YaHei";
+  x.fillText(best.era+" · "+best.region+" · "+best.type,98,1556);
+
+  x.fillStyle="rgba(255,255,255,.016)";
+  roundRect(x,760,1318,316,224,28,true,false);
+  x.strokeStyle="rgba(224,191,132,.14)";
+  roundRect(x,760,1318,316,224,28,false,true);
+  x.textAlign="right";
+  x.fillStyle="#ecd09a";
+  x.font="700 92px Georgia";
+  x.fillText(best.sim.toFixed(1)+"%",1040,1428);
+  x.fillStyle="#9e9386";
+  x.font="24px Microsoft YaHei";
+  x.fillText("人格相似度",1040,1470);
+  x.fillStyle="#7f766d";
+  x.font="20px Georgia";
+  x.fillText(modeName(last.mode),1040,1504);
+  x.textAlign="left";
+
+  x.strokeStyle="rgba(224,191,132,.18)";
+  x.beginPath(); x.moveTo(96,1600); x.lineTo(1074,1600); x.stroke();
+
+  x.fillStyle="rgba(255,255,255,.018)";
+  roundRect(x,96,1642,980,262,30,true,false);
+  x.strokeStyle="rgba(224,191,132,.12)";
+  roundRect(x,96,1642,980,262,30,false,true);
+  x.fillStyle="#e4bf7d";
+  x.font="600 80px Georgia";
+  x.fillText("“",120,1734);
+  x.fillStyle="#ece4d8";
+  x.font="36px Microsoft YaHei";
+  wrapText(x,best.tag,188,1732,826,52,3);
+
+  x.fillStyle="#8e8478";
+  x.font="22px Georgia";
+  x.fillText("EDITORIAL DOSSIER",122,1808);
+  x.fillStyle="#bdb3a6";
+  x.font="22px Microsoft YaHei";
+  wrapText(x,buildEditorial(best,user),122,1846,914,36,3);
+
+  x.fillStyle="#887f74";
+  x.font="24px Microsoft YaHei";
+  x.fillText("你的核心维度",96,1988);
+  posterStatCard(x,96,2034,300,232,DIM_NAMES[top[0][0]],top[0][1],"最高维度");
+  posterStatCard(x,435,2034,300,232,DIM_NAMES[top[1][0]],top[1][1],"第二维度");
+  posterStatCard(x,774,2034,300,232,DIM_NAMES[top[2][0]],top[2][1],"第三维度");
+
+  x.strokeStyle="rgba(224,191,132,.18)";
+  x.beginPath(); x.moveTo(96,2338); x.lineTo(1074,2338); x.stroke();
+  x.fillStyle="#756c62";
+  x.font="21px Microsoft YaHei";
+  x.fillText("36 道情境题 · 120 位中外人物 · 6 维行为向量 · 杂志级历史人格报告",96,2390);
+  x.textAlign="right";
+  x.fillStyle="#8a806f";
+  x.font="22px Georgia";
+  x.fillText("AEVEMORA JOURNAL · V8.9",1074,2390);
+  x.textAlign="left";
+}
+
 async function makePoster(){
   if(!last) return null;
   const c=document.createElement("canvas");
   c.width=1170; c.height=2532;
   const x=c.getContext("2d");
 
-  // 背景
-  const bg=x.createLinearGradient(0,0,0,c.height);
-  bg.addColorStop(0,"#090a0d");
-  bg.addColorStop(.35,"#101117");
-  bg.addColorStop(1,"#0b0b10");
-  x.fillStyle=bg; x.fillRect(0,0,c.width,c.height);
-
-  x.fillStyle="rgba(224,191,132,.05)";
-  for(let i=0;i<340;i++){x.fillRect((i*97)%1170,(i*173)%2532,2,2)}
-  x.strokeStyle="rgba(224,191,132,.22)";
-  x.lineWidth=2;
-  roundRect(x,58,58,1054,2416,34,false,true);
-
-  // 头部信息
-  x.fillStyle="#dec288";
-  x.font="700 34px Georgia";
-  x.fillText("AEVEMORA",94,122);
-  x.fillStyle="#746c61";
-  x.font="24px Microsoft YaHei";
-  x.fillText("Historical Archetype Report",94,162);
-  x.textAlign="right";
-  x.fillStyle="#6c655d";
-  x.font="22px Georgia";
-  x.fillText("ISSUE / "+String(PEOPLE.findIndex(x=>x.name===last.best.name)+1).padStart(3,"0"),1078,122);
-  x.textAlign="left";
-
-  // 主图容器
-  x.fillStyle="rgba(255,255,255,.012)";
-  roundRect(x,82,214,1006,1086,32,true,false);
-
   const img=await loadPosterPortrait();
-  if(img) drawPosterPortrait(x,img,96,228,978,1058,28);
-
-  // 姓名与身份
-  x.fillStyle="#f3ece2";
-  x.font="600 72px Microsoft YaHei";
-  x.fillText("我的历史人格原型",94,1428);
-  x.fillStyle="#e2c38b";
-  x.font="700 120px Microsoft YaHei";
-  x.fillText(last.best.name,94,1566);
-
-  x.fillStyle="#9e9589";
-  x.font="29px Microsoft YaHei";
-  x.fillText(last.best.era+" · "+last.best.region+" · "+last.best.type,96,1616);
-
-  // 相似度与模式
-  x.textAlign="right";
-  x.fillStyle="#e5c68f";
-  x.font="700 108px Georgia";
-  x.fillText(last.best.sim.toFixed(1)+"%",1076,1562);
-  x.fillStyle="#8b8379";
-  x.font="25px Microsoft YaHei";
-  x.fillText("人格相似度 · "+modeName(last.mode),1078,1606);
-  x.textAlign="left";
-
-  x.strokeStyle="rgba(224,191,132,.18)";
-  x.beginPath(); x.moveTo(94,1670); x.lineTo(1076,1670); x.stroke();
-
-  // 引语
-  x.fillStyle="#e7ded2";
-  x.font="36px Microsoft YaHei";
-  wrapText(x,"“"+last.best.tag+"”",94,1748,970,54,4);
-
-  // 核心维度卡片
-  const td=topDims(last.user).slice(0,3);
-  x.fillStyle="#82786e";
-  x.font="24px Microsoft YaHei";
-  x.fillText("你的核心维度",94,1988);
-
-  td.forEach((d,i)=>{
-    const xx=94+i*324, yy=2040;
-    roundRect(x,xx,yy,292,240,22,true,false);
-    x.fillStyle="rgba(255,255,255,.018)";
-    roundRect(x,xx,yy,292,240,22,true,false);
-    x.strokeStyle="rgba(224,191,132,.12)";
-    roundRect(x,xx,yy,292,240,22,false,true);
-
-    x.fillStyle="#d8cdbf";
-    x.font="31px Microsoft YaHei";
-    x.fillText(DIM_NAMES[d[0]],xx+24,yy+56);
-    x.fillStyle="#e3c38b";
-    x.font="700 62px Georgia";
-    x.fillText(String(d[1]),xx+24,yy+126);
-
-    x.fillStyle="#2a282d";
-    roundRect(x,xx+24,yy+170,244,12,6,true,false);
-    const gg=x.createLinearGradient(xx+24,0,xx+268,0);
-    gg.addColorStop(0,"#86653a");
-    gg.addColorStop(1,"#ddb980");
-    x.fillStyle=gg;
-    roundRect(x,xx+24,yy+170,244*d[1]/100,12,6,true,false);
-
-    x.fillStyle="#867d72";
-    x.font="20px Microsoft YaHei";
-    x.fillText(i===0?"最高维度":(i===1?"第二维度":"第三维度"),xx+24,yy+210);
-  });
-
-  // 页脚
-  x.strokeStyle="rgba(224,191,132,.18)";
-  x.beginPath(); x.moveTo(94,2336); x.lineTo(1076,2336); x.stroke();
-  x.fillStyle="#726960";
-  x.font="22px Microsoft YaHei";
-  x.fillText("36 道情境题 · 120 位中外人物 · 6 维行为向量",94,2392);
-
-  x.textAlign="right";
-  x.fillStyle="#8a806f";
-  x.font="22px Georgia";
-  x.fillText("AEVEMORA JOURNAL · V8.5",1078,2392);
-  x.textAlign="left";
+  if(img) renderPosterCanvas(x,img,false);
+  else{
+    const fallbackImg=new Image();
+    fallbackImg.src=buildPortraitSVG(last.best,760,980);
+    await new Promise(res=>{fallbackImg.onload=res; fallbackImg.onerror=res;});
+    renderPosterCanvas(x,fallbackImg,true);
+  }
 
   try{
     return c.toDataURL("image/png");
   }catch(e){
-    // 极少数浏览器环境若远程图片 CORS 不允许，则回退使用 SVG 插画海报，保证能导出
-    const backup=new Image();
-    backup.src=buildPortraitSVG(last.best,760,980);
-    await new Promise(res=>{backup.onload=res; backup.onerror=res;});
     const c2=document.createElement("canvas");
     c2.width=1170; c2.height=2532;
     const y=c2.getContext("2d");
-    y.fillStyle="#0b0b10"; y.fillRect(0,0,1170,2532);
-    y.strokeStyle="rgba(224,191,132,.22)"; y.lineWidth=2;
-    roundRect(y,58,58,1054,2416,34,false,true);
-    y.fillStyle="#dec288"; y.font="700 34px Georgia"; y.fillText("AEVEMORA",94,122);
-    roundImageCard(y,backup,96,228,978,1058,28);
-    y.fillStyle="#f3ece2"; y.font="600 72px Microsoft YaHei"; y.fillText("我的历史人格原型",94,1428);
-    y.fillStyle="#e2c38b"; y.font="700 120px Microsoft YaHei"; y.fillText(last.best.name,94,1566);
-    y.fillStyle="#9e9589"; y.font="29px Microsoft YaHei"; y.fillText(last.best.era+" · "+last.best.region+" · "+last.best.type,96,1616);
-    y.fillStyle="#e5c68f"; y.font="700 108px Georgia"; y.fillText(last.best.sim.toFixed(1)+"%",94,1766);
-    y.fillStyle="#e7ded2"; y.font="36px Microsoft YaHei"; wrapText(y,"“"+last.best.tag+"”",94,1848,970,54,4);
-    y.fillStyle="#726960"; y.font="22px Microsoft YaHei"; y.fillText("36 道情境题 · 120 位中外人物 · 6 维行为向量 · AEVEMORA V8.5",94,2392);
+    const backup=new Image();
+    backup.src=buildPortraitSVG(last.best,760,980);
+    await new Promise(res=>{backup.onload=res; backup.onerror=res;});
+    renderPosterCanvas(y,backup,true);
     return c2.toDataURL("image/png");
   }
 }
@@ -2229,6 +2653,37 @@ const WIKI_ALIASES = {
   "格蕾丝·霍珀":"葛麗絲·霍普",
   "沃尔特·迪士尼":"华特·迪士尼"
 };
+
+const QUIZ_BACKDROPS=[
+  "./quiz-bg-1.svg",
+  "./quiz-bg-2.svg",
+  "./quiz-bg-3.svg",
+  "./quiz-bg-4.svg",
+  "./quiz-bg-5.svg",
+  "./quiz-bg-6.svg"
+];
+const QUIZ_EDITORIAL_META=[
+  {theme:"PORTRAIT ISSUE", caption:"PORTRAIT ISSUE · FEATURED FIGURE", phase:"FEATURE / 01"},
+  {theme:"ATLAS FEATURE", caption:"ATLAS FEATURE · CIVILIZATION MAP", phase:"FEATURE / 02"},
+  {theme:"ARCHIVE SPECIAL", caption:"ARCHIVE SPECIAL · MEMORY DOSSIER", phase:"FEATURE / 03"},
+  {theme:"FIGURE ESSAY", caption:"FIGURE ESSAY · MONUMENTAL FORM", phase:"FEATURE / 04"},
+  {theme:"COSMIC STUDY", caption:"COSMIC STUDY · OBSERVATION ORDER", phase:"FEATURE / 05"},
+  {theme:"CHRONICLE COVER", caption:"CHRONICLE COVER · HISTORY STAGE", phase:"FEATURE / 06"}
+];
+
+function setQuizBackdrop(index){
+  const quiz=document.getElementById("quiz");
+  if(!quiz) return;
+  const groupIndex=Math.floor(index/6)%QUIZ_BACKDROPS.length;
+  const bg=QUIZ_BACKDROPS[groupIndex];
+  const meta=QUIZ_EDITORIAL_META[groupIndex]||QUIZ_EDITORIAL_META[0];
+  quiz.style.setProperty("--quiz-bg-image",'url("'+bg+'")');
+  const cap=document.querySelector('.quizBackdropCaption');
+  if(cap) cap.textContent=meta.caption;
+  const theme=document.getElementById('questionTheme');
+  if(theme) theme.textContent=meta.theme;
+}
+
 
 const portraitCache = new Map();
 const portraitRequestCache = new Map();
@@ -2547,7 +3002,7 @@ function warmPortraitCandidates(){
 if ("serviceWorker" in navigator && location.protocol.startsWith("http")) {
   window.addEventListener("load", async () => {
     try {
-      const reg = await navigator.serviceWorker.register("./sw.js?v=8.5");
+      const reg = await navigator.serviceWorker.register("./sw.js?v=8.9");
       await reg.update();
 
       let refreshed = false;

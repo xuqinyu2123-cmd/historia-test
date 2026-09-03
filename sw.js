@@ -1,4 +1,4 @@
-const CACHE="aevemora-v8-5-quiz-edition-20260903";
+const CACHE="aevemora-v8-9-visual-flagship-20260903";
 const CORE=[
   "./",
   "./index.html",
