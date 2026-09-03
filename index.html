@@ -141,27 +141,145 @@ body:after{
 .bookNote b{font-family:Georgia,serif;color:#b79257}
 .mobileBottomCTA{display:none}
 
-/* Splash */
+/* Splash · AEVEMORA Time Orbit */
 #splash{
   position:fixed;inset:0;z-index:9999;display:flex;align-items:center;justify-content:center;
   background:
-    radial-gradient(700px 500px at 50% 18%,rgba(218,184,126,.12),transparent 55%),
-    linear-gradient(180deg,#09090c 0%,#121017 52%,#090a0d 100%);
-  transition:opacity .55s ease,visibility .55s ease;
+    radial-gradient(720px 520px at 50% 28%,rgba(218,184,126,.085),transparent 58%),
+    radial-gradient(920px 720px at 50% 85%,rgba(71,53,77,.07),transparent 62%),
+    linear-gradient(180deg,#08090c 0%,#111016 54%,#090a0d 100%);
+  transition:opacity .52s ease,visibility .52s ease;
 }
 #splash.hide{opacity:0;visibility:hidden}
-.splashNoise{position:absolute;inset:0;opacity:.09;pointer-events:none;background-image:repeating-linear-gradient(0deg,rgba(255,255,255,.035) 0,rgba(255,255,255,.035) 1px,transparent 1px,transparent 3px)}
-.splashCore{position:relative;text-align:center;padding:24px}
-.splashRing{
-  width:176px;height:176px;margin:0 auto 28px;border-radius:50%;border:1px solid rgba(218,184,126,.27);
-  display:grid;place-items:center;box-shadow:0 0 0 22px rgba(218,184,126,.025),0 0 0 44px rgba(218,184,126,.012)
+.splashNoise{
+  position:absolute;inset:0;opacity:.065;pointer-events:none;
+  background-image:
+    repeating-linear-gradient(0deg,rgba(255,255,255,.028) 0,rgba(255,255,255,.028) 1px,transparent 1px,transparent 4px);
 }
-.splashRing b{font:500 78px/1 Georgia,"Songti SC",serif;color:#d8b77e}
-.splashBrand{font:700 24px/1.2 Georgia,serif;letter-spacing:.32em;color:#ead7b4;margin-left:.32em}
-.splashSub{margin-top:12px;color:#857b70;font-size:12px;letter-spacing:.16em}
-.splashLine{width:120px;height:1px;background:linear-gradient(90deg,transparent,#9b7948,transparent);margin:28px auto 0;position:relative;overflow:hidden}
-.splashLine i{display:block;width:35%;height:100%;background:#e0bd81;animation:loadline 1.5s ease-in-out infinite}
-@keyframes loadline{0%{transform:translateX(-120%)}100%{transform:translateX(410%)}}
+.splashCore{
+  position:relative;text-align:center;padding:30px 24px;
+  min-width:min(88vw,520px);
+}
+.timeOrbit{
+  position:relative;width:188px;height:188px;margin:0 auto 30px;
+  display:grid;place-items:center;
+  animation:orbitEnter .72s cubic-bezier(.2,.8,.25,1) both;
+}
+.timeOrbit:before{
+  content:"";position:absolute;inset:-22px;border-radius:50%;
+  background:radial-gradient(circle,rgba(218,184,126,.065),rgba(218,184,126,0) 66%);
+  animation:haloPulse 1.5s ease-in-out both;
+}
+.orbitSvg{
+  width:188px;height:188px;overflow:visible;filter:drop-shadow(0 0 14px rgba(210,174,111,.05))
+}
+.orbitOuter,.orbitInner,.orbitArc{
+  fill:none;transform-origin:94px 94px;
+}
+.orbitOuter{
+  stroke:rgba(226,194,139,.22);stroke-width:1;
+  stroke-dasharray:590;stroke-dashoffset:590;
+  animation:ringDraw .82s .08s ease-out forwards, slowSpin 5.5s .82s linear infinite;
+}
+.orbitInner{
+  stroke:rgba(226,194,139,.12);stroke-width:1;
+  stroke-dasharray:430;stroke-dashoffset:430;
+  animation:ringDraw .72s .2s ease-out forwards, reverseSpin 7s .92s linear infinite;
+}
+.orbitArc{
+  stroke:#d5af70;stroke-width:1.6;stroke-linecap:round;
+  stroke-dasharray:58 420;opacity:.82;
+  animation:arcSpin 1.45s .18s cubic-bezier(.35,.05,.35,1) both;
+}
+.orbitTicks line{
+  stroke:rgba(224,190,132,.28);stroke-width:1;transform-origin:94px 94px;
+}
+.orbitTicks line:nth-child(3n){stroke:rgba(224,190,132,.52)}
+.orbitCore{
+  position:absolute;width:54px;height:54px;border-radius:50%;
+  border:1px solid rgba(222,188,130,.18);
+  box-shadow:0 0 0 11px rgba(222,188,130,.018),inset 0 0 20px rgba(222,188,130,.018);
+  opacity:0;transform:scale(.7);
+  animation:coreIn .52s .42s cubic-bezier(.2,.8,.2,1) forwards;
+}
+.orbitDot{
+  width:5px;height:5px;border-radius:50%;
+  background:#dfbd82;box-shadow:0 0 18px rgba(223,189,130,.52);
+}
+.brandReveal{
+  position:relative;display:inline-flex;align-items:center;justify-content:center;
+  min-width:310px;height:42px;
+}
+.brandLine{
+  position:absolute;left:50%;top:50%;height:1px;width:0;
+  transform:translate(-50%,-50%);
+  background:linear-gradient(90deg,transparent,rgba(213,174,112,.8),transparent);
+  animation:brandLineExpand .48s .68s ease-out forwards,brandLineFade .38s 1.08s ease forwards;
+}
+.splashBrand{
+  position:relative;z-index:1;
+  font:700 29px/1.2 Georgia,serif;letter-spacing:.36em;color:#ead7b4;margin-left:.36em;
+  opacity:0;filter:blur(8px);transform:translateY(5px);
+  text-shadow:0 0 28px rgba(220,181,116,.08);
+  animation:brandFocus .58s .92s cubic-bezier(.2,.8,.2,1) forwards;
+}
+.splashSub{
+  margin-top:10px;color:#766e65;font-size:10px;letter-spacing:.24em;
+  opacity:0;transform:translateY(4px);
+  animation:subIn .45s 1.18s ease forwards;
+}
+.splashMark{
+  margin-top:24px;height:1px;width:0;margin-left:auto;margin-right:auto;
+  background:linear-gradient(90deg,transparent,rgba(151,118,70,.44),transparent);
+  animation:markIn .5s 1.32s ease forwards;
+}
+
+@keyframes ringDraw{to{stroke-dashoffset:0}}
+@keyframes slowSpin{to{transform:rotate(360deg)}}
+@keyframes reverseSpin{to{transform:rotate(-360deg)}}
+@keyframes arcSpin{
+  0%{transform:rotate(-125deg);opacity:0}
+  18%{opacity:.9}
+  78%{opacity:.86}
+  100%{transform:rotate(255deg);opacity:.16}
+}
+@keyframes orbitEnter{
+  from{opacity:0;transform:scale(.84)}
+  to{opacity:1;transform:scale(1)}
+}
+@keyframes haloPulse{
+  0%{opacity:0;transform:scale(.72)}
+  44%{opacity:1}
+  100%{opacity:.52;transform:scale(1.16)}
+}
+@keyframes coreIn{
+  to{opacity:1;transform:scale(1)}
+}
+@keyframes brandLineExpand{
+  to{width:300px}
+}
+@keyframes brandLineFade{
+  to{opacity:.18;transform:translate(-50%,-50%) scaleX(.52)}
+}
+@keyframes brandFocus{
+  to{opacity:1;filter:blur(0);transform:translateY(0)}
+}
+@keyframes subIn{
+  to{opacity:1;transform:translateY(0)}
+}
+@keyframes markIn{
+  to{width:108px}
+}
+
+@media (prefers-reduced-motion:reduce){
+  .timeOrbit,.orbitOuter,.orbitInner,.orbitArc,.orbitCore,.brandLine,.splashBrand,.splashSub,.splashMark{
+    animation:none!important;
+  }
+  .orbitOuter,.orbitInner{stroke-dashoffset:0}
+  .orbitCore,.splashBrand,.splashSub{opacity:1;filter:none;transform:none}
+  .brandLine{width:300px;opacity:.16}
+  .splashMark{width:108px}
+}100%{transform:translateX(410%)}}
 
 /* Quiz */
 .quiz{display:none;max-width:920px;margin:0 auto;padding:30px}
@@ -559,7 +677,7 @@ body:after{
 @keyframes portraitShimmer{to{background-position-x:-220%}}
 
 
-/* ===== AEVEMORA V8.2 BRAND EDITION ===== */
+/* ===== AEVEMORA V8.3 BRAND EDITION ===== */
 .portraitWrap{
   isolation:isolate;
 }
@@ -616,10 +734,46 @@ body:after{
 <div id="splash" aria-hidden="true">
   <div class="splashNoise"></div>
   <div class="splashCore">
-    <div class="splashRing"><b>史</b></div>
-    <div class="splashBrand">AEVEMORA</div>
-    <div class="splashSub">PERSONALITY · HISTORY · ARCHETYPE</div>
-    <div class="splashLine"><i></i></div>
+    <div class="timeOrbit">
+      <svg class="orbitSvg" viewBox="0 0 188 188" aria-hidden="true">
+        <circle class="orbitOuter" cx="94" cy="94" r="82"/>
+        <circle class="orbitInner" cx="94" cy="94" r="61"/>
+        <circle class="orbitArc" cx="94" cy="94" r="73"/>
+        <g class="orbitTicks">
+          <line x1="94" y1="10" x2="94" y2="18" transform="rotate(0 94 94)"/>
+          <line x1="94" y1="14" x2="94" y2="19" transform="rotate(15 94 94)"/>
+          <line x1="94" y1="14" x2="94" y2="19" transform="rotate(30 94 94)"/>
+          <line x1="94" y1="10" x2="94" y2="18" transform="rotate(45 94 94)"/>
+          <line x1="94" y1="14" x2="94" y2="19" transform="rotate(60 94 94)"/>
+          <line x1="94" y1="14" x2="94" y2="19" transform="rotate(75 94 94)"/>
+          <line x1="94" y1="10" x2="94" y2="18" transform="rotate(90 94 94)"/>
+          <line x1="94" y1="14" x2="94" y2="19" transform="rotate(105 94 94)"/>
+          <line x1="94" y1="14" x2="94" y2="19" transform="rotate(120 94 94)"/>
+          <line x1="94" y1="10" x2="94" y2="18" transform="rotate(135 94 94)"/>
+          <line x1="94" y1="14" x2="94" y2="19" transform="rotate(150 94 94)"/>
+          <line x1="94" y1="14" x2="94" y2="19" transform="rotate(165 94 94)"/>
+          <line x1="94" y1="10" x2="94" y2="18" transform="rotate(180 94 94)"/>
+          <line x1="94" y1="14" x2="94" y2="19" transform="rotate(195 94 94)"/>
+          <line x1="94" y1="14" x2="94" y2="19" transform="rotate(210 94 94)"/>
+          <line x1="94" y1="10" x2="94" y2="18" transform="rotate(225 94 94)"/>
+          <line x1="94" y1="14" x2="94" y2="19" transform="rotate(240 94 94)"/>
+          <line x1="94" y1="14" x2="94" y2="19" transform="rotate(255 94 94)"/>
+          <line x1="94" y1="10" x2="94" y2="18" transform="rotate(270 94 94)"/>
+          <line x1="94" y1="14" x2="94" y2="19" transform="rotate(285 94 94)"/>
+          <line x1="94" y1="14" x2="94" y2="19" transform="rotate(300 94 94)"/>
+          <line x1="94" y1="10" x2="94" y2="18" transform="rotate(315 94 94)"/>
+          <line x1="94" y1="14" x2="94" y2="19" transform="rotate(330 94 94)"/>
+          <line x1="94" y1="14" x2="94" y2="19" transform="rotate(345 94 94)"/>
+        </g>
+      </svg>
+      <div class="orbitCore"><div class="orbitDot"></div></div>
+    </div>
+    <div class="brandReveal">
+      <div class="brandLine"></div>
+      <div class="splashBrand">AEVEMORA</div>
+    </div>
+    <div class="splashSub">HISTORICAL ARCHETYPE</div>
+    <div class="splashMark"></div>
   </div>
 </div>
 
@@ -784,7 +938,7 @@ body:after{
   </div>
 
   <div class="footer">
-    <span>AEVEMORA · Final Release · V8.2</span>
+    <span>AEVEMORA · Final Release · V8.3</span>
     <button class="footLink" onclick="openInfo('about')">关于测试</button>
     <button class="footLink" onclick="openInfo('privacy')">隐私说明</button>
     <button class="footLink" onclick="openInfo('sources')">图片与资料来源</button>
@@ -1132,7 +1286,7 @@ function restart(){
 function copySummary(){
   if(!last) return;
   const t=topDims(last.user).slice(0,2).map(x=>DIM_NAMES[x[0]]).join(" × ");
-  const text="AEVEMORA 历史人格原型测试 V8.2\n我的历史人格原型："+last.best.name+"\n匹配模式："+modeName(last.mode)+"\n相似度："+last.best.sim.toFixed(1)+"%\n核心维度："+t+"\n"+last.best.tag;
+  const text="AEVEMORA 历史人格原型测试 V8.3\n我的历史人格原型："+last.best.name+"\n匹配模式："+modeName(last.mode)+"\n相似度："+last.best.sim.toFixed(1)+"%\n核心维度："+t+"\n"+last.best.tag;
   navigator.clipboard?.writeText(text).then(()=>alert("结果文案已复制")).catch(()=>prompt("复制下面的结果：",text));
 }
 
@@ -1315,7 +1469,7 @@ async function makePoster(){
   x.textAlign="right";
   x.fillStyle="#8a806f";
   x.font="22px Georgia";
-  x.fillText("AEVEMORA JOURNAL · V8.2",1078,2392);
+  x.fillText("AEVEMORA JOURNAL · V8.3",1078,2392);
   x.textAlign="left";
 
   try{
@@ -1338,7 +1492,7 @@ async function makePoster(){
     y.fillStyle="#9e9589"; y.font="29px Microsoft YaHei"; y.fillText(last.best.era+" · "+last.best.region+" · "+last.best.type,96,1616);
     y.fillStyle="#e5c68f"; y.font="700 108px Georgia"; y.fillText(last.best.sim.toFixed(1)+"%",94,1766);
     y.fillStyle="#e7ded2"; y.font="36px Microsoft YaHei"; wrapText(y,"“"+last.best.tag+"”",94,1848,970,54,4);
-    y.fillStyle="#726960"; y.font="22px Microsoft YaHei"; y.fillText("36 道情境题 · 120 位中外人物 · 6 维行为向量 · AEVEMORA V8.2",94,2392);
+    y.fillStyle="#726960"; y.font="22px Microsoft YaHei"; y.fillText("36 道情境题 · 120 位中外人物 · 6 维行为向量 · AEVEMORA V8.3",94,2392);
     return c2.toDataURL("image/png");
   }
 }
@@ -1478,8 +1632,8 @@ function closeInfo(){document.getElementById("infoModal")?.classList.remove("ope
 function infoModalBg(e){if(e.target.id==="infoModal") closeInfo()}
 
 window.addEventListener("load",()=>{
-  setTimeout(()=>document.getElementById("splash")?.classList.add("hide"),950);
-  setTimeout(()=>{const s=document.getElementById("splash"); if(s) s.style.display="none";},1600);
+  setTimeout(()=>document.getElementById("splash")?.classList.add("hide"),1850);
+  setTimeout(()=>{const s=document.getElementById("splash"); if(s) s.style.display="none";},2420);
   try{
     const hasSaved=!!localStorage.getItem("historia_v6_last");
     const rb=document.getElementById("resumeBtn"), rh=document.getElementById("resumeHint");
@@ -1867,7 +2021,7 @@ function warmPortraitCandidates(){
 if ("serviceWorker" in navigator && location.protocol.startsWith("http")) {
   window.addEventListener("load", async () => {
     try {
-      const reg = await navigator.serviceWorker.register("./sw.js?v=8.2");
+      const reg = await navigator.serviceWorker.register("./sw.js?v=8.3");
       await reg.update();
 
       let refreshed = false;

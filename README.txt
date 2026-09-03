@@ -1,12 +1,22 @@
-AEVEMORA V8.2 · 品牌改名版
+AEVEMORA V8.3 · 时间环启动动画版
 
-本版基于 V8.1 稳定修复最终版制作，核心功能保持不变，主要更新为品牌统一替换：
-- HISTORIA 全部更名为 AEVEMORA
-- 启动页、首页、结果页、分享文案、分享海报、PWA 名称同步更新
-- 下载海报文件名改为 AEVEMORA_人物名_人格原型.png
-- 手机添加到桌面后名称改为 AEVEMORA
+本次只升级品牌启动动画，其他测试与结果功能保持 V8.2 不变。
 
-直接覆盖上传到 GitHub 仓库根目录的 6 个文件：
+新启动流程：
+1. 黑金背景中出现时间环
+2. 外环/内环绘制并缓慢旋转
+3. 金色弧线像时间刻度扫过
+4. 中心光点出现
+5. 一条金色横线展开
+6. AEVEMORA 从模糊到清晰渐显
+7. 下方出现 HISTORICAL ARCHETYPE
+8. 整体淡出进入首页
+
+总时长约 1.85 秒，兼顾品牌感和打开速度。
+支持 prefers-reduced-motion，系统减少动画时会自动显示静态版本。
+
+GitHub 更新：
+覆盖仓库根目录中的：
 index.html
 sw.js
 manifest.webmanifest
@@ -14,5 +24,5 @@ icon-192.png
 icon-512.png
 apple-touch-icon.png
 
-首次建议访问：
-https://xuqinyu2123-cmd.github.io/historia-test/?v=8.2
+首次建议：
+https://xuqinyu2123-cmd.github.io/historia-test/?v=8.3
