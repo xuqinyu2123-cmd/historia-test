@@ -1,4 +1,4 @@
-const CACHE="aevemora-v9-4-real-imagery-20260903";
+const CACHE="aevemora-v9-4-1-smooth-scene-20260903";
 const CORE=[
   "./",
   "./index.html",

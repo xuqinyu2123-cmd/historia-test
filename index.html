@@ -2039,6 +2039,63 @@ body.quizMode .footer{opacity:0;pointer-events:none;height:0;margin:0;padding:0;
   .dossierPortrait{height:170px !important}
 }
 
+
+/* ===== V9.4.1 首页隔离 + 场景平滑过渡 ===== */
+#quiz[hidden]{
+  display:none !important;
+}
+#quiz.quizActive{
+  display:block !important;
+}
+.quizBackdrop{
+  background:#090b0f;
+}
+.quizBackdrop:before{
+  /* 本地 SVG / 旧背景仅做兜底，不再承担主要过渡 */
+  opacity:.16 !important;
+}
+#quizBackdropImage{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  object-position:center center;
+  opacity:0;
+  transform:scale(1.025);
+  filter:saturate(.70) sepia(.10) contrast(1.07) brightness(.64);
+  transition:opacity .30s ease, transform .48s cubic-bezier(.2,.8,.2,1), filter .30s ease;
+  will-change:opacity,transform;
+}
+#quizBackdropImage.sceneVisible{
+  opacity:.56;
+  transform:scale(1);
+}
+#quizBackdropImage.sceneFading{
+  opacity:.08;
+  transform:scale(1.018);
+}
+.dossierPortrait img#dossierSceneImage{
+  opacity:0 !important;
+  transform:scale(1.025);
+  transition:opacity .28s ease, transform .44s cubic-bezier(.2,.8,.2,1), filter .28s ease;
+  will-change:opacity,transform;
+}
+.dossierPortrait img#dossierSceneImage.sceneVisible{
+  opacity:.98 !important;
+  transform:scale(1);
+}
+.dossierPortrait img#dossierSceneImage.sceneFading{
+  opacity:.08 !important;
+  transform:scale(1.018);
+}
+.quiz.sceneChanging .quizBackdrop:before{
+  opacity:.12 !important;
+}
+@media(max-width:820px){
+  #quizBackdropImage.sceneVisible{opacity:.40}
+}
+
 </style>
 
 <link rel="preconnect" href="https://zh.wikipedia.org" crossorigin>
@@ -2158,8 +2215,8 @@ body.quizMode .footer{opacity:0;pointer-events:none;height:0;margin:0;padding:0;
     </div>
   </section>
 
-  <section id="quiz" class="card quiz">
-    <div class="quizBackdrop" aria-hidden="true"></div>
+  <section id="quiz" class="card quiz" hidden aria-hidden="true">
+    <div class="quizBackdrop" aria-hidden="true"><img id="quizBackdropImage" alt=""></div>
 
     <div class="quizCinematicTop">
       <div class="quizBrandBlock">
@@ -2189,7 +2246,7 @@ body.quizMode .footer{opacity:0;pointer-events:none;height:0;margin:0;padding:0;
           </div>
 
           <div class="dossierPortrait">
-            <img id="dossierSceneImage" src="https://upload.wikimedia.org/wikipedia/commons/d/d7/Forbidden_City_IMG_4308_Meridian_Gate.jpg" alt="" aria-hidden="true">
+            <img id="dossierSceneImage" alt="" aria-hidden="true">
             <div class="dossierPortraitShade"></div>
             <div class="dossierTraits">
               <div><span>ARCHETYPE</span><b id="dossierTraitA">判断方式</b><small>你如何处理复杂局面</small></div>
@@ -2389,6 +2446,7 @@ let mode="mixed", current=0, scores={control:0,creative:0,resilience:0,empathy:0
 function setMode(m){
   mode=m;
   document.querySelectorAll(".mode").forEach(x=>x.classList.toggle("active",x.dataset.mode===m));
+  preloadSceneMode(m);
 }
 function modeName(m){return m==="china"?"只看中国":m==="foreign"?"只看外国":"中外混合"}
 function poolFor(m){
@@ -2408,9 +2466,16 @@ function recalcScores(){
 }
 function startQuiz(){
   document.body.classList.add("quizMode");
-  document.getElementById("hero").style.display="none";
+  const hero=document.getElementById("hero");
+  const quiz=document.getElementById("quiz");
+  if(hero) hero.style.display="none";
   document.getElementById("result").style.display="none";
-  document.getElementById("quiz").style.display="block";
+  if(quiz){
+    quiz.hidden=false;
+    quiz.setAttribute("aria-hidden","false");
+    quiz.classList.add("quizActive");
+    quiz.style.display="block";
+  }
   const cta=document.getElementById("mobileCTA"); if(cta) cta.style.display="none";
   current=0;
   answerHistory=[];
@@ -2538,7 +2603,13 @@ function renderResultState(state){
   document.body.classList.remove("quizMode");
   const {user,best,ranked,mode:stateMode}=state;
   last=state;
-  document.getElementById("quiz").style.display="none";
+  const quiz=document.getElementById("quiz");
+  if(quiz){
+    quiz.classList.remove("quizActive");
+    quiz.style.display="none";
+    quiz.hidden=true;
+    quiz.setAttribute("aria-hidden","true");
+  }
   document.getElementById("hero").style.display="none";
   document.getElementById("result").style.display="block";
   const cta=document.getElementById("mobileCTA"); if(cta) cta.style.display="none";
@@ -2770,6 +2841,13 @@ function buildPortraitSVG(person,w=720,h=900){
 
 function restart(){
   document.body.classList.remove("quizMode");
+  const quiz=document.getElementById("quiz");
+  if(quiz){
+    quiz.classList.remove("quizActive");
+    quiz.style.display="none";
+    quiz.hidden=true;
+    quiz.setAttribute("aria-hidden","true");
+  }
   document.getElementById("result").style.display="none";
   document.getElementById("hero").style.display="grid";
   const cta=document.getElementById("mobileCTA"); if(cta && window.innerWidth<=700) cta.style.display="block";
@@ -2778,7 +2856,7 @@ function restart(){
 function copySummary(){
   if(!last) return;
   const t=topDims(last.user).slice(0,2).map(x=>DIM_NAMES[x[0]]).join(" × ");
-  const text="AEVEMORA 历史人格原型测试 V9.4\n我的历史人格原型："+last.best.name+"\n匹配模式："+modeName(last.mode)+"\n相似度："+last.best.sim.toFixed(1)+"%\n核心维度："+t+"\n"+last.best.tag;
+  const text="AEVEMORA 历史人格原型测试 V9.4.1\n我的历史人格原型："+last.best.name+"\n匹配模式："+modeName(last.mode)+"\n相似度："+last.best.sim.toFixed(1)+"%\n核心维度："+t+"\n"+last.best.tag;
   navigator.clipboard?.writeText(text).then(()=>alert("结果文案已复制")).catch(()=>prompt("复制下面的结果：",text));
 }
 
@@ -2999,7 +3077,7 @@ function renderPosterCanvas(x,img,compactFallback=false){
   x.textAlign="right";
   x.fillStyle="#8a806f";
   x.font="22px Georgia";
-  x.fillText("AEVEMORA JOURNAL · V9.4",1074,2390);
+  x.fillText("AEVEMORA JOURNAL · V9.4.1",1074,2390);
   x.textAlign="left";
 }
 
@@ -3167,6 +3245,16 @@ function closeInfo(){document.getElementById("infoModal")?.classList.remove("ope
 function infoModalBg(e){if(e.target.id==="infoModal") closeInfo()}
 
 window.addEventListener("load",()=>{
+  // 首屏只允许首页出现，答题页绝不预先占位或露出。
+  const quiz=document.getElementById("quiz");
+  if(quiz){
+    quiz.hidden=true;
+    quiz.setAttribute("aria-hidden","true");
+    quiz.classList.remove("quizActive");
+    quiz.style.display="none";
+  }
+  preloadSceneMode("mixed");
+
   setTimeout(()=>document.getElementById("splash")?.classList.add("hide"),1850);
   setTimeout(()=>{const s=document.getElementById("splash"); if(s) s.style.display="none";},2420);
   try{
@@ -3299,7 +3387,68 @@ function quizSceneSet(){
   return QUIZ_SCENE_SETS[mode] || QUIZ_SCENE_SETS.mixed;
 }
 
-function setQuizBackdrop(index){
+const sceneAssetCache=new Map();
+
+function preloadSceneAsset(url){
+  if(!url) return Promise.resolve(null);
+  if(sceneAssetCache.has(url)) return sceneAssetCache.get(url);
+
+  const task=new Promise(resolve=>{
+    const img=new Image();
+    img.decoding="async";
+    img.referrerPolicy="no-referrer";
+    img.onload=async()=>{
+      try{ if(img.decode) await img.decode(); }catch(e){}
+      resolve(url);
+    };
+    img.onerror=()=>resolve(null);
+    img.src=url;
+  });
+  sceneAssetCache.set(url,task);
+  return task;
+}
+
+function preloadSceneMode(targetMode=mode){
+  const oldMode=mode;
+  mode=targetMode;
+  const scenes=quizSceneSet();
+  mode=oldMode;
+
+  const urls=[...new Set(scenes.flatMap(s=>[s.bg,s.dossier]).filter(Boolean))];
+  urls.forEach((url,i)=>{
+    const run=()=>preloadSceneAsset(url);
+    if("requestIdleCallback" in window){
+      requestIdleCallback(run,{timeout:1200+i*120});
+    }else{
+      setTimeout(run,280+i*110);
+    }
+  });
+}
+
+async function smoothSwapImage(el,url,fallback,token){
+  if(!el) return;
+  const resolved=(await preloadSceneAsset(url)) || fallback || url;
+  if(!resolved || el.dataset.swapToken!==token) return;
+
+  el.classList.remove("sceneVisible");
+  el.classList.add("sceneFading");
+
+  await new Promise(r=>setTimeout(r,135));
+  if(el.dataset.swapToken!==token) return;
+
+  el.src=resolved;
+  try{
+    if(el.decode) await el.decode();
+  }catch(e){}
+
+  if(el.dataset.swapToken!==token) return;
+  requestAnimationFrame(()=>{
+    el.classList.remove("sceneFading");
+    el.classList.add("sceneVisible");
+  });
+}
+
+async function setQuizBackdrop(index){
   const quiz=document.getElementById("quiz");
   if(!quiz) return;
 
@@ -3320,47 +3469,32 @@ function setQuizBackdrop(index){
   set("dossierQuote",scene.quote);
   set("questionTheme",scene.theme);
 
-  const dossierImg=document.getElementById("dossierSceneImage");
   const sceneKey=mode+":"+chapterIndex;
   if(quiz.dataset.scene===sceneKey) return;
+  quiz.dataset.scene=sceneKey;
 
-  clearTimeout(window.__aevemoraBgTimer);
-  quiz.classList.add("sceneChanging");
-  if(dossierImg) dossierImg.classList.add("sceneChangingImage");
+  // 本地 SVG 永远留在底层，网络图片即使失败也不会出现空白。
+  quiz.style.setProperty("--quiz-bg-image",'url("'+(scene.bgFallback||scene.bg)+'")');
 
-  const applyBackground=(url)=>{
-    quiz.style.setProperty("--quiz-bg-image",'url("'+url+'")');
-  };
+  const bg=document.getElementById("quizBackdropImage");
+  const dossier=document.getElementById("dossierSceneImage");
+  const token=sceneKey+":"+Date.now();
 
-  // 先探测真实图片，加载失败就回到本地 SVG。
-  const bgProbe=new Image();
-  bgProbe.referrerPolicy="no-referrer";
-  bgProbe.onload=()=>{
-    applyBackground(scene.bg);
-    requestAnimationFrame(()=>requestAnimationFrame(()=>quiz.classList.remove("sceneChanging")));
-  };
-  bgProbe.onerror=()=>{
-    applyBackground(scene.bgFallback || scene.bg);
-    requestAnimationFrame(()=>requestAnimationFrame(()=>quiz.classList.remove("sceneChanging")));
-  };
-  bgProbe.src=scene.bg;
-
-  if(dossierImg){
-    dossierImg.referrerPolicy="no-referrer";
-    dossierImg.onload=()=>{
-      dossierImg.classList.remove("sceneChangingImage");
-      dossierImg.classList.add("realSceneLoaded");
-    };
-    dossierImg.onerror=()=>{
-      dossierImg.onerror=null;
-      dossierImg.src=scene.dossierFallback || scene.dossier;
-      dossierImg.classList.remove("sceneChangingImage");
-      dossierImg.classList.remove("realSceneLoaded");
-    };
-    dossierImg.src=scene.dossier;
+  if(bg){
+    bg.dataset.swapToken=token;
+    smoothSwapImage(bg,scene.bg,scene.bgFallback,token);
+  }
+  if(dossier){
+    dossier.dataset.swapToken=token;
+    smoothSwapImage(dossier,scene.dossier,scene.dossierFallback,token);
   }
 
-  quiz.dataset.scene=sceneKey;
+  // 提前解码下一章节，用户到下一阶段时直接从内存切换。
+  const next=scenes[(chapterIndex+1)%scenes.length];
+  if(next){
+    preloadSceneAsset(next.bg);
+    if(next.dossier!==next.bg) preloadSceneAsset(next.dossier);
+  }
 }
 
 const LOCAL_PORTRAITS = {
@@ -3830,7 +3964,7 @@ function warmPortraitCandidates(){
 if ("serviceWorker" in navigator && location.protocol.startsWith("http")) {
   window.addEventListener("load", async () => {
     try {
-      const reg = await navigator.serviceWorker.register("./sw.js?v=9.4");
+      const reg = await navigator.serviceWorker.register("./sw.js?v=9.4.1");
       await reg.update();
 
       let refreshed = false;
