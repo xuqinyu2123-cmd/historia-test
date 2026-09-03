@@ -428,7 +428,189 @@ body:after{
   .portraitBadge{font-size:9px}
 }
 
+
+/* ===== V6.2 商用精修版 ===== */
+.frame{
+  padding:14px;
+  background:linear-gradient(180deg,rgba(255,255,255,.02),rgba(255,255,255,.012));
+  box-shadow:0 18px 50px rgba(0,0,0,.24), inset 0 0 0 1px rgba(207,174,118,.04);
+}
+.portraitWrap{
+  position:relative;
+  background:
+    radial-gradient(circle at 50% 20%,rgba(255,255,255,.04),transparent 42%),
+    linear-gradient(180deg,#17181d 0%,#0f1014 100%);
+}
+.portraitWrap::before{
+  content:"";
+  position:absolute;inset:0;pointer-events:none;z-index:1;
+  background:
+    linear-gradient(180deg,rgba(13,14,18,.02),rgba(13,14,18,.08)),
+    radial-gradient(circle at 50% 18%,transparent 42%,rgba(9,10,14,.16) 100%);
+}
+.portraitWrap img{
+  display:block;width:100%;height:100%;
+  object-fit:cover;
+  object-position:center 18%;
+  transform:scale(1.045);
+  filter:saturate(.72) contrast(1.06) brightness(.93) sepia(.08);
+  transition:transform .35s ease, filter .35s ease, opacity .25s ease;
+}
+.portraitWrap:hover img{
+  transform:scale(1.065);
+  filter:saturate(.82) contrast(1.04) brightness(.96) sepia(.05);
+}
+.portraitWrap.fallback img{
+  object-position:center center;
+  transform:scale(1.00)!important;
+}
+.portraitLoading{
+  background:linear-gradient(180deg,rgba(15,16,20,.58),rgba(15,16,20,.66));
+  letter-spacing:.12em;
+}
+.rankThumb{
+  position:relative;
+  background:
+    radial-gradient(circle at 50% 18%,rgba(255,255,255,.04),transparent 40%),
+    linear-gradient(180deg,#17181d,#0f1014);
+}
+.rankThumb::after{
+  content:"";
+  position:absolute;inset:0;pointer-events:none;
+  background:linear-gradient(180deg,rgba(12,13,16,.02),rgba(12,13,16,.12));
+}
+.rankThumb img{
+  display:block;width:100%;height:100%;
+  object-fit:cover;
+  object-position:center 18%;
+  transform:scale(1.065);
+  filter:saturate(.72) contrast(1.04) brightness(.94) sepia(.06);
+}
+.leftQuote{
+  color:#a99d8d;
+  font-size:13px;
+}
+.v6PortraitIntro{
+  margin-top:14px;
+  padding:0;
+  background:none;
+  border:none;
+  color:#7b746b;
+  font-size:11px;
+  line-height:1.8;
+  letter-spacing:.02em;
+}
+.posterModal .modalCard{
+  background:
+    linear-gradient(180deg,rgba(255,255,255,.03),rgba(255,255,255,.012)),#111217;
+}
+
+
+
+/* ===== V7 最终版 ===== */
+.actions .btn{min-width:138px}
+.footer{
+  display:flex;align-items:center;justify-content:center;gap:14px;flex-wrap:wrap;
+  text-align:center;color:#605b56;font-size:11px;margin-top:22px;padding-bottom:18px
+}
+.footer .footLink{
+  appearance:none;border:none;background:none;cursor:pointer;padding:0 2px;
+  color:#84796c;font-size:11px;letter-spacing:.04em
+}
+.footer .footLink:hover{color:#d9bb83}
+.infoModal{display:none;position:fixed;inset:0;background:rgba(0,0,0,.82);z-index:65;padding:20px}
+.infoModal.open{display:flex;align-items:center;justify-content:center}
+.infoCard{
+  width:min(760px,100%);max-height:min(82vh,900px);overflow:auto;
+  border-radius:24px;padding:26px 24px 20px;
+  background:linear-gradient(180deg,rgba(255,255,255,.035),rgba(255,255,255,.012)),#101116;
+  border:1px solid rgba(207,174,118,.16);
+  box-shadow:0 30px 90px rgba(0,0,0,.45)
+}
+.infoCard h3{margin:0 0 8px;font:600 28px/1.1 Georgia,"Songti SC",serif;color:#f0e7d8}
+.infoCard p,.infoCard li{color:#c4baad;font-size:14px;line-height:1.9}
+.infoCard ul{margin:10px 0 0;padding-left:18px}
+.infoMeta{font-size:11px;color:#8f8375;letter-spacing:.12em;text-transform:uppercase;margin-bottom:16px}
+.infoCloseRow{display:flex;justify-content:flex-end;margin-top:12px}
+.resumeHint{font-size:11px;color:#7d7467;margin-top:10px;display:none}
+@media (max-width:700px){
+  .footer{gap:10px;padding-bottom:92px}
+  .infoCard{padding:22px 18px 16px;border-radius:20px}
+  .infoCard h3{font-size:24px}
+}
+
+
+/* ===== V7.1 人物肖像加速 ===== */
+.portraitWrap img,.rankThumb img{
+  opacity:0;
+  transition:opacity .18s ease;
+  will-change:opacity;
+}
+.portraitWrap img.loaded,.rankThumb img.loaded{opacity:1}
+.rankThumb img{content-visibility:auto}
+.portraitSkeleton{
+  position:absolute;inset:0;display:grid;place-items:center;
+  background:
+    linear-gradient(110deg,rgba(255,255,255,.015) 8%,rgba(255,255,255,.045) 18%,rgba(255,255,255,.015) 33%);
+  background-size:220% 100%;
+  animation:portraitShimmer 1.25s linear infinite;
+  color:#746c63;font-size:10px;letter-spacing:.12em
+}
+@keyframes portraitShimmer{to{background-position-x:-220%}}
+
+
+/* ===== HISTORIA V8.0 FINAL RELEASE ===== */
+.portraitWrap{
+  isolation:isolate;
+}
+.portraitWrap .portraitSkeleton{
+  z-index:0;
+  color:#7d7468;
+  font-size:10px;
+  letter-spacing:.13em;
+}
+.portraitWrap img{
+  position:relative;
+  z-index:1;
+}
+.portraitWrap.fallback .portraitSkeleton{display:none!important}
+.rankThumb{
+  isolation:isolate;
+}
+.rankThumb img{
+  position:relative;
+  z-index:1;
+}
+.fastPortraitHint{
+  margin-top:10px;
+  color:#6f685f;
+  font-size:10px;
+  line-height:1.75;
+}
+.releaseStamp{
+  display:inline-flex;
+  align-items:center;
+  gap:7px;
+  padding:5px 9px;
+  border:1px solid rgba(207,174,118,.12);
+  border-radius:999px;
+  color:#7f7467;
+  font-size:9px;
+  letter-spacing:.08em;
+}
+@media(max-width:700px){
+  .fastPortraitHint{display:none}
+}
+
 </style>
+
+<link rel="preconnect" href="https://zh.wikipedia.org" crossorigin>
+<link rel="preconnect" href="https://en.wikipedia.org" crossorigin>
+<link rel="preconnect" href="https://upload.wikimedia.org" crossorigin>
+<link rel="dns-prefetch" href="//zh.wikipedia.org">
+<link rel="dns-prefetch" href="//en.wikipedia.org">
+<link rel="dns-prefetch" href="//upload.wikimedia.org">
+
 </head>
 <body>
 <div id="splash" aria-hidden="true">
@@ -470,7 +652,9 @@ body:after{
         <button class="btn primary" onclick="startQuiz()">开始测试</button>
         <button class="btn ghost" onclick="installApp()">添加到桌面</button>
         <button class="btn ghost" onclick="shareApp()">分享测试</button>
+        <button id="resumeBtn" class="btn ghost" onclick="restoreLastResult()" style="display:none">查看上次结果</button>
       </div>
+      <div id="resumeHint" class="resumeHint">检测到你本设备中保存过一次测试结果。</div>
       
 
       <div class="stats">
@@ -505,11 +689,10 @@ body:after{
         <div class="issue"><b>HISTORIA</b><span id="issueLabel">ISSUE / 01</span></div>
         <div class="frame">
           <div id="portraitMainWrap" class="portraitWrap">
-            <div id="portraitLoading" class="portraitLoading">正在载入人物肖像…</div>
-            <img id="portraitMain" alt="人物肖像">
+            <div id="portraitLoading" class="portraitLoading portraitSkeleton">正在载入人物肖像…</div>
+            <img id="portraitMain" decoding="async" fetchpriority="high" alt="人物肖像">
             <div id="portraitFallbackNote" class="portraitFallbackNote">该人物暂无稳定可用的公开肖像，已切换为统一风格的历史原型插画。</div>
-            <div id="portraitBadge" class="portraitBadge">HISTORICAL PORTRAIT</div>
-            <div id="portraitCredit" class="portraitCredit"><span>人物肖像</span><a id="portraitSource" target="_blank" rel="noopener">查看来源</a></div>
+            
           </div>
         </div>
         <div id="leftQuote" class="leftQuote"></div>
@@ -519,7 +702,8 @@ body:after{
           <div class="fact"><b id="coreDimB">—</b><span>第二维度</span></div>
           <div class="fact"><b id="poolSize">120</b><span>当前匹配库</span></div>
         </div>
-        <div class="v6PortraitIntro">近现代人物优先调用真实照片/肖像；古代人物优先调用历史画像、雕塑或经典绘画。所有图片统一使用深色杂志滤镜，若在线肖像不可用则自动回退为原型插画。</div>
+        <div class="v6PortraitIntro">人物肖像会优先匹配公开可用的历史图像资料，并统一处理为深色杂志质感。</div>
+        <div class="fastPortraitHint">首次载入后会自动缓存人物肖像；再次测试同一人物时通常可直接显示。</div>
       </div>
 
       <div class="rightPage">
@@ -575,7 +759,7 @@ body:after{
       <div class="rankSectionHead">
         <div>
           <h2 style="margin-bottom:8px">最接近你的五个历史原型</h2>
-          <p style="font-size:13px;color:#9f968a">每张卡片都附带专属人物肖像，可切换查看不同匹配范围。</p>
+          <p style="font-size:13px;color:#9f968a">你也可能与这些人物拥有较高相似度，可切换不同匹配范围查看。</p>
         </div>
         <div class="switcher">
           <button id="sMixed" onclick="rerank('mixed')">中外混合</button>
@@ -599,7 +783,12 @@ body:after{
     </div>
   </div>
 
-  <div class="footer">HISTORIA · Journal Edition · V6.1</div>
+  <div class="footer">
+    <span>HISTORIA · Final Release · V8.0</span>
+    <button class="footLink" onclick="openInfo('about')">关于测试</button>
+    <button class="footLink" onclick="openInfo('privacy')">隐私说明</button>
+    <button class="footLink" onclick="openInfo('sources')">图片与资料来源</button>
+  </div>
 </div>
 
 <div id="installSheet" onclick="installSheetBg(event)">
@@ -609,6 +798,15 @@ body:after{
     <p id="installDesc">安装后可以从手机主屏幕直接打开，界面更接近独立 App。</p>
     <div id="installSteps" class="steps"></div>
     <button class="btn ghost closeSheet" onclick="closeInstallSheet()">关闭</button>
+  </div>
+</div>
+
+<div id="infoModal" class="infoModal" onclick="infoModalBg(event)">
+  <div class="infoCard">
+    <div class="infoMeta" id="infoMeta">HISTORIA</div>
+    <h3 id="infoTitle">关于测试</h3>
+    <div id="infoBody"></div>
+    <div class="infoCloseRow"><button class="btn ghost" onclick="closeInfo()">关闭</button></div>
   </div>
 </div>
 
@@ -663,7 +861,30 @@ function renderQuestion(){
 }
 function choose(d){
   Object.entries(d).forEach(([k,v])=>scores[k]+=v);
-  current++; current>=QUESTIONS.length?showResult():renderQuestion();
+  current++;
+
+  // 最后几题后台预热候选人；第 35 题后额外预热当时排名第一的人物。
+  if(current>=30 && current<QUESTIONS.length && current%2===0){
+    warmPortraitCandidates();
+  }
+  if(current===35){
+    try{
+      const u=normalize();
+      const winner=rank(u,mode)[0];
+      if(winner){
+        fetchWikiPortrait(winner).then(data=>{
+          if(data && data.url){
+            const im=new Image();
+            im.decoding="async";
+            im.fetchPriority="high";
+            im.src=data.url;
+          }
+        }).catch(()=>{});
+      }
+    }catch(e){}
+  }
+
+  current>=QUESTIONS.length?showResult():renderQuestion();
 }
 function normalize(){
   const vals=DIM_KEYS.map(k=>scores[k]), mn=Math.min(...vals), mx=Math.max(...vals), o={};
@@ -678,40 +899,58 @@ function similarity(u,p){
 function rank(u,m){
   return poolFor(m).map(p=>({...p,sim:similarity(u,p)})).sort((a,b)=>b.sim-a.sim);
 }
-function showResult(){
-  const user=normalize(), ranked=rank(user,mode), best=ranked[0];
-  last={user,best,ranked,mode};
-  localStorage.setItem("historia_v6_last",JSON.stringify(last));
+function renderResultState(state){
+  const {user,best,ranked,mode:stateMode}=state;
+  last=state;
   document.getElementById("quiz").style.display="none";
+  document.getElementById("hero").style.display="none";
   document.getElementById("result").style.display="block";
+  const cta=document.getElementById("mobileCTA"); if(cta) cta.style.display="none";
 
   const top=topDims(user);
   document.getElementById("personName").textContent=best.name;
   document.getElementById("personEra").textContent=best.era;
   document.getElementById("regionBadge").textContent=best.region;
   document.getElementById("typeBadge").textContent=best.type;
-  document.getElementById("modeBadge").textContent=modeName(mode);
+  document.getElementById("modeBadge").textContent=modeName(stateMode);
   document.getElementById("matchPct").textContent=best.sim.toFixed(1)+"%";
   document.getElementById("matchPctLeft").textContent=best.sim.toFixed(1)+"%";
   document.getElementById("leftQuote").textContent="“"+best.tag+"”";
   document.getElementById("coreDimA").textContent=DIM_NAMES[top[0][0]];
   document.getElementById("coreDimB").textContent=DIM_NAMES[top[1][0]];
-  document.getElementById("poolSize").textContent=poolFor(mode).length;
+  document.getElementById("poolSize").textContent=poolFor(stateMode).length;
   document.getElementById("issueLabel").textContent="ISSUE / "+String(PEOPLE.findIndex(x=>x.name===best.name)+1).padStart(3,"0");
 
   document.getElementById("portraitMain").alt=best.name+"人物肖像";
   setMainPortrait(best);
-
-  document.getElementById("tagline").textContent="“"+best.tag+"”";
-  document.getElementById("editorialText").textContent=buildEditorial(best, user);
-
-  renderRadar(user,best);
+  renderNarrative(best,user);
   renderDims(user);
-  renderCoreTexts(user,best);
-  renderLongRead(user,best);
+  renderRadar(user,best.v);
   renderTop5(ranked.slice(0,5));
-  setSwitcher(mode);
+  setSwitcher(stateMode);
+  document.getElementById("result").classList.add("show");
   window.scrollTo({top:0,behavior:"smooth"});
+}
+function showResult(){
+  const user=normalize(), ranked=rank(user,mode), best=ranked[0];
+  last={user,best,ranked,mode};
+  localStorage.setItem("historia_v6_last",JSON.stringify(last));
+  renderResultState(last);
+  const rb=document.getElementById("resumeBtn"), rh=document.getElementById("resumeHint");
+  if(rb) rb.style.display="inline-flex";
+  if(rh) rh.style.display="block";
+}
+function restoreLastResult(){
+  try{
+    const raw=localStorage.getItem("historia_v6_last");
+    if(!raw) return alert("当前设备还没有保存过测试结果。");
+    const saved=JSON.parse(raw);
+    if(!saved || !saved.best || !saved.user || !saved.ranked) throw new Error("bad save");
+    mode=saved.mode||"mixed";
+    renderResultState(saved);
+  }catch(e){
+    alert("未能恢复上次结果，请重新测试一次。");
+  }
 }
 function topDims(user){return Object.entries(user).sort((a,b)=>b[1]-a[1])}
 function buildEditorial(best,user){
@@ -796,12 +1035,11 @@ function renderTop5(arr){
   const box=document.getElementById("top5"); box.innerHTML="";
   arr.forEach((x,i)=>{
     const card=document.createElement("div"); card.className="rankCard";
-    card.innerHTML='<div class="rankThumb"><img alt="'+x.name+'人物肖像"></div>\
+    card.innerHTML='<div class="rankThumb"><img loading="lazy" decoding="async" alt="'+x.name+'人物肖像"></div>\
       <div class="rankInfo"><b>0'+(i+1)+' · '+x.name+'</b><small>'+x.era+' · '+x.region+'</small><span>'+x.sim.toFixed(1)+'%</span></div>';
     box.appendChild(card);
     const img=card.querySelector("img");
-    img.src=buildPortraitSVG(x,420,520);
-    hydrateRankPortrait(img,x);
+    hydrateRankPortrait(img,x,false);
   });
 }
 function rerank(m){
@@ -890,53 +1128,215 @@ function restart(){
 function copySummary(){
   if(!last) return;
   const t=topDims(last.user).slice(0,2).map(x=>DIM_NAMES[x[0]]).join(" × ");
-  const text="HISTORIA 历史人格原型测试 V5\n我的历史人格原型："+last.best.name+"\n匹配模式："+modeName(last.mode)+"\n相似度："+last.best.sim.toFixed(1)+"%\n核心维度："+t+"\n"+last.best.tag;
+  const text="HISTORIA 历史人格原型测试 V8.0\n我的历史人格原型："+last.best.name+"\n匹配模式："+modeName(last.mode)+"\n相似度："+last.best.sim.toFixed(1)+"%\n核心维度："+t+"\n"+last.best.tag;
   navigator.clipboard?.writeText(text).then(()=>alert("结果文案已复制")).catch(()=>prompt("复制下面的结果：",text));
+}
+
+
+async function loadPosterPortrait(){
+  if(!last) return null;
+  const main=document.getElementById("portraitMain");
+  let url=(main && (main.dataset.portraitUrl || main.currentSrc || main.src)) || "";
+  if(!url && typeof fetchWikiPortrait==="function"){
+    try{
+      const data=await fetchWikiPortrait(last.best);
+      if(data && data.url) url=data.url;
+    }catch(e){}
+  }
+  if(!url) url=buildPortraitSVG(last.best, 760, 980);
+
+  return new Promise((resolve)=>{
+    const img=new Image();
+    if(!url.startsWith("data:")){
+      img.crossOrigin="anonymous";
+      img.referrerPolicy="no-referrer";
+    }
+    img.onload=()=>resolve(img);
+    img.onerror=()=>{
+      const fallback=new Image();
+      fallback.onload=()=>resolve(fallback);
+      fallback.onerror=()=>resolve(null);
+      fallback.src=buildPortraitSVG(last.best, 760, 980);
+    };
+    img.src=url;
+  });
+}
+
+function drawPosterPortrait(ctx,img,x,y,w,h,r){
+  ctx.save();
+  ctx.beginPath();
+  ctx.moveTo(x+r,y);
+  ctx.arcTo(x+w,y,x+w,y+h,r);
+  ctx.arcTo(x+w,y+h,x,y+h,r);
+  ctx.arcTo(x,y+h,x,y,r);
+  ctx.arcTo(x,y,x+w,y,r);
+  ctx.closePath();
+  ctx.clip();
+
+  // 轻微放大与上移，避免头顶留白过多
+  const scale=1.08;
+  const dw=w*scale, dh=h*scale;
+  const dx=x-(dw-w)/2;
+  const dy=y-(dh-h)*0.20;
+
+  if("filter" in ctx){
+    ctx.filter="saturate(72%) contrast(104%) brightness(92%) sepia(8%)";
+  }
+  ctx.drawImage(img,dx,dy,dw,dh);
+  ctx.filter="none";
+
+  // 杂志式暗角与光感
+  const vg=ctx.createLinearGradient(0,y,0,y+h);
+  vg.addColorStop(0,"rgba(14,14,18,.00)");
+  vg.addColorStop(.72,"rgba(14,14,18,.08)");
+  vg.addColorStop(1,"rgba(8,8,12,.22)");
+  ctx.fillStyle=vg; ctx.fillRect(x,y,w,h);
+
+  ctx.restore();
+  ctx.strokeStyle="rgba(224,191,132,.16)";
+  ctx.lineWidth=2;
+  roundRect(ctx,x,y,w,h,r,false,true);
 }
 
 async function makePoster(){
   if(!last) return null;
-  const c=document.createElement("canvas"); c.width=1170; c.height=2532; const x=c.getContext("2d");
-  const g=x.createLinearGradient(0,0,0,2532); g.addColorStop(0,"#0b0b0f"); g.addColorStop(.45,"#121219"); g.addColorStop(1,"#0a0a0d");
-  x.fillStyle=g; x.fillRect(0,0,c.width,c.height);
+  const c=document.createElement("canvas");
+  c.width=1170; c.height=2532;
+  const x=c.getContext("2d");
+
+  // 背景
+  const bg=x.createLinearGradient(0,0,0,c.height);
+  bg.addColorStop(0,"#090a0d");
+  bg.addColorStop(.35,"#101117");
+  bg.addColorStop(1,"#0b0b10");
+  x.fillStyle=bg; x.fillRect(0,0,c.width,c.height);
+
   x.fillStyle="rgba(224,191,132,.05)";
-  for(let i=0;i<280;i++){x.fillRect((i*97)%1170,(i*173)%2532,2,2)}
-  x.strokeStyle="rgba(224,191,132,.26)"; x.lineWidth=2;
-  roundRect(x,64,64,1042,2404,34,false,true);
+  for(let i=0;i<340;i++){x.fillRect((i*97)%1170,(i*173)%2532,2,2)}
+  x.strokeStyle="rgba(224,191,132,.22)";
+  x.lineWidth=2;
+  roundRect(x,58,58,1054,2416,34,false,true);
 
-  x.fillStyle="#dfc48d"; x.font="700 34px Georgia"; x.fillText("HISTORIA",96,126);
-  x.fillStyle="#766d62"; x.font="24px Microsoft YaHei"; x.fillText("历史人格原型测试 · 杂志版结果海报",96,166);
+  // 头部信息
+  x.fillStyle="#dec288";
+  x.font="700 34px Georgia";
+  x.fillText("HISTORIA",94,122);
+  x.fillStyle="#746c61";
+  x.font="24px Microsoft YaHei";
+  x.fillText("Historical Archetype Report",94,162);
+  x.textAlign="right";
+  x.fillStyle="#6c655d";
+  x.font="22px Georgia";
+  x.fillText("ISSUE / "+String(PEOPLE.findIndex(x=>x.name===last.best.name)+1).padStart(3,"0"),1078,122);
+  x.textAlign="left";
 
-  const img=new Image();
-  img.src=buildPortraitSVG(last.best, 760, 920);
-  await new Promise(res=>{img.onload=res; img.onerror=res;});
-  roundImageCard(x,img,82,220,1006,1160,32);
+  // 主图容器
+  x.fillStyle="rgba(255,255,255,.012)";
+  roundRect(x,82,214,1006,1086,32,true,false);
 
-  x.fillStyle="#f2ede5"; x.font="600 74px Microsoft YaHei"; x.fillText("我的历史人格原型",96,1460);
-  x.fillStyle="#e4c58d"; x.font="700 118px Microsoft YaHei"; x.fillText(last.best.name,96,1598);
+  const img=await loadPosterPortrait();
+  if(img) drawPosterPortrait(x,img,96,228,978,1058,28);
 
-  x.fillStyle="#9a9185"; x.font="28px Microsoft YaHei";
-  x.fillText(last.best.era+" · "+last.best.region+" · "+last.best.type,98,1650);
+  // 姓名与身份
+  x.fillStyle="#f3ece2";
+  x.font="600 72px Microsoft YaHei";
+  x.fillText("我的历史人格原型",94,1428);
+  x.fillStyle="#e2c38b";
+  x.font="700 120px Microsoft YaHei";
+  x.fillText(last.best.name,94,1566);
 
-  x.fillStyle="#e2c38b"; x.font="700 108px Georgia"; x.fillText(last.best.sim.toFixed(1)+"%",96,1810);
-  x.fillStyle="#8d8378"; x.font="26px Microsoft YaHei"; x.fillText("人格相似度 · "+modeName(last.mode),98,1854);
+  x.fillStyle="#9e9589";
+  x.font="29px Microsoft YaHei";
+  x.fillText(last.best.era+" · "+last.best.region+" · "+last.best.type,96,1616);
 
-  x.strokeStyle="rgba(224,191,132,.25)"; x.beginPath(); x.moveTo(96,1902); x.lineTo(1070,1902); x.stroke();
-  x.fillStyle="#e5ddd0"; x.font="36px Microsoft YaHei"; wrapText(x,"“"+last.best.tag+"”",96,1978,970,54,4);
+  // 相似度与模式
+  x.textAlign="right";
+  x.fillStyle="#e5c68f";
+  x.font="700 108px Georgia";
+  x.fillText(last.best.sim.toFixed(1)+"%",1076,1562);
+  x.fillStyle="#8b8379";
+  x.font="25px Microsoft YaHei";
+  x.fillText("人格相似度 · "+modeName(last.mode),1078,1606);
+  x.textAlign="left";
 
+  x.strokeStyle="rgba(224,191,132,.18)";
+  x.beginPath(); x.moveTo(94,1670); x.lineTo(1076,1670); x.stroke();
+
+  // 引语
+  x.fillStyle="#e7ded2";
+  x.font="36px Microsoft YaHei";
+  wrapText(x,"“"+last.best.tag+"”",94,1748,970,54,4);
+
+  // 核心维度卡片
   const td=topDims(last.user).slice(0,3);
-  x.fillStyle="#8f867a"; x.font="24px Microsoft YaHei"; x.fillText("你的核心维度",96,2212);
+  x.fillStyle="#82786e";
+  x.font="24px Microsoft YaHei";
+  x.fillText("你的核心维度",94,1988);
+
   td.forEach((d,i)=>{
-    const yy=2270+i*78;
-    x.fillStyle="#d6cbbd"; x.font="30px Microsoft YaHei"; x.fillText(DIM_NAMES[d[0]],96,yy);
-    x.fillStyle="#e0bf84"; x.font="700 34px Georgia"; x.fillText(String(d[1]),302,yy);
-    x.fillStyle="#2a282d"; roundRect(x,364,yy-24,610,12,6,true,false);
-    const gg=x.createLinearGradient(364,0,974,0); gg.addColorStop(0,"#8a6a3d"); gg.addColorStop(1,"#d9b87e");
-    x.fillStyle=gg; roundRect(x,364,yy-24,610*d[1]/100,12,6,true,false);
+    const xx=94+i*324, yy=2040;
+    roundRect(x,xx,yy,292,240,22,true,false);
+    x.fillStyle="rgba(255,255,255,.018)";
+    roundRect(x,xx,yy,292,240,22,true,false);
+    x.strokeStyle="rgba(224,191,132,.12)";
+    roundRect(x,xx,yy,292,240,22,false,true);
+
+    x.fillStyle="#d8cdbf";
+    x.font="31px Microsoft YaHei";
+    x.fillText(DIM_NAMES[d[0]],xx+24,yy+56);
+    x.fillStyle="#e3c38b";
+    x.font="700 62px Georgia";
+    x.fillText(String(d[1]),xx+24,yy+126);
+
+    x.fillStyle="#2a282d";
+    roundRect(x,xx+24,yy+170,244,12,6,true,false);
+    const gg=x.createLinearGradient(xx+24,0,xx+268,0);
+    gg.addColorStop(0,"#86653a");
+    gg.addColorStop(1,"#ddb980");
+    x.fillStyle=gg;
+    roundRect(x,xx+24,yy+170,244*d[1]/100,12,6,true,false);
+
+    x.fillStyle="#867d72";
+    x.font="20px Microsoft YaHei";
+    x.fillText(i===0?"最高维度":(i===1?"第二维度":"第三维度"),xx+24,yy+210);
   });
 
-  x.fillStyle="#71685f"; x.font="21px Microsoft YaHei"; x.fillText("120 位中外人物 · 36 题 · 6 维行为向量 · HISTORIA V5",96,2446);
-  return c.toDataURL("image/png");
+  // 页脚
+  x.strokeStyle="rgba(224,191,132,.18)";
+  x.beginPath(); x.moveTo(94,2336); x.lineTo(1076,2336); x.stroke();
+  x.fillStyle="#726960";
+  x.font="22px Microsoft YaHei";
+  x.fillText("36 道情境题 · 120 位中外人物 · 6 维行为向量",94,2392);
+
+  x.textAlign="right";
+  x.fillStyle="#8a806f";
+  x.font="22px Georgia";
+  x.fillText("HISTORIA JOURNAL · V8.0",1078,2392);
+  x.textAlign="left";
+
+  try{
+    return c.toDataURL("image/png");
+  }catch(e){
+    // 极少数浏览器环境若远程图片 CORS 不允许，则回退使用 SVG 插画海报，保证能导出
+    const backup=new Image();
+    backup.src=buildPortraitSVG(last.best,760,980);
+    await new Promise(res=>{backup.onload=res; backup.onerror=res;});
+    const c2=document.createElement("canvas");
+    c2.width=1170; c2.height=2532;
+    const y=c2.getContext("2d");
+    y.fillStyle="#0b0b10"; y.fillRect(0,0,1170,2532);
+    y.strokeStyle="rgba(224,191,132,.22)"; y.lineWidth=2;
+    roundRect(y,58,58,1054,2416,34,false,true);
+    y.fillStyle="#dec288"; y.font="700 34px Georgia"; y.fillText("HISTORIA",94,122);
+    roundImageCard(y,backup,96,228,978,1058,28);
+    y.fillStyle="#f3ece2"; y.font="600 72px Microsoft YaHei"; y.fillText("我的历史人格原型",94,1428);
+    y.fillStyle="#e2c38b"; y.font="700 120px Microsoft YaHei"; y.fillText(last.best.name,94,1566);
+    y.fillStyle="#9e9589"; y.font="29px Microsoft YaHei"; y.fillText(last.best.era+" · "+last.best.region+" · "+last.best.type,96,1616);
+    y.fillStyle="#e5c68f"; y.font="700 108px Georgia"; y.fillText(last.best.sim.toFixed(1)+"%",94,1766);
+    y.fillStyle="#e7ded2"; y.font="36px Microsoft YaHei"; wrapText(y,"“"+last.best.tag+"”",94,1848,970,54,4);
+    y.fillStyle="#726960"; y.font="22px Microsoft YaHei"; y.fillText("36 道情境题 · 120 位中外人物 · 6 维行为向量 · HISTORIA V8.0",94,2392);
+    return c2.toDataURL("image/png");
+  }
 }
 function roundRect(ctx,x,y,w,h,r,fill,stroke){
   ctx.beginPath();
@@ -1018,15 +1418,69 @@ async function installApp(){
   else openInstallSheet("generic");
 }
 async function shareApp(){
-  const data={title:"HISTORIA · 历史人格原型测试", text:"36 道题，在 120 位中外历史人物中寻找与你最接近的行为原型。", url:location.protocol.startsWith("http")?location.href:undefined};
+  const data={title:"HISTORIA · 历史人格原型测试", text:"36 道题，在 120 位中外历史人物中寻找与你最接近的行为原型。HISTORIA Final Edition 已上线。", url:location.protocol.startsWith("http")?location.href:undefined};
   if(navigator.share){try{await navigator.share(data); return;}catch(e){}}
   if(data.url && navigator.clipboard){await navigator.clipboard.writeText(data.url); alert("测试链接已复制。");}
   else alert("当前是本地文件。部署到网站后即可直接分享测试链接。");
 }
 
+
+function openInfo(type){
+  const title=document.getElementById("infoTitle");
+  const body=document.getElementById("infoBody");
+  const meta=document.getElementById("infoMeta");
+  const modal=document.getElementById("infoModal");
+  if(!title||!body||!meta||!modal) return;
+  const pages={
+    about:{
+      meta:"ABOUT HISTORIA",
+      title:"关于测试",
+      body:`<p>HISTORIA 是一个以“历史人物原型”进行映射的人格探索产品。它通过 36 道情境选择题，将你的行为倾向转化为 6 维向量，再与 120 位中外历史人物的原型化行为模型进行匹配。</p>
+      <p>它不是在告诉你“你就是谁”，而是在帮助你识别：当信息不完整、局面复杂、关系纠缠时，你更倾向于调用哪些能力，以及这种能力组合最接近哪一类历史人物的行为结构。</p>
+      <ul>
+        <li>适合做自我观察、社交分享、兴趣探索</li>
+        <li>不替代临床心理测评、医学或专业咨询</li>
+        <li>历史人物结果属于“原型映射”，而非真实人格诊断</li>
+      </ul>`
+    },
+    privacy:{
+      meta:"PRIVACY NOTICE",
+      title:"隐私说明",
+      body:`<p>当前版本为纯前端 H5 应用，主要逻辑在浏览器本地运行。你的答题结果默认只保存在你的当前设备浏览器中，用于“查看上次结果”功能。</p>
+      <ul>
+        <li>不会要求你注册账号</li>
+        <li>不会默认上传你的答题内容到服务器</li>
+        <li>若你清除浏览器缓存或更换设备，保存的本地结果会消失</li>
+      </ul>
+      <p>如果你后续准备正式上架并接入后台，建议再补充一份更完整的隐私政策页面。</p>`
+    },
+    sources:{
+      meta:"SOURCES & CREDIT",
+      title:"图片与资料来源",
+      body:`<p>结果页中的人物肖像，会优先调用公开可访问的历史图像资料。近现代人物多为经典肖像或历史照片，古代人物多为历史画像、雕塑或经典艺术形象；若在线肖像不可用，则自动回退为本地风格化插画。</p>
+      <ul>
+        <li>人物资料与图像来源：公开可访问的 Wikipedia / Wikimedia 页面摘要与缩略图</li>
+        <li>人物原型建模：基于公开历史叙事所做的抽象化行为向量映射</li>
+        <li>页面与海报设计：HISTORIA Journal Edition</li>
+      </ul>
+      <p>若你计划长期商用，建议后续逐步建立“自托管人物图片库 + 单独来源说明页”，让线上稳定性和授权管理更可控。</p>`
+    }
+  };
+  const p=pages[type]||pages.about;
+  meta.textContent=p.meta; title.textContent=p.title; body.innerHTML=p.body;
+  modal.classList.add("open");
+}
+function closeInfo(){document.getElementById("infoModal")?.classList.remove("open")}
+function infoModalBg(e){if(e.target.id==="infoModal") closeInfo()}
+
 window.addEventListener("load",()=>{
   setTimeout(()=>document.getElementById("splash")?.classList.add("hide"),950);
   setTimeout(()=>{const s=document.getElementById("splash"); if(s) s.style.display="none";},1600);
+  try{
+    const hasSaved=!!localStorage.getItem("historia_v6_last");
+    const rb=document.getElementById("resumeBtn"), rh=document.getElementById("resumeHint");
+    if(hasSaved){ if(rb) rb.style.display="inline-flex"; if(rh) rh.style.display="block"; }
+  }catch(e){}
 });
 
 
@@ -1145,6 +1599,7 @@ const WIKI_ALIASES = {
 };
 
 const portraitCache = new Map();
+const portraitRequestCache = new Map();
 
 function isModernFigure(person){
   const s=(person.era||"")+" "+(person.name||"");
@@ -1152,95 +1607,255 @@ function isModernFigure(person){
     && !/古希腊|古罗马|古埃及|古马其顿|法兰克/.test(s);
 }
 
+function wikiApiURL(lang,title,size){
+  const base="https://"+lang+".wikipedia.org/w/api.php";
+  const q=new URLSearchParams({
+    action:"query",
+    prop:"pageimages",
+    piprop:"thumbnail|original",
+    pithumbsize:String(size),
+    redirects:"1",
+    format:"json",
+    origin:"*",
+    titles:title
+  });
+  return base+"?"+q.toString();
+}
+
+async function fetchWithTimeout(url,ms=2600){
+  const controller=new AbortController();
+  const timer=setTimeout(()=>controller.abort(),ms);
+  try{
+    return await fetch(url,{
+      signal:controller.signal,
+      cache:"force-cache",
+      credentials:"omit"
+    });
+  }finally{
+    clearTimeout(timer);
+  }
+}
+
+function parseWikiPageImage(data){
+  const pages=data && data.query && data.query.pages;
+  if(!pages) return null;
+  const page=Object.values(pages)[0];
+  if(!page || page.missing!==undefined) return null;
+  return {
+    title:page.title||"",
+    thumb:page.thumbnail && page.thumbnail.source,
+    original:page.original && page.original.source
+  };
+}
+
 async function fetchWikiPortrait(person){
   if(portraitCache.has(person.name)) return portraitCache.get(person.name);
+  if(portraitRequestCache.has(person.name)) return portraitRequestCache.get(person.name);
 
-  const title = WIKI_ALIASES[person.name] || person.name;
-  const candidates = [
-    "https://zh.wikipedia.org/api/rest_v1/page/summary/"+encodeURIComponent(title),
-    "https://en.wikipedia.org/api/rest_v1/page/summary/"+encodeURIComponent(title)
-  ];
+  const task=(async()=>{
+    const title=WIKI_ALIASES[person.name] || person.name;
 
-  let result=null;
-  for(const url of candidates){
-    try{
-      const r=await fetch(url,{headers:{"Accept":"application/json"}});
-      if(!r.ok) continue;
-      const d=await r.json();
-      const img=(d.originalimage&&d.originalimage.source)||(d.thumbnail&&d.thumbnail.source);
-      if(img){
-        result={
-          url:img,
-          source:(d.content_urls&&d.content_urls.desktop&&d.content_urls.desktop.page)||url,
-          title:d.title||person.name,
-          mode:isModernFigure(person)?"真实照片 / 经典肖像":"历史画像 / 经典艺术形象"
-        };
-        break;
-      }
-    }catch(e){}
-  }
-  portraitCache.set(person.name,result);
+    // pageimages 比 REST summary 返回内容更小，只拿图片字段。
+    const attempts=[
+      ["zh", title],
+      ["en", title]
+    ];
+
+    for(const [lang,t] of attempts){
+      try{
+        const r=await fetchWithTimeout(wikiApiURL(lang,t,640),2600);
+        if(!r.ok) continue;
+        const parsed=parseWikiPageImage(await r.json());
+        if(parsed && (parsed.thumb || parsed.original)){
+          const pageURL="https://"+lang+".wikipedia.org/wiki/"+encodeURIComponent(parsed.title||t);
+          const result={
+            // 主图默认使用 640px thumbnail，避免加载超大的 original。
+            url:parsed.thumb || parsed.original,
+            original:parsed.original || parsed.thumb,
+            source:pageURL,
+            title:parsed.title||person.name,
+            mode:isModernFigure(person)?"真实照片 / 经典肖像":"历史画像 / 经典艺术形象"
+          };
+          portraitCache.set(person.name,result);
+          try{
+            localStorage.setItem("historia_portrait_"+person.name,JSON.stringify({...result,_cachedAt:Date.now()}));
+          }catch(e){}
+          return result;
+        }
+      }catch(e){}
+    }
+
+    portraitCache.set(person.name,null);
+    return null;
+  })();
+
+  portraitRequestCache.set(person.name,task);
+  const result=await task;
+  portraitRequestCache.delete(person.name);
   return result;
+}
+
+// 从 localStorage 恢复“人物 -> 图片地址”的映射，避免每次重新查 Wikipedia API。
+(function restorePortraitURLCache(){
+  try{
+    const MAX_AGE=1000*60*60*24*30; // 30 days
+    PEOPLE.forEach(p=>{
+      const key="historia_portrait_"+p.name;
+      const raw=localStorage.getItem(key);
+      if(!raw) return;
+      try{
+        const data=JSON.parse(raw);
+        if(data && data.url && (!data._cachedAt || Date.now()-data._cachedAt<MAX_AGE)){
+          portraitCache.set(p.name,data);
+        }else{
+          localStorage.removeItem(key);
+        }
+      }catch(e){
+        localStorage.removeItem(key);
+      }
+    });
+  }catch(e){}
+})();
+
+
+function setImageWithTimeout(img,url,onload,onerror,ms=3200){
+  let done=false;
+  const timer=setTimeout(()=>{
+    if(done) return;
+    done=true;
+    try{img.src="";}catch(e){}
+    onerror && onerror();
+  },ms);
+
+  img.onload=()=>{
+    if(done) return;
+    done=true;
+    clearTimeout(timer);
+    onload && onload();
+  };
+  img.onerror=()=>{
+    if(done) return;
+    done=true;
+    clearTimeout(timer);
+    onerror && onerror();
+  };
+  img.src=url;
+}
+
+function markPortraitLoaded(img,loading){
+  img.classList.add("loaded");
+  if(loading) loading.style.display="none";
 }
 
 async function setMainPortrait(person){
   const wrap=document.getElementById("portraitMainWrap");
   const img=document.getElementById("portraitMain");
   const loading=document.getElementById("portraitLoading");
-  const source=document.getElementById("portraitSource");
-  const badge=document.getElementById("portraitBadge");
 
   if(!wrap||!img) return;
   wrap.classList.remove("fallback");
-  if(loading) loading.style.display="grid";
-  img.style.opacity="0";
+  img.classList.remove("loaded");
 
+  if(loading) loading.style.display="grid";
+
+  // 如果本地缓存已有图片 URL，则 fetchWikiPortrait 会同步从 Map 命中，
+  // 不再访问人物接口，只剩图片本身的浏览器/Service Worker 缓存命中。
   const data=await fetchWikiPortrait(person);
-  if(data){
-    img.onload=()=>{
-      if(loading) loading.style.display="none";
-      img.style.opacity="1";
-    };
-    img.onerror=()=>{
-      fallbackMainPortrait(person);
-    };
-    img.src=data.url;
-    if(source){
-      source.href=data.source;
-      source.textContent="Wikipedia / Wikimedia";
-    }
-    if(badge) badge.textContent=data.mode;
+  if(data && data.url){
+    setImageWithTimeout(
+      img,
+      data.url,
+      ()=>markPortraitLoaded(img,loading),
+      ()=>fallbackMainPortrait(person),
+      3200
+    );
+    img.dataset.portraitUrl=data.url;
+    img.dataset.portraitOrigin=data.source||"";
+    img.dataset.portraitMode=data.mode||"";
   }else{
     fallbackMainPortrait(person);
   }
 }
+
 function fallbackMainPortrait(person){
   const wrap=document.getElementById("portraitMainWrap");
   const img=document.getElementById("portraitMain");
   const loading=document.getElementById("portraitLoading");
-  const source=document.getElementById("portraitSource");
-  const badge=document.getElementById("portraitBadge");
-  if(loading) loading.style.display="none";
+
   if(wrap) wrap.classList.add("fallback");
   if(img){
-    img.style.opacity="1";
-    img.src=buildPortraitSVG(person,720,900);
+    const fallbackUrl=buildPortraitSVG(person,720,900);
+    img.onload=()=>markPortraitLoaded(img,loading);
+    img.src=fallbackUrl;
+    img.dataset.portraitUrl=fallbackUrl;
+    img.dataset.portraitOrigin="";
+    img.dataset.portraitMode="fallback";
+  }else if(loading){
+    loading.style.display="none";
   }
-  if(source){
-    source.removeAttribute("href");
-    source.textContent="本地回退插画";
-  }
-  if(badge) badge.textContent="风格化历史插画";
 }
 
-async function hydrateRankPortrait(img,person){
-  const data=await fetchWikiPortrait(person);
-  if(data){
-    img.onerror=()=>{img.src=buildPortraitSVG(person,420,520)};
-    img.src=data.url;
-  }else{
-    img.src=buildPortraitSVG(person,420,520);
+const rankPortraitObserver=("IntersectionObserver" in window)
+  ? new IntersectionObserver(entries=>{
+      entries.forEach(entry=>{
+        if(!entry.isIntersecting) return;
+        const img=entry.target;
+        rankPortraitObserver.unobserve(img);
+        const person=PEOPLE.find(p=>p.name===img.dataset.personName);
+        if(person) hydrateRankPortrait(img,person,true);
+      });
+    },{rootMargin:"300px 0px"})
+  : null;
+
+async function hydrateRankPortrait(img,person,immediate=false){
+  if(!img || img.dataset.hydrated==="1") return;
+  img.dataset.hydrated="1";
+
+  if(!immediate && rankPortraitObserver){
+    img.dataset.hydrated="0";
+    img.dataset.personName=person.name;
+    rankPortraitObserver.observe(img);
+    return;
   }
+
+  const data=await fetchWikiPortrait(person);
+  const fallback=()=> {
+    setImageWithTimeout(
+      img,
+      buildPortraitSVG(person,420,520),
+      ()=>img.classList.add("loaded"),
+      ()=>img.classList.add("loaded"),
+      1600
+    );
+  };
+
+  if(data && data.url){
+    setImageWithTimeout(
+      img,
+      data.url,
+      ()=>img.classList.add("loaded"),
+      fallback,
+      3000
+    );
+  }else{
+    fallback();
+  }
+}
+
+function warmPortraitCandidates(){
+  try{
+    const user=normalize();
+    const candidates=rank(user,mode).slice(0,3);
+    candidates.forEach(p=>{
+      fetchWikiPortrait(p).then(data=>{
+        if(data && data.url){
+          const im=new Image();
+          im.decoding="async";
+          im.src=data.url;
+        }
+      }).catch(()=>{});
+    });
+  }catch(e){}
 }
 
 
@@ -1248,7 +1863,7 @@ async function hydrateRankPortrait(img,person){
 if ("serviceWorker" in navigator && location.protocol.startsWith("http")) {
   window.addEventListener("load", async () => {
     try {
-      const reg = await navigator.serviceWorker.register("./sw.js?v=6.1");
+      const reg = await navigator.serviceWorker.register("./sw.js?v=8.0");
       await reg.update();
 
       let refreshed = false;
