@@ -6,6 +6,9 @@
 <title>HISTORIA · 历史人格原型测试</title>
 <link rel="manifest" href="manifest.webmanifest">
 <meta name="theme-color" content="#0b0b0f">
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Expires" content="0">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -596,7 +599,7 @@ body:after{
     </div>
   </div>
 
-  <div class="footer">HISTORIA · Journal Edition · V6</div>
+  <div class="footer">HISTORIA · Journal Edition · V6.1</div>
 </div>
 
 <div id="installSheet" onclick="installSheetBg(event)">
@@ -678,7 +681,7 @@ function rank(u,m){
 function showResult(){
   const user=normalize(), ranked=rank(user,mode), best=ranked[0];
   last={user,best,ranked,mode};
-  localStorage.setItem("historia_v5_last",JSON.stringify(last));
+  localStorage.setItem("historia_v6_last",JSON.stringify(last));
   document.getElementById("quiz").style.display="none";
   document.getElementById("result").style.display="block";
 
@@ -1025,9 +1028,7 @@ window.addEventListener("load",()=>{
   setTimeout(()=>document.getElementById("splash")?.classList.add("hide"),950);
   setTimeout(()=>{const s=document.getElementById("splash"); if(s) s.style.display="none";},1600);
 });
-if("serviceWorker" in navigator && location.protocol.startsWith("http")){
-  window.addEventListener("load",()=>navigator.serviceWorker.register("./sw.js").catch(()=>{}));
-}
+
 
 // ===== V6 人物肖像系统：Wikipedia / Wikimedia 公开缩略图 + 本地风格化回退 =====
 
@@ -1240,6 +1241,25 @@ async function hydrateRankPortrait(img,person){
   }else{
     img.src=buildPortraitSVG(person,420,520);
   }
+}
+
+
+// ===== V6.1 更新机制：避免旧版 index.html 被 Service Worker 长时间缓存 =====
+if ("serviceWorker" in navigator && location.protocol.startsWith("http")) {
+  window.addEventListener("load", async () => {
+    try {
+      const reg = await navigator.serviceWorker.register("./sw.js?v=6.1");
+      await reg.update();
+
+      let refreshed = false;
+      navigator.serviceWorker.addEventListener("controllerchange", () => {
+        if (refreshed) return;
+        refreshed = true;
+        // 新 SW 接管后自动刷新一次，让页面进入最新版本。
+        location.reload();
+      });
+    } catch (e) {}
+  });
 }
 
 </script>

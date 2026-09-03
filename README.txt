@@ -1,43 +1,25 @@
-HISTORIA V6 · 真实人物肖像 / 历史插画混合版
+HISTORIA V6.1 · 缓存修复版
 
-本版按照你的要求升级人物肖像系统：
+为什么你部署 V6 后仍看到旧的剪影页面：
+上一版 Service Worker 对 index.html 使用了 cache-first。
+因此 GitHub Pages 已经更新成功，但浏览器仍可能优先读取旧缓存的 V5 页面。
 
-1. 近现代人物
-- 优先从 Wikipedia / Wikimedia 在线获取真实照片、经典摄影肖像或历史肖像。
-- 例如：托尔斯泰、鲁迅、爱因斯坦、林肯、丘吉尔、特斯拉等。
+V6.1 修复：
+- HTML 页面改为 network-first
+- 每次打开优先读取 GitHub Pages 上的最新 index.html
+- 新 Service Worker 接管后自动刷新一次
+- 旧缓存会在 activate 阶段自动删除
+- 人物真实肖像 / 历史画像系统保持不变
 
-2. 古代人物
-- 优先获取历史画像、雕塑、油画、经典艺术形象。
-- 例如：孔子、孙子、诸葛亮、李世民、凯撒、苏格拉底等。
-
-3. 统一视觉处理
-- 所有在线肖像统一套用深色杂志滤镜。
-- 页面整体仍保持 HISTORIA 的黑金杂志风。
-
-4. 自动回退
-- 某个人物如果 Wikipedia / Wikimedia 没有稳定缩略图，
-  会自动回退到当前的风格化历史原型插画，不会出现空白。
-
-5. Top 5 同步升级
-- 结果页主人物肖像使用真实/历史图片。
-- Top 5 小卡片也会动态加载对应人物肖像。
-
-6. 图片来源
-- 主人物肖像卡会显示 “Wikipedia / Wikimedia” 来源入口。
-- 具体图片版权与许可请以对应 Wikipedia / Wikimedia 页面为准。
-
-重要：
-- 因为 V6 会在线加载 Wikipedia / Wikimedia 图片，所以“真实肖像”功能需要联网。
-- 网站本身的测试功能和本地回退插画仍可工作。
-- 若某些网络环境无法访问 Wikipedia，人物肖像会自动显示本地风格化回退图。
-
-更新 GitHub：
-覆盖仓库根目录中的：
+上传 GitHub 时覆盖：
 index.html
-manifest.webmanifest
 sw.js
+manifest.webmanifest
 icon-192.png
 icon-512.png
 apple-touch-icon.png
 
-网页链接保持不变。
+上传后首次请打开：
+https://xuqinyu2123-cmd.github.io/historia-test/?v=6.1
+
+这个带 ?v=6.1 的地址会绕开旧缓存键。新 Service Worker 接管后，以后再打开原网址即可。
