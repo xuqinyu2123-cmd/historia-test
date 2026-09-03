@@ -1,4 +1,4 @@
-const CACHE="historia-v4-20260903";
+const CACHE="historia-v5-20260903";
 const ASSETS=["./","./index.html","./manifest.webmanifest","./icon-192.png","./icon-512.png","./apple-touch-icon.png"];
 self.addEventListener("install",e=>{
   e.waitUntil(caches.open(CACHE).then(c=>c.addAll(ASSETS)));

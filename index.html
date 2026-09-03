@@ -4,143 +4,143 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>HISTORIA · 历史人格原型测试</title>
-
 <link rel="manifest" href="manifest.webmanifest">
-<meta name="theme-color" content="#0b0b0e">
+<meta name="theme-color" content="#0b0b0f">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="HISTORIA">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 <meta name="format-detection" content="telephone=no">
-
 <style>
 :root{
-  --bg:#0b0b0d;--panel:#131319;--panel2:#18181f;--text:#f1ede6;--muted:#a9a39b;
-  --gold:#c9a76d;--gold2:#8b6d3f;--line:#2c2a2c;--paper:#d8c5a3;
+  --bg:#09090c;--bg2:#111116;--panel:#14141a;--panel2:#1a1a22;--panel3:#0f1014;
+  --text:#f2ede5;--muted:#a9a197;--soft:#cbc3b8;--gold:#cfae76;--gold2:#886740;
+  --gold3:#e7c996;--line:#2a282c;--red:#7b2d2d;--shadow:0 28px 90px rgba(0,0,0,.35);
 }
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
 body{
-  margin:0;color:var(--text);font-family:"Microsoft YaHei","PingFang SC",system-ui,sans-serif;
+  margin:0;
+  color:var(--text);
+  font-family:"Microsoft YaHei","PingFang SC",system-ui,sans-serif;
   background:
-    radial-gradient(1000px 520px at 10% -5%,rgba(201,167,109,.12),transparent 60%),
-    radial-gradient(900px 560px at 100% 15%,rgba(89,56,33,.14),transparent 60%),
-    linear-gradient(180deg,#090a0d,#111016 48%,#0b0b0e);
+    radial-gradient(1100px 600px at 8% -8%,rgba(207,174,118,.13),transparent 60%),
+    radial-gradient(950px 520px at 100% 20%,rgba(103,63,36,.13),transparent 60%),
+    linear-gradient(180deg,#09090c 0%,#100f16 50%,#09090c 100%);
   min-height:100vh;overflow-x:hidden;
 }
 body:before{
-  content:"";position:fixed;inset:0;pointer-events:none;opacity:.13;
-  background-image:
-    linear-gradient(rgba(255,255,255,.018) 1px,transparent 1px),
-    linear-gradient(90deg,rgba(255,255,255,.012) 1px,transparent 1px);
-  background-size:27px 27px;mask-image:linear-gradient(to bottom,#000,transparent 72%);
+  content:"CHRONICLE · HISTORY · ARCHETYPE · JOURNAL · HISTORIA · CHRONICLE";
+  position:fixed;left:-8vw;top:8vh;width:135vw;
+  white-space:nowrap;pointer-events:none;z-index:0;
+  transform:rotate(-12deg);
+  font:700 34px/1 Georgia,serif;letter-spacing:.22em;
+  color:rgba(255,255,255,.03);
 }
-.wrap{max-width:1180px;margin:auto;padding:22px 16px 64px;position:relative;z-index:1}
-.top{display:flex;justify-content:space-between;align-items:center;padding:6px 2px 18px}
-.brand{font-family:Georgia,serif;letter-spacing:.28em;color:#dfc18a;font-weight:700;font-size:14px}
-.version{font-size:11px;color:#756f68;letter-spacing:.08em}
+body:after{
+  content:"修身 · 洞察 · 稳定 · 创造 · 行动 · 共情";
+  position:fixed;right:-14px;bottom:8vh;z-index:0;pointer-events:none;
+  transform:rotate(-90deg);
+  transform-origin:right bottom;
+  font:400 25px/1.1 Georgia,"Songti SC",serif;letter-spacing:.18em;
+  color:rgba(207,174,118,.06);
+}
+.wrap{max-width:1220px;margin:auto;padding:18px 16px 80px;position:relative;z-index:1}
+.topbar{
+  display:flex;justify-content:space-between;align-items:center;padding:6px 2px 18px;
+}
+.brand{font:700 14px/1 Georgia,serif;letter-spacing:.3em;color:#e3c48c}
+.topbar .sub{font-size:11px;color:#706a64;letter-spacing:.08em}
 .card{
-  background:linear-gradient(180deg,rgba(255,255,255,.028),rgba(255,255,255,.008)),var(--panel);
-  border:1px solid var(--line);border-radius:28px;box-shadow:0 26px 80px rgba(0,0,0,.34);overflow:hidden
+  border:1px solid var(--line);
+  border-radius:28px;
+  background:linear-gradient(180deg,rgba(255,255,255,.028),rgba(255,255,255,.01)),var(--panel);
+  box-shadow:var(--shadow);
+  overflow:hidden;position:relative;
 }
-.hero{min-height:720px;display:grid;grid-template-columns:1.15fr .85fr;gap:42px;align-items:center;padding:64px 52px;position:relative}
-.hero:after{content:"HISTORIA";position:absolute;right:-18px;bottom:-34px;font:700 110px/1 Georgia,serif;letter-spacing:.08em;color:rgba(255,255,255,.018)}
-.kicker{color:#d7b67c;letter-spacing:.22em;font-size:11px;margin-bottom:14px}
-h1{font-family:Georgia,"Songti SC",serif;font-size:66px;line-height:1.03;margin:0 0 20px;font-weight:600}
-.hero p{color:#cbc4ba;font-size:17px;line-height:1.95;margin:0}
-.quote{margin-top:24px;padding:13px 0 0 18px;border-left:2px solid rgba(201,167,109,.45);color:#999187;line-height:1.9;font-family:Georgia,"Songti SC",serif}
-.mode-title{margin-top:30px;font-size:12px;color:#817970;letter-spacing:.08em}
+.card:before{
+  content:"";position:absolute;inset:0;pointer-events:none;
+  background:linear-gradient(90deg,transparent,rgba(255,255,255,.02),transparent);
+}
+.hero{
+  min-height:760px;
+  display:grid;grid-template-columns:1.08fr .92fr;gap:44px;align-items:center;
+  padding:62px 54px;
+  background:
+    radial-gradient(580px 380px at 18% 0%,rgba(207,174,118,.08),transparent 66%),
+    radial-gradient(500px 300px at 82% 30%,rgba(207,174,118,.06),transparent 66%),
+    linear-gradient(180deg,rgba(255,255,255,.02),rgba(255,255,255,.004)),var(--panel);
+}
+.mobileHeroTop{display:none}
+.eyebrow{color:var(--gold3);font-size:11px;letter-spacing:.24em;margin-bottom:14px}
+.hero h1{
+  margin:0 0 18px;
+  font:600 72px/1.02 Georgia,"Songti SC",serif;
+  letter-spacing:-.02em;
+}
+.hero p{margin:0;color:#cdc6bb;font-size:17px;line-height:1.95}
+.leadQuote{
+  margin-top:24px;padding:13px 0 0 18px;border-left:2px solid rgba(207,174,118,.45);
+  color:#999084;font:400 16px/1.9 Georgia,"Songti SC",serif;
+}
+.heroTags{display:flex;gap:10px;flex-wrap:wrap;margin-top:20px}
+.tag{
+  padding:8px 12px;border-radius:999px;border:1px solid rgba(207,174,118,.16);
+  background:rgba(255,255,255,.024);font-size:12px;color:#bdb3a8
+}
+.modeTitle{margin-top:28px;font-size:12px;color:#7f766d;letter-spacing:.08em}
 .modes{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:12px}
 .mode{
-  cursor:pointer;border:1px solid #302e31;background:#15151a;border-radius:16px;padding:15px 12px;
-  transition:.18s;text-align:left;color:#bdb6ad
+  cursor:pointer;padding:16px 14px;border-radius:16px;border:1px solid #312f33;background:#141419;color:#bbb2a6;transition:.18s;text-align:left
 }
-.mode b{display:block;color:#e7dfd3;font-size:14px;margin-bottom:4px}
-.mode small{font-size:11px;color:#777069;line-height:1.5}
-.mode.active{border-color:#8d6b39;background:linear-gradient(180deg,rgba(201,167,109,.09),rgba(201,167,109,.025));box-shadow:inset 0 0 0 1px rgba(201,167,109,.08)}
-.btn{border:0;border-radius:999px;padding:15px 25px;font-weight:700;font-size:14px;cursor:pointer;transition:.2s}
-.primary{background:linear-gradient(#e1c28c,#c49a5d);color:#14110d;box-shadow:0 12px 30px rgba(201,167,109,.16)}
-.primary:hover{transform:translateY(-1px)}
-.ghost{background:transparent;color:#ddd5ca;border:1px solid #3b3839}
+.mode b{display:block;font-size:14px;color:#ece3d5;margin-bottom:4px}
+.mode small{font-size:11px;color:#7b746c;line-height:1.55}
+.mode.active{border-color:#8f6e40;background:linear-gradient(180deg,rgba(207,174,118,.10),rgba(207,174,118,.03))}
 .actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:24px}
-.meta{font-size:11px;color:#6e6963;margin-top:15px;letter-spacing:.05em}
-.visual{display:flex;justify-content:center}
-.poster-seal{width:min(100%,390px);aspect-ratio:.86;border:1px solid rgba(201,167,109,.25);border-radius:26px;position:relative;background:
-  radial-gradient(circle at 50% 26%,rgba(201,167,109,.14),transparent 36%),
-  linear-gradient(180deg,rgba(255,255,255,.02),transparent),#101015;display:flex;align-items:center;justify-content:center}
-.poster-seal:before{content:"";position:absolute;inset:22px;border:1px solid rgba(201,167,109,.13);border-radius:20px}
-.poster-seal:after{content:"";width:58%;aspect-ratio:1;border-radius:50%;border:1px solid rgba(201,167,109,.15);box-shadow:0 0 0 24px rgba(201,167,109,.025),0 0 0 48px rgba(201,167,109,.012)}
-.sealtext{position:absolute;text-align:center;font-family:Georgia,"Songti SC",serif;color:#d8b97f}
-.sealtext strong{font-size:84px;font-weight:500}
-.sealtext span{display:block;font-size:11px;letter-spacing:.35em;color:#7f6e52;margin-top:8px}
-.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:22px}
-.stat{padding:13px;border:1px solid rgba(255,255,255,.05);border-radius:14px;background:rgba(255,255,255,.018)}
-.stat b{display:block;font:22px Georgia,serif;color:#d9b97f} .stat span{font-size:11px;color:#8d857c}
-.quiz{display:none;padding:30px;max-width:900px;margin:auto}
-.sticky{position:sticky;top:8px;z-index:8;background:rgba(13,13,17,.88);backdrop-filter:blur(12px);padding:10px;border-radius:14px;border:1px solid rgba(255,255,255,.05)}
-.prow{display:flex;align-items:center;gap:12px} .pbar{height:5px;flex:1;background:#24242a;border-radius:99px;overflow:hidden} .pbar i{display:block;height:100%;width:0;background:linear-gradient(90deg,#8a6939,#dfbf87);transition:.25s}
-.qnum{font-size:11px;color:#837c74;min-width:58px;text-align:right}
-.question{font-size:28px;line-height:1.55;margin:28px 0 22px;font-weight:650}
-.answers{display:grid;gap:11px}
-.answer{width:100%;border:1px solid #302f35;background:#191920;color:#ddd7cf;border-radius:16px;padding:17px 18px;text-align:left;display:flex;gap:13px;line-height:1.7;cursor:pointer;transition:.18s}
-.answer:hover{border-color:#816238;transform:translateX(3px)}
-.letter{flex:0 0 27px;width:27px;height:27px;border:1px solid #5d4d34;color:#d7b67b;border-radius:50%;display:grid;place-items:center;font-size:11px}
-.note{font-size:11px;color:#706b65;margin-top:18px;line-height:1.8}
-.result{display:none}
-.resultHero{padding:48px;display:grid;grid-template-columns:1fr .9fr;gap:34px;align-items:center}
-.resultName{font:600 58px/1.05 Georgia,"Songti SC",serif;margin:8px 0}
-.era{color:#8f887f;font-size:13px}
-.badges{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}
-.badge{padding:7px 10px;border-radius:999px;border:1px solid rgba(201,167,109,.16);background:rgba(255,255,255,.022);font-size:11px;color:#bfb5a6}
-.match{display:flex;align-items:end;gap:10px;margin:18px 0}
-.match strong{font:58px Georgia,serif;color:#dfbf87} .match span{font-size:12px;color:#887f75;padding-bottom:9px}
-.tagline{border-left:2px solid rgba(201,167,109,.48);padding-left:16px;color:#d1c8bc;line-height:1.9}
-#radar{width:100%;height:auto;display:block}
-.radarBox{border:1px solid #29272d;border-radius:22px;background:#0f0f14;padding:14px}
-.section{margin-top:16px;padding:30px}
-.section h2{font:28px Georgia,"Songti SC",serif;margin:0 0 16px}
-.section h3{margin:0 0 10px;font-size:17px}
-.section p{color:#c6beb4;line-height:1.95;margin:0}
-.chapter{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-top:16px}
-.mini{padding:24px}
-.dims{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:20px}
-.dim{background:#17171d;border:1px solid #2a292f;border-radius:14px;padding:14px}
-.dimTop{display:flex;justify-content:space-between;color:#b8b1a8;font-size:12px}
-.bar{height:5px;background:#24242a;border-radius:99px;overflow:hidden;margin-top:9px} .bar i{display:block;height:100%;background:linear-gradient(90deg,#89693c,#d8b77e)}
-.longread{display:grid;gap:14px}
-.block{padding:18px;border-radius:16px;background:#15151b;border:1px solid #29272d}
-.block b{display:block;margin-bottom:8px;color:#e0d7cb} .block p{font-size:13px}
-.ranklist{display:grid;gap:9px;margin-top:16px}
-.rank{display:flex;justify-content:space-between;gap:12px;align-items:center;padding:13px 15px;border:1px solid #2c2a2f;border-radius:13px;background:#17171c}
-.rank small{color:#77706a} .rank span{color:#d9b97f;white-space:nowrap}
-.switcher{display:flex;gap:8px;flex-wrap:wrap;margin-top:16px}
-.switcher button{padding:8px 12px;border-radius:999px;border:1px solid #343136;background:#15151a;color:#bfb6ab;cursor:pointer;font-size:12px}
-.switcher button.active{border-color:#8e6b39;color:#e2c38d;background:rgba(201,167,109,.07)}
-.disclaimer{font-size:11px;color:#6f6962;line-height:1.8;margin-top:22px}
-.posterModal{display:none;position:fixed;inset:0;background:rgba(0,0,0,.82);z-index:50;padding:24px;overflow:auto}
-.posterModal.open{display:flex;align-items:flex-start;justify-content:center}
-.modalInner{max-width:720px;width:100%;margin:auto;text-align:center}
-.modalInner img{max-width:100%;border-radius:18px;box-shadow:0 25px 70px rgba(0,0,0,.4)}
-.modalActions{display:flex;justify-content:center;gap:10px;flex-wrap:wrap;margin-top:14px}
-footer{text-align:center;color:#5f5a55;font-size:11px;margin-top:20px}
-.fade{animation:fade .42s ease both} @keyframes fade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
-@media(max-width:900px){
-  .hero,.resultHero{grid-template-columns:1fr} .hero{padding:40px 24px;min-height:auto}
-  h1{font-size:48px} .visual{margin-top:8px} .resultHero,.section,.mini{padding:22px}
+.btn{
+  border:0;border-radius:999px;padding:15px 24px;font-size:14px;font-weight:700;cursor:pointer;transition:.2s
 }
-@media(max-width:600px){
-  .wrap{padding:10px 10px 36px} .top{padding:4px 2px 12px}
-  .hero{border-radius:22px} h1{font-size:40px} .hero p{font-size:15px}
-  .modes,.stats,.dims{grid-template-columns:1fr} .chapter{grid-template-columns:1fr}
-  .question{font-size:23px} .quiz{padding:18px} .resultName{font-size:44px}
-  .resultHero{padding:20px} .match strong{font-size:48px}
+.btn:hover{transform:translateY(-1px)}
+.primary{background:linear-gradient(180deg,var(--gold3),var(--gold));color:#14110d;box-shadow:0 12px 30px rgba(207,174,118,.16)}
+.ghost{background:transparent;color:#ddd4c8;border:1px solid #3b3839}
+.installHint{margin-top:10px;font-size:11px;color:#706960;line-height:1.7}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:22px}
+.stat{padding:14px;border-radius:16px;background:rgba(255,255,255,.022);border:1px solid rgba(255,255,255,.05)}
+.stat b{display:block;font:22px Georgia,serif;color:var(--gold3)}
+.stat span{font-size:12px;color:#91887e}
+.heroVisual{position:relative;min-height:480px;display:flex;align-items:center;justify-content:center}
+.book{
+  width:min(100%,430px);aspect-ratio:.84;position:relative;border-radius:28px;
+  border:1px solid rgba(207,174,118,.22);
+  background:
+    linear-gradient(145deg,rgba(245,236,219,.08),rgba(255,255,255,.01)),
+    linear-gradient(180deg,rgba(255,255,255,.02),transparent),
+    #121217;
+  box-shadow:inset 0 0 0 1px rgba(255,255,255,.02),0 30px 70px rgba(0,0,0,.28);
+  overflow:hidden;
 }
+.book:before{
+  content:"";position:absolute;inset:22px;border:1px solid rgba(207,174,118,.14);border-radius:20px;
+}
+.book:after{
+  content:"";position:absolute;left:50%;top:50%;width:72%;height:72%;
+  transform:translate(-50%,-50%);border-radius:50%;
+  border:1px solid rgba(207,174,118,.16);box-shadow:0 0 0 26px rgba(207,174,118,.03),0 0 0 52px rgba(207,174,118,.015);
+}
+.bookTitle{
+  position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;z-index:1
+}
+.bookTitle strong{font:500 92px/1 Georgia,"Songti SC",serif;color:#e0c287}
+.bookTitle span{font:700 14px/1 Georgia,serif;letter-spacing:.34em;color:#8f7756;margin-top:10px}
+.bookTitle small{margin-top:26px;color:#7f756a;line-height:1.85;letter-spacing:.12em}
+.bookNote{
+  position:absolute;left:22px;right:22px;bottom:24px;display:flex;justify-content:space-between;color:#6f675f;font-size:11px
+}
+.bookNote b{font-family:Georgia,serif;color:#b79257}
+.mobileBottomCTA{display:none}
 
-/* ===== V4 Mobile H5 / PWA polish ===== */
-html,body{overscroll-behavior-y:none}
-button{-webkit-tap-highlight-color:transparent}
-.safe-bottom{padding-bottom:max(14px,env(safe-area-inset-bottom))}
+/* Splash */
 #splash{
   position:fixed;inset:0;z-index:9999;display:flex;align-items:center;justify-content:center;
   background:
@@ -149,12 +149,11 @@ button{-webkit-tap-highlight-color:transparent}
   transition:opacity .55s ease,visibility .55s ease;
 }
 #splash.hide{opacity:0;visibility:hidden}
-.splashNoise{position:absolute;inset:0;opacity:.09;pointer-events:none;background-image:
-  repeating-linear-gradient(0deg,rgba(255,255,255,.035) 0,rgba(255,255,255,.035) 1px,transparent 1px,transparent 3px)}
+.splashNoise{position:absolute;inset:0;opacity:.09;pointer-events:none;background-image:repeating-linear-gradient(0deg,rgba(255,255,255,.035) 0,rgba(255,255,255,.035) 1px,transparent 1px,transparent 3px)}
 .splashCore{position:relative;text-align:center;padding:24px}
 .splashRing{
   width:176px;height:176px;margin:0 auto 28px;border-radius:50%;border:1px solid rgba(218,184,126,.27);
-  display:grid;place-items:center;box-shadow:0 0 0 22px rgba(218,184,126,.025),0 0 0 44px rgba(218,184,126,.012);
+  display:grid;place-items:center;box-shadow:0 0 0 22px rgba(218,184,126,.025),0 0 0 44px rgba(218,184,126,.012)
 }
 .splashRing b{font:500 78px/1 Georgia,"Songti SC",serif;color:#d8b77e}
 .splashBrand{font:700 24px/1.2 Georgia,serif;letter-spacing:.32em;color:#ead7b4;margin-left:.32em}
@@ -163,11 +162,123 @@ button{-webkit-tap-highlight-color:transparent}
 .splashLine i{display:block;width:35%;height:100%;background:#e0bd81;animation:loadline 1.5s ease-in-out infinite}
 @keyframes loadline{0%{transform:translateX(-120%)}100%{transform:translateX(410%)}}
 
-.mobileHeroTop{display:none}
-.mobileBottomCTA{display:none}
-.installBtn{position:relative}
-.installBtn::after{content:"";position:absolute;inset:-5px;border-radius:999px;border:1px solid rgba(217,184,126,.10);pointer-events:none}
-.installHint{font-size:11px;color:#706960;margin-top:9px;line-height:1.7}
+/* Quiz */
+.quiz{display:none;max-width:920px;margin:0 auto;padding:30px}
+.sticky{position:sticky;top:8px;z-index:8;background:rgba(13,13,17,.88);backdrop-filter:blur(12px);padding:10px;border-radius:14px;border:1px solid rgba(255,255,255,.05)}
+.prow{display:flex;align-items:center;gap:12px}
+.pbar{height:5px;flex:1;background:#24242a;border-radius:99px;overflow:hidden}
+.pbar i{display:block;height:100%;width:0;background:linear-gradient(90deg,#8a6939,#dfbf87);transition:.25s}
+.qnum{font-size:11px;color:#837c74;min-width:60px;text-align:right}
+.question{font-size:29px;line-height:1.55;margin:28px 0 22px;font-weight:650}
+.answers{display:grid;gap:11px}
+.answer{width:100%;border:1px solid #302f35;background:#191920;color:#ddd7cf;border-radius:16px;padding:18px 18px;text-align:left;display:flex;gap:13px;line-height:1.75;cursor:pointer;transition:.18s}
+.answer:hover{border-color:#816238;transform:translateX(3px)}
+.letter{flex:0 0 27px;width:27px;height:27px;border:1px solid #5d4d34;color:#d7b67b;border-radius:50%;display:grid;place-items:center;font-size:11px}
+.note{font-size:11px;color:#706b65;margin-top:18px;line-height:1.8}
+
+/* Result */
+.result{display:none;margin-top:14px}
+.magazine{
+  display:grid;grid-template-columns:420px 1fr;gap:0;min-height:760px;overflow:hidden
+}
+.leftPage{
+  background:
+    radial-gradient(420px 260px at 50% 0%,rgba(207,174,118,.09),transparent 70%),
+    linear-gradient(180deg,rgba(255,255,255,.02),transparent),#101015;
+  padding:34px;position:relative;border-right:1px solid rgba(255,255,255,.04)
+}
+.leftPage:after{
+  content:"";position:absolute;top:24px;bottom:24px;right:-1px;width:1px;background:linear-gradient(180deg,transparent,rgba(207,174,118,.25),transparent)
+}
+.rightPage{
+  padding:38px 40px 36px;
+  background:
+    radial-gradient(500px 300px at 100% 0%,rgba(207,174,118,.04),transparent 65%),
+    linear-gradient(180deg,rgba(255,255,255,.018),rgba(255,255,255,.008)),#121218
+}
+.issue{display:flex;justify-content:space-between;align-items:center;color:#7c7369;font-size:11px;letter-spacing:.12em;text-transform:uppercase}
+.issue b{font:700 14px Georgia,serif;color:#d5b77e;letter-spacing:.28em}
+.frame{
+  margin-top:18px;border-radius:24px;padding:16px;border:1px solid rgba(207,174,118,.16);background:rgba(255,255,255,.015)
+}
+.portraitWrap{
+  border-radius:20px;overflow:hidden;border:1px solid rgba(207,174,118,.15);background:#0f1014;aspect-ratio:4/5
+}
+.portraitWrap img{display:block;width:100%;height:100%;object-fit:cover}
+.leftQuote{
+  margin-top:18px;padding-left:15px;border-left:2px solid rgba(207,174,118,.4);color:#aca293;font:400 14px/1.9 Georgia,"Songti SC",serif
+}
+.factGrid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:18px}
+.fact{
+  padding:13px;border-radius:14px;border:1px solid rgba(255,255,255,.05);background:rgba(255,255,255,.02)
+}
+.fact b{display:block;color:#e3c590;font:700 22px Georgia,serif;margin-bottom:5px}
+.fact span{font-size:11px;color:#887f74}
+.kicker{font-size:11px;color:#d8b77e;letter-spacing:.24em}
+.titleLine{display:flex;justify-content:space-between;align-items:flex-start;gap:18px;margin-top:8px}
+.name{font:600 64px/1.04 Georgia,"Songti SC",serif;margin:0}
+.era{margin-top:8px;color:#8f887f;font-size:14px}
+.badges{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}
+.badge{padding:7px 11px;border-radius:999px;border:1px solid rgba(207,174,118,.18);background:rgba(255,255,255,.022);font-size:11px;color:#c5baaa}
+.simBlock{text-align:right;min-width:150px}
+.simBlock strong{display:block;font:700 60px/1 Georgia,serif;color:#e2c38b}
+.simBlock span{font-size:12px;color:#867d73}
+.editorial{
+  margin-top:20px;border-top:1px solid rgba(255,255,255,.06);padding-top:20px;
+  font-size:16px;line-height:1.95;color:#d3cbc1
+}
+.editorial .dropcap:first-letter{
+  float:left;font:600 68px/0.9 Georgia,serif;color:#deb97c;padding-right:10px;padding-top:6px
+}
+.actionsRow{display:flex;gap:10px;flex-wrap:wrap;margin-top:24px}
+.section{margin-top:16px;padding:32px}
+.section h2{font:600 30px/1.1 Georgia,"Songti SC",serif;margin:0 0 16px}
+.section p{margin:0;color:#c8c0b6;line-height:1.95}
+.radarDims{
+  display:grid;grid-template-columns:1.1fr .9fr;gap:16px;align-items:start
+}
+.radarBox{padding:14px;border-radius:22px;border:1px solid #29272d;background:#0f1014}
+#radar{width:100%;height:auto;display:block}
+.dims{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+.dim{background:#17171d;border:1px solid #2a292f;border-radius:14px;padding:14px}
+.dimTop{display:flex;justify-content:space-between;color:#b8b1a8;font-size:12px}
+.bar{height:5px;background:#24242a;border-radius:99px;overflow:hidden;margin-top:9px}
+.bar i{display:block;height:100%;background:linear-gradient(90deg,#89693c,#d8b77e)}
+.columns{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+.mini{padding:24px}
+.mini h3{margin:0 0 12px;font-size:17px}
+.mini p{margin:0;font-size:14px;line-height:1.9;color:#c9c2b9}
+.longread{display:grid;gap:14px}
+.block{padding:18px;border-radius:16px;background:#15151b;border:1px solid #29272d}
+.block b{display:block;margin-bottom:8px;color:#e0d7cb}
+.block p{font-size:13px;line-height:1.9;color:#c1b8ad;margin:0}
+.rankSectionHead{display:flex;justify-content:space-between;gap:14px;align-items:flex-end;flex-wrap:wrap}
+.switcher{display:flex;gap:8px;flex-wrap:wrap}
+.switcher button{padding:8px 12px;border-radius:999px;border:1px solid #343136;background:#15151a;color:#bfb6ab;cursor:pointer;font-size:12px}
+.switcher button.active{border-color:#8e6b39;color:#e2c38d;background:rgba(201,167,109,.07)}
+.rankGrid{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin-top:18px}
+.rankCard{padding:12px;border-radius:18px;background:#17171d;border:1px solid #2b292e}
+.rankThumb{aspect-ratio:4/5;border-radius:14px;overflow:hidden;border:1px solid rgba(255,255,255,.04)}
+.rankThumb img{display:block;width:100%;height:100%;object-fit:cover}
+.rankInfo{margin-top:10px}
+.rankInfo b{display:block;font-size:14px}
+.rankInfo small{display:block;margin-top:3px;color:#7d756e;font-size:11px;line-height:1.5;min-height:32px}
+.rankInfo span{display:block;margin-top:8px;color:#dbbc83;font:700 18px Georgia,serif}
+.tipBox{
+  margin-top:18px;padding:20px;border-radius:18px;border:1px solid rgba(207,174,118,.14);
+  background:linear-gradient(180deg,rgba(207,174,118,.06),rgba(255,255,255,.01))
+}
+.tipBox h4{margin:0 0 10px;font-size:16px}
+.tipBox p{font-size:13px;color:#b9afa3;line-height:1.85}
+.disclaimer{font-size:11px;color:#6f6962;line-height:1.8;margin-top:20px}
+.footer{text-align:center;color:#5f5a55;font-size:11px;margin-top:20px}
+
+/* poster/install modal */
+.posterModal{display:none;position:fixed;inset:0;background:rgba(0,0,0,.82);z-index:60;padding:20px;overflow:auto}
+.posterModal.open{display:flex;align-items:flex-start;justify-content:center}
+.modalInner{max-width:740px;width:100%;margin:auto;text-align:center}
+.modalInner img{max-width:100%;border-radius:18px;box-shadow:0 25px 70px rgba(0,0,0,.4)}
+.modalActions{display:flex;justify-content:center;gap:10px;flex-wrap:wrap;margin-top:14px}
 
 #installSheet{
   display:none;position:fixed;inset:0;z-index:120;background:rgba(0,0,0,.72);backdrop-filter:blur(8px);
@@ -176,8 +287,7 @@ button{-webkit-tap-highlight-color:transparent}
 #installSheet.open{display:flex}
 .sheet{
   width:min(100%,620px);background:linear-gradient(180deg,#1a181e,#111116);border:1px solid #343038;
-  border-radius:26px 26px 0 0;padding:22px 20px max(24px,env(safe-area-inset-bottom));
-  box-shadow:0 -30px 80px rgba(0,0,0,.45)
+  border-radius:26px 26px 0 0;padding:22px 20px max(24px,env(safe-area-inset-bottom));box-shadow:0 -30px 80px rgba(0,0,0,.45)
 }
 .sheetHandle{width:44px;height:4px;border-radius:99px;background:#39353b;margin:0 auto 18px}
 .sheet h3{margin:0 0 8px;font-size:19px}.sheet p{margin:0;color:#a9a096;line-height:1.75;font-size:13px}
@@ -187,55 +297,53 @@ button{-webkit-tap-highlight-color:transparent}
 .step span{font-size:13px;color:#cbc2b6;line-height:1.65}
 .closeSheet{width:100%;margin-top:16px}
 
-.shareAppBtn{display:inline-flex;align-items:center;gap:7px}
-.pwaPill{display:inline-flex;align-items:center;gap:6px;padding:7px 10px;border:1px solid rgba(204,169,108,.18);border-radius:999px;font-size:11px;color:#b9ad9e;background:rgba(255,255,255,.02)}
+.fade{animation:fade .42s ease both}
+@keyframes fade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
 
-@media(max-width:600px){
+@media(max-width:980px){
+  .hero,.magazine,.radarDims,.columns{grid-template-columns:1fr}
+  .hero{padding:42px 26px;min-height:auto}
+  .hero h1{font-size:54px}
+  .quiz{padding:20px}
+  .leftPage:after{display:none}
+  .rankGrid{grid-template-columns:repeat(3,1fr)}
+}
+@media(max-width:700px){
   body{background:
-    radial-gradient(550px 340px at 50% -40px,rgba(206,171,108,.12),transparent 67%),
+    radial-gradient(560px 340px at 50% -40px,rgba(206,171,108,.12),transparent 67%),
     linear-gradient(180deg,#09090c,#101016 52%,#090a0d)}
-  .wrap{padding:0 0 94px}
-  .top{display:none}
-  .hero{min-height:100svh;border-radius:0;border-left:0;border-right:0;padding:26px 18px 102px;display:block;background:
-    radial-gradient(520px 360px at 50% 0%,rgba(203,169,108,.09),transparent 67%),
-    linear-gradient(180deg,rgba(255,255,255,.015),transparent),#0d0d11}
-  .hero:after{font-size:72px;right:-54px;bottom:54px}
+  .wrap{padding:0 0 86px}
+  .topbar{display:none}
+  .hero{display:block;padding:26px 18px 106px;min-height:100svh;border-radius:0;border-left:0;border-right:0}
   .mobileHeroTop{display:flex;justify-content:space-between;align-items:center;margin-bottom:38px}
   .mobileHeroTop .miniBrand{font:700 13px Georgia,serif;letter-spacing:.28em;color:#d9bb84}
-  .hero .kicker{font-size:10px;margin-bottom:12px}
-  h1{font-size:46px;letter-spacing:-.02em}
-  .hero p{font-size:15px;line-height:1.9}
-  .quote{font-size:13px;margin-top:18px}
-  .mode-title{margin-top:25px}
-  .modes{gap:8px}
-  .mode{padding:13px 12px;border-radius:14px}
-  .mode b{font-size:13px}.mode small{font-size:10px}
-  .hero>.actions{display:none}
-  .visual{display:none}
-  .stats{grid-template-columns:repeat(3,1fr);gap:7px;margin-top:18px}
-  .stat{padding:10px 8px;text-align:center}.stat b{font-size:20px}.stat span{font-size:10px}
+  .eyebrow{font-size:10px}
+  .hero h1{font-size:46px}
+  .hero p{font-size:15px}
+  .leadQuote{font-size:13px;margin-top:18px}
+  .modes,.stats,.dims,.factGrid,.columns{grid-template-columns:1fr}
+  .heroVisual{display:none}
+  .actions{display:none}
+  .installHint{display:none}
   .mobileBottomCTA{
-    display:block;position:fixed;left:0;right:0;bottom:0;z-index:30;
-    padding:10px 14px max(12px,env(safe-area-inset-bottom));
-    background:linear-gradient(180deg,rgba(9,9,12,0),rgba(9,9,12,.88) 25%,rgba(9,9,12,.98));
-    pointer-events:none
+    display:block;position:fixed;left:0;right:0;bottom:0;z-index:30;padding:10px 14px max(12px,env(safe-area-inset-bottom));
+    background:linear-gradient(180deg,rgba(9,9,12,0),rgba(9,9,12,.88) 25%,rgba(9,9,12,.98));pointer-events:none
   }
   .mobileBottomCTA .ctaRow{display:grid;grid-template-columns:1fr auto;gap:9px;max-width:560px;margin:auto;pointer-events:auto}
-  .mobileBottomCTA button{height:50px;padding:0 20px}
-  .mobileBottomCTA .primary{width:100%}
+  .mobileBottomCTA button{height:50px}
   .quiz{border-radius:0;border-left:0;border-right:0;min-height:100svh;padding:16px 14px 100px}
-  .sticky{top:0;border-radius:12px}
-  .question{margin-top:25px}
-  .result{padding:0 10px}
-  .resultHero{border-radius:20px;margin-top:10px}
-  .posterModal{padding:10px}
-  .modalInner{padding-bottom:max(20px,env(safe-area-inset-bottom))}
+  .question{font-size:24px}
+  .result{padding:10px}
+  .magazine{border-radius:20px}
+  .leftPage,.rightPage,.section,.mini{padding:20px}
+  .name{font-size:44px}
+  .simBlock{min-width:auto;text-align:left;margin-top:8px}
+  .titleLine{display:block}
+  .rankGrid{grid-template-columns:repeat(2,1fr)}
 }
-
 </style>
 </head>
 <body>
-
 <div id="splash" aria-hidden="true">
   <div class="splashNoise"></div>
   <div class="splashCore">
@@ -247,20 +355,29 @@ button{-webkit-tap-highlight-color:transparent}
 </div>
 
 <div class="wrap">
-  <div class="top"><div class="brand">HISTORIA</div><div class="version">V3 · 120 FIGURES</div></div>
+  <div class="topbar">
+    <div class="brand">HISTORIA</div>
+    <div class="sub">V5 · 杂志精修版 · MOBILE H5 / PWA</div>
+  </div>
 
   <section id="hero" class="card hero fade">
     <div class="mobileHeroTop">
       <div class="miniBrand">HISTORIA</div>
-      <span class="pwaPill">H5 · PWA</span>
+      <div class="tag">H5 · PWA</div>
     </div>
     <div>
-      <div class="kicker">PERSONALITY × HISTORY × WORLD FIGURES</div>
+      <div class="eyebrow">PERSONALITY × HISTORY × JOURNAL AESTHETICS</div>
       <h1>寻找你的<br>历史人格原型</h1>
-      <p>通过 36 个情境问题，把你的选择转成六维行为向量，再与 120 位中外历史人物的“原型化行为模型”进行匹配。</p>
-      <div class="quote">不是“你就是谁”，而是：当世界变得复杂时，你更接近哪一种判断、坚持、创造与行动方式。</div>
+      <p>通过 36 个情境问题，把你的选择转换成六维行为向量，再与 120 位中外历史人物的“原型化行为模型”进行匹配。你得到的不是一个简单的标签，而是一种面对世界的方式。</p>
+      <div class="leadQuote">你像谁，并不只取决于气质，而是取决于：当局面复杂、关系纠缠、信息不完整时，你会优先调用怎样的判断、韧性、创造力与行动方式。</div>
+      <div class="heroTags">
+        <div class="tag">120 位中外人物</div>
+        <div class="tag">6 维人格向量</div>
+        <div class="tag">人物肖像卡</div>
+        <div class="tag">分享海报</div>
+      </div>
 
-      <div class="mode-title">选择匹配范围</div>
+      <div class="modeTitle">选择匹配范围</div>
       <div class="modes">
         <button class="mode active" data-mode="mixed" onclick="setMode('mixed')"><b>中外混合</b><small>120 位人物一起匹配</small></button>
         <button class="mode" data-mode="china" onclick="setMode('china')"><b>只看中国</b><small>60 位中国人物</small></button>
@@ -269,19 +386,27 @@ button{-webkit-tap-highlight-color:transparent}
 
       <div class="actions">
         <button class="btn primary" onclick="startQuiz()">开始测试</button>
-        <button class="btn ghost installBtn" onclick="installApp()">添加到桌面</button>
-        <button class="btn ghost shareAppBtn" onclick="shareApp()">分享测试</button>
+        <button class="btn ghost" onclick="installApp()">添加到桌面</button>
+        <button class="btn ghost" onclick="shareApp()">分享测试</button>
       </div>
-      <div class="installHint">添加到桌面后可像独立 App 一样从主屏幕打开；完整离线安装功能需要通过 HTTPS 部署。</div>
-      <div class="meta">36 QUESTIONS · 约 6–8 MIN · 本地运行 · 不上传答案</div>
+      <div class="installHint">添加到桌面后，可像独立 App 一样从主屏幕打开。HTTPS 环境下会启用离线缓存与 PWA 安装。</div>
+
       <div class="stats">
-        <div class="stat"><b>120</b><span>人物原型</span></div>
-        <div class="stat"><b>36</b><span>测试问题</span></div>
+        <div class="stat"><b>120</b><span>历史人物原型</span></div>
+        <div class="stat"><b>36</b><span>题目数量</span></div>
         <div class="stat"><b>6</b><span>行为维度</span></div>
       </div>
     </div>
-    <div class="visual">
-      <div class="poster-seal"><div class="sealtext"><strong>史</strong><span>ARCHETYPE</span></div></div>
+
+    <div class="heroVisual">
+      <div class="book">
+        <div class="bookTitle">
+          <strong>史</strong>
+          <span>ARCHETYPE</span>
+          <small>JUDGEMENT · RESILIENCE<br>CREATION · EMPATHY · DRIVE · CONTROL</small>
+        </div>
+        <div class="bookNote"><span>NO. 01 / 120</span><b>HISTORIA JOURNAL</b></div>
+      </div>
     </div>
   </section>
 
@@ -289,34 +414,63 @@ button{-webkit-tap-highlight-color:transparent}
     <div class="sticky"><div class="prow"><div class="pbar"><i id="progress"></i></div><div id="qnum" class="qnum">01 / 36</div></div></div>
     <div id="question" class="question"></div>
     <div id="answers" class="answers"></div>
-    <div class="note">请选“你平时更可能真的会怎么做”，而不是“你觉得正确答案应该是什么”。</div>
+    <div class="note">请选“你平时更可能真的会怎么做”，而不是“你认为自己应该怎么做”。</div>
   </section>
 
   <section id="result" class="result fade">
-    <div class="card resultHero">
-      <div>
+    <div class="card magazine">
+      <div class="leftPage">
+        <div class="issue"><b>HISTORIA</b><span id="issueLabel">ISSUE / 01</span></div>
+        <div class="frame">
+          <div class="portraitWrap"><img id="portraitMain" alt="人物肖像"></div>
+        </div>
+        <div id="leftQuote" class="leftQuote"></div>
+        <div class="factGrid">
+          <div class="fact"><b id="matchPctLeft">0%</b><span>人格相似度</span></div>
+          <div class="fact"><b id="coreDimA">—</b><span>最高维度</span></div>
+          <div class="fact"><b id="coreDimB">—</b><span>第二维度</span></div>
+          <div class="fact"><b id="poolSize">120</b><span>当前匹配库</span></div>
+        </div>
+      </div>
+
+      <div class="rightPage">
         <div class="kicker">YOUR HISTORICAL ARCHETYPE</div>
-        <div id="personName" class="resultName"></div>
-        <div id="personEra" class="era"></div>
-        <div class="badges"><span id="regionBadge" class="badge"></span><span id="typeBadge" class="badge"></span><span id="modeBadge" class="badge"></span></div>
-        <div class="match"><strong id="matchPct"></strong><span>人格相似度</span></div>
-        <div id="tagline" class="tagline"></div>
-        <div class="actions">
+        <div class="titleLine">
+          <div>
+            <h2 id="personName" class="name"></h2>
+            <div id="personEra" class="era"></div>
+            <div class="badges">
+              <span id="regionBadge" class="badge"></span>
+              <span id="typeBadge" class="badge"></span>
+              <span id="modeBadge" class="badge"></span>
+            </div>
+          </div>
+          <div class="simBlock"><strong id="matchPct"></strong><span>相似度</span></div>
+        </div>
+
+        <div class="editorial">
+          <div id="tagline" class="dropcap"></div>
+          <p id="editorialText" style="margin-top:14px"></p>
+        </div>
+
+        <div class="actionsRow">
           <button class="btn primary" onclick="openPoster()">生成分享海报</button>
           <button class="btn ghost" onclick="copySummary()">复制结果文案</button>
           <button class="btn ghost" onclick="restart()">重新测试</button>
         </div>
       </div>
-      <div class="radarBox"><svg id="radar" viewBox="0 0 520 480"></svg></div>
     </div>
 
     <div class="card section">
       <h2>你的行为画像</h2>
-      <p id="portrait"></p>
-      <div id="dims" class="dims"></div>
+      <p id="portraitText"></p>
+      <div class="radarDims" style="margin-top:18px">
+        <div class="radarBox"><svg id="radar" viewBox="0 0 520 480"></svg></div>
+        <div id="dims" class="dims"></div>
+      </div>
     </div>
 
-    <div class="chapter">
+    <div class="columns">
       <div class="card mini"><h3>01｜你的判断路径</h3><p id="pathText"></p></div>
       <div class="card mini"><h3>02｜你的优势</h3><p id="strengthText"></p></div>
       <div class="card mini"><h3>03｜你的性格盲区</h3><p id="blindText"></p></div>
@@ -324,32 +478,40 @@ button{-webkit-tap-highlight-color:transparent}
     </div>
 
     <div class="card section">
-      <h2>为什么你会匹配到这个人</h2>
+      <h2>原型长文解读</h2>
       <div id="longRead" class="longread"></div>
     </div>
 
     <div class="card section">
-      <h2>最接近你的五个历史原型</h2>
-      <div class="switcher">
-        <button id="sMixed" onclick="rerank('mixed')">中外混合</button>
-        <button id="sChina" onclick="rerank('china')">中国人物</button>
-        <button id="sForeign" onclick="rerank('foreign')">外国人物</button>
+      <div class="rankSectionHead">
+        <div>
+          <h2 style="margin-bottom:8px">最接近你的五个历史原型</h2>
+          <p style="font-size:13px;color:#9f968a">每张卡片都附带专属人物肖像，可切换查看不同匹配范围。</p>
+        </div>
+        <div class="switcher">
+          <button id="sMixed" onclick="rerank('mixed')">中外混合</button>
+          <button id="sChina" onclick="rerank('china')">中国人物</button>
+          <button id="sForeign" onclick="rerank('foreign')">外国人物</button>
+        </div>
       </div>
-      <div id="top5" class="ranklist"></div>
+      <div id="top5" class="rankGrid"></div>
+      <div class="tipBox">
+        <h4>阅读建议</h4>
+        <p>不要把匹配结果当成“唯一真相”，而要把它当作一块镜面：它帮你看见自己天然更擅长使用哪些能力，也提醒你在什么情境下容易把优势用过头。真正重要的不是“像谁”，而是“这种方式适合被放在哪里”。</p>
+      </div>
       <div class="disclaimer">本测试用于自我观察与娱乐性人格探索，不属于临床心理测评。人物向量是基于公开历史叙事进行的“原型化抽象”，用于比较行为风格，不代表对历史人物的心理诊断，也不代表你与其人生经历、价值立场完全一致。</div>
     </div>
   </section>
-  
-<div id="mobileCTA" class="mobileBottomCTA">
-  <div class="ctaRow">
-    <button class="btn primary" onclick="startQuiz()">开始测试</button>
-    <button class="btn ghost" onclick="installApp()">添加到桌面</button>
+
+  <div id="mobileCTA" class="mobileBottomCTA">
+    <div class="ctaRow">
+      <button class="btn primary" onclick="startQuiz()">开始测试</button>
+      <button class="btn ghost" onclick="installApp()">添加到桌面</button>
+    </div>
   </div>
-</div>
 
-<footer>HISTORIA · Mobile H5 · PWA · V4</footer>
+  <div class="footer">HISTORIA · Journal Edition · Mobile H5 / PWA · V5</div>
 </div>
-
 
 <div id="installSheet" onclick="installSheetBg(event)">
   <div class="sheet">
@@ -376,7 +538,8 @@ const PEOPLE=[{"name": "孔子", "era": "春秋 · 思想家", "region": "中国
 const QUESTIONS=[["面对一个复杂任务，你更倾向于：", [["先拆目标、排优先级，再逐项推进", {"control": 3, "insight": 1}], ["先动手做，在过程中不断修正", {"drive": 3, "creative": 1}], ["先观察环境，判断真实约束", {"insight": 3, "resilience": 1}], ["先找合适的人一起讨论", {"empathy": 3, "creative": 1}]]], ["当计划突然被打乱时，你通常：", [["迅速重排资源，把损失压到最低", {"control": 3, "resilience": 1}], ["觉得新情况也可能带来机会", {"creative": 3, "drive": 1}], ["先接受变化，再恢复节奏", {"resilience": 3, "insight": 1}], ["先确认变化会不会影响团队", {"empathy": 3, "control": 1}]]], ["你更容易被哪类问题吸引？", [["如何把一群人组织得更有效", {"control": 3, "empathy": 1}], ["有没有完全不同的新解法", {"creative": 3, "insight": 1}], ["怎样长期坚持并把事情做稳", {"resilience": 3, "control": 1}], ["事情背后的真实原因是什么", {"insight": 3, "creative": 1}]]], ["出现争论时，你更可能：", [["迅速明确规则和底线", {"control": 3, "drive": 1}], ["找到双方都能接受的方案", {"empathy": 3, "insight": 1}], ["先多听几轮信息", {"insight": 3, "resilience": 1}], ["直接推进，用结果验证", {"drive": 3, "control": 1}]]], ["面对一件回报很慢但有价值的事，你：", [["能接受，长期收益更重要", {"resilience": 3, "insight": 1}], ["给自己设置阶段性里程碑", {"control": 3, "resilience": 1}], ["如果长期无反馈会换路径", {"creative": 2, "drive": 2}], ["找人一起做，避免独自消耗", {"empathy": 3, "resilience": 1}]]], ["你最不能忍受的是：", [["混乱、失控、没有责任边界", {"control": 3}], ["重复、僵化、没有新鲜感", {"creative": 3}], ["反复横跳、缺乏耐心", {"resilience": 3}], ["冷漠、自私、不顾他人", {"empathy": 3}]]], ["一个机会出现，但信息并不完整，你会：", [["先小规模试错，不等信息完全", {"drive": 3, "creative": 1}], ["继续搜集证据", {"insight": 3, "resilience": 1}], ["评估最坏情况并设计兜底", {"control": 3, "insight": 1}], ["咨询可信的人，综合不同视角", {"empathy": 2, "insight": 2}]]], ["在团队里，你通常自然承担：", [["分工、定节奏、盯结果", {"control": 3, "drive": 1}], ["提出新点子、改方案", {"creative": 3}], ["协调情绪和关系", {"empathy": 3}], ["发现风险和逻辑漏洞", {"insight": 3}]]], ["如果连续失败几次，你更可能：", [["继续做，但会调整方法", {"resilience": 3, "insight": 1}], ["很快切换赛道找突破", {"creative": 2, "drive": 2}], ["复盘每一步找系统原因", {"insight": 3, "control": 1}], ["找人一起承担和推进", {"empathy": 2, "drive": 2}]]], ["你做决定最重视：", [["可执行性", {"drive": 3, "control": 1}], ["长期稳定性", {"resilience": 3}], ["是否有更高效的新路径", {"creative": 3}], ["信息是否足够可靠", {"insight": 3}]]], ["当别人质疑你的方案时，你通常：", [["要求对方拿出更好的证据", {"insight": 3, "control": 1}], ["愿意马上试试对方思路", {"creative": 3, "empathy": 1}], ["方向没错就不轻易改", {"resilience": 3, "control": 1}], ["先理解对方为什么这样想", {"empathy": 3, "insight": 1}]]], ["你更欣赏哪种人？", [["能把局面稳住的人", {"control": 2, "resilience": 2}], ["敢做别人没做过的事的人", {"creative": 3, "drive": 1}], ["耐得住寂寞、长期积累的人", {"resilience": 3}], ["能洞察人心和趋势的人", {"insight": 3, "empathy": 1}]]], ["临近截止时间，你通常：", [["提前完成并留缓冲", {"control": 3, "resilience": 1}], ["压力越大效率越高", {"drive": 3}], ["临时优化出更聪明的做法", {"creative": 2, "insight": 2}], ["优先保证协作不出问题", {"empathy": 2, "control": 2}]]], ["如果你发现规则明显不合理，你会：", [["先遵守，找时机再推动改变", {"resilience": 2, "control": 2}], ["直接质疑并尝试改变", {"drive": 3, "creative": 1}], ["研究规则为什么存在", {"insight": 3}], ["先看它对不同人的影响", {"empathy": 3, "insight": 1}]]], ["你更偏好的成长方式是：", [["系统训练、反复打磨", {"resilience": 3, "control": 1}], ["大量尝试、快速迭代", {"creative": 3, "drive": 1}], ["找高手讨论并吸收反馈", {"empathy": 2, "insight": 2}], ["独立研究，形成自己的判断体系", {"insight": 3, "resilience": 1}]]], ["朋友遇到问题来找你，你更常做：", [["帮他拆成可执行步骤", {"control": 2, "drive": 2}], ["先听完整，再判断真正卡点", {"empathy": 2, "insight": 2}], ["给出一个没想到的新角度", {"creative": 3}], ["陪他稳住状态，不急着解决", {"empathy": 3, "resilience": 1}]]], ["你对风险的态度更接近：", [["可控风险可以主动承担", {"drive": 3, "control": 1}], ["只要上限够高愿意赌一把", {"creative": 2, "drive": 2}], ["先确保下限，再谈上限", {"resilience": 2, "control": 2}], ["关键是风险是否被低估", {"insight": 3}]]], ["如果没有外界监督，你：", [["照样按自己的节奏长期推进", {"resilience": 3, "control": 1}], ["容易去尝试别的新东西", {"creative": 3}], ["会自己设目标和期限", {"control": 3, "drive": 1}], ["需要确认这件事是否值得做", {"insight": 3}]]], ["面对陌生环境，你首先会：", [["观察规则和关键人物", {"insight": 3, "control": 1}], ["主动认识人，快速融入", {"empathy": 2, "drive": 2}], ["先找到自己能掌控的一小块", {"control": 2, "resilience": 2}], ["主动探索新可能", {"creative": 3, "drive": 1}]]], ["你更像哪种执行者？", [["计划型：先定路线再走", {"control": 3}], ["冲锋型：先行动抢先机", {"drive": 3}], ["耐力型：慢一点但很少停", {"resilience": 3}], ["侦察型：先判断再下注", {"insight": 3}]]], ["遇到长期没有反馈的学习，你：", [["继续按计划积累", {"resilience": 3}], ["换教材、换方法找突破", {"creative": 2, "drive": 1, "insight": 1}], ["重新评估是不是方向错了", {"insight": 3}], ["找同伴或老师获得反馈", {"empathy": 2, "drive": 1, "insight": 1}]]], ["你做事情最容易过度的是：", [["控制细节", {"control": 3}], ["不断换新思路", {"creative": 3}], ["忍太久、扛太久", {"resilience": 3}], ["照顾别人感受", {"empathy": 3}]]], ["如果必须在速度和准确之间选，你通常：", [["先准后快", {"insight": 2, "resilience": 2}], ["先快起来，再修正", {"drive": 3, "creative": 1}], ["看任务性质决定", {"insight": 2, "control": 2}], ["看团队是否跟得上", {"empathy": 2, "control": 2}]]], ["你最有成就感的时刻是：", [["把混乱局面整理清楚", {"control": 3}], ["做出别人没想到的东西", {"creative": 3}], ["熬过困难后终于见效", {"resilience": 3}], ["带着一群人一起完成", {"empathy": 2, "drive": 2}]]], ["当信息互相矛盾时，你会：", [["寻找更高质量的信息源", {"insight": 3}], ["先建立临时判断继续推进", {"drive": 2, "control": 2}], ["允许结论暂时开放", {"creative": 2, "insight": 2}], ["找不同立场的人聊", {"empathy": 2, "insight": 2}]]], ["你对“坚持”的理解更接近：", [["方向对就不要轻易动", {"resilience": 3, "control": 1}], ["坚持目标，不坚持方法", {"creative": 2, "resilience": 2}], ["只坚持经过验证有效的东西", {"insight": 3}], ["坚持到团队形成共同节奏", {"empathy": 2, "control": 2}]]], ["你在压力下通常：", [["更冷静，先处理最关键的", {"control": 2, "insight": 2}], ["立刻行动，边做边解决", {"drive": 3}], ["先稳住情绪，再推进", {"resilience": 3}], ["更关注身边人的状态", {"empathy": 3}]]], ["你更愿意成为：", [["能掌舵的人", {"control": 3, "drive": 1}], ["能破局的人", {"creative": 2, "drive": 2}], ["能守住长期价值的人", {"resilience": 3}], ["能看懂局势的人", {"insight": 3}]]], ["别人最可能怎么评价你？", [["靠谱，有条理", {"control": 2, "resilience": 2}], ["想法多，不按常规", {"creative": 3}], ["能熬、能扛", {"resilience": 3}], ["看问题比较透", {"insight": 3}]]], ["如果未来五年只能强化一种能力，你会选：", [["组织和管理复杂系统", {"control": 3}], ["创造别人没有的新可能", {"creative": 3}], ["把一件事做到极深", {"resilience": 3}], ["提升判断力，减少重大误判", {"insight": 3}]]], ["你理想中的领导更接近：", [["能建立秩序和规则的人", {"control": 3}], ["能激发灵感和新可能的人", {"creative": 3}], ["能一起承担压力的人", {"resilience": 2, "empathy": 2}], ["能指出关键方向的人", {"insight": 3, "drive": 1}]]], ["你学习一个新领域时，最常见的第一步是：", [["建立目录和框架", {"control": 3}], ["先找最有趣的切入口", {"creative": 3}], ["先理解核心规律", {"insight": 3}], ["先看别人怎么学、向谁请教", {"empathy": 2, "insight": 2}]]], ["面对重复但重要的工作，你：", [["能坚持，因为系统稳定更重要", {"resilience": 3, "control": 1}], ["尝试优化或自动化", {"creative": 2, "control": 1, "insight": 1}], ["意义明确就能接受", {"insight": 2, "resilience": 2}], ["如果能让团队更轻松会更愿意做", {"empathy": 2, "resilience": 2}]]], ["你对“天赋”的理解更接近：", [["天赋要变成结构化能力才有价值", {"control": 2, "resilience": 2}], ["天赋就是找到别人想不到的路径", {"creative": 3}], ["天赋需要时间打磨才真正显现", {"resilience": 3}], ["天赋最重要的是少走大弯路", {"insight": 3}]]], ["如果你被放进一个全新团队做核心成员，你最先想确认：", [["目标和分工", {"control": 3}], ["有没有足够创新空间", {"creative": 3}], ["能不能长期稳定配合", {"resilience": 3}], ["关键决策权和信息流向", {"insight": 3}]]], ["你更容易被什么打动？", [["宏大的秩序感和组织力", {"control": 3}], ["独特想象力与创造表达", {"creative": 3}], ["长期忍耐后完成逆转", {"resilience": 3}], ["深刻的人性理解与悲悯", {"empathy": 3}]]]];
 const DIM_KEYS=["control","creative","resilience","empathy","drive","insight"];
 const DIM_NAMES={control:"统筹掌控",creative:"开放创造",resilience:"稳定韧性",empathy:"共情协作",drive:"行动进取",insight:"判断洞察"};
-let mode="mixed", current=0, scores={control:0,creative:0,resilience:0,empathy:0,drive:0,insight:0}, last=null, posterDataUrl=null;
+
+let mode="mixed", current=0, scores={control:0,creative:0,resilience:0,empathy:0,drive:0,insight:0}, last=null, posterDataUrl=null, deferredInstallPrompt=null;
 
 function setMode(m){
   mode=m;
@@ -392,19 +555,21 @@ function startQuiz(){
   document.getElementById("hero").style.display="none";
   document.getElementById("result").style.display="none";
   document.getElementById("quiz").style.display="block";
-  current=0;scores={control:0,creative:0,resilience:0,empathy:0,drive:0,insight:0};
-  renderQuestion();window.scrollTo({top:0,behavior:"smooth"});
+  const cta=document.getElementById("mobileCTA"); if(cta) cta.style.display="none";
+  current=0; scores={control:0,creative:0,resilience:0,empathy:0,drive:0,insight:0};
+  renderQuestion(); window.scrollTo({top:0,behavior:"smooth"});
 }
 function renderQuestion(){
   const q=QUESTIONS[current];
   document.getElementById("question").textContent=q[0];
   document.getElementById("qnum").textContent=String(current+1).padStart(2,"0")+" / "+QUESTIONS.length;
   document.getElementById("progress").style.width=(current/QUESTIONS.length*100)+"%";
-  const box=document.getElementById("answers");box.innerHTML="";
+  const box=document.getElementById("answers"); box.innerHTML="";
   q[1].forEach((a,i)=>{
-    const b=document.createElement("button");b.className="answer";
+    const b=document.createElement("button");
+    b.className="answer";
     b.innerHTML='<span class="letter">'+String.fromCharCode(65+i)+'</span><span>'+a[0]+'</span>';
-    b.onclick=()=>choose(a[1]);box.appendChild(b);
+    b.onclick=()=>choose(a[1]); box.appendChild(b);
   });
 }
 function choose(d){
@@ -412,7 +577,7 @@ function choose(d){
   current++; current>=QUESTIONS.length?showResult():renderQuestion();
 }
 function normalize(){
-  const vals=DIM_KEYS.map(k=>scores[k]),mn=Math.min(...vals),mx=Math.max(...vals),o={};
+  const vals=DIM_KEYS.map(k=>scores[k]), mn=Math.min(...vals), mx=Math.max(...vals), o={};
   DIM_KEYS.forEach(k=>o[k]=Math.round(mx===mn?60:28+(scores[k]-mn)/(mx-mn)*66));
   return o;
 }
@@ -427,22 +592,46 @@ function rank(u,m){
 function showResult(){
   const user=normalize(), ranked=rank(user,mode), best=ranked[0];
   last={user,best,ranked,mode};
-  localStorage.setItem("historia_v3_last",JSON.stringify(last));
+  localStorage.setItem("historia_v5_last",JSON.stringify(last));
   document.getElementById("quiz").style.display="none";
   document.getElementById("result").style.display="block";
+
+  const top=topDims(user);
   document.getElementById("personName").textContent=best.name;
   document.getElementById("personEra").textContent=best.era;
   document.getElementById("regionBadge").textContent=best.region;
   document.getElementById("typeBadge").textContent=best.type;
   document.getElementById("modeBadge").textContent=modeName(mode);
   document.getElementById("matchPct").textContent=best.sim.toFixed(1)+"%";
+  document.getElementById("matchPctLeft").textContent=best.sim.toFixed(1)+"%";
+  document.getElementById("leftQuote").textContent="“"+best.tag+"”";
+  document.getElementById("coreDimA").textContent=DIM_NAMES[top[0][0]];
+  document.getElementById("coreDimB").textContent=DIM_NAMES[top[1][0]];
+  document.getElementById("poolSize").textContent=poolFor(mode).length;
+  document.getElementById("issueLabel").textContent="ISSUE / "+String(PEOPLE.findIndex(x=>x.name===best.name)+1).padStart(3,"0");
+
+  const portraitURL=buildPortraitSVG(best, 720, 900);
+  document.getElementById("portraitMain").src=portraitURL;
+  document.getElementById("portraitMain").alt=best.name+"人物肖像";
+
   document.getElementById("tagline").textContent="“"+best.tag+"”";
-  renderRadar(user,best);renderDims(user);renderCoreTexts(user,best);renderLongRead(user,best);renderTop5(ranked.slice(0,5));
-  setSwitcher(mode);window.scrollTo({top:0,behavior:"smooth"});
+  document.getElementById("editorialText").textContent=buildEditorial(best, user);
+
+  renderRadar(user,best);
+  renderDims(user);
+  renderCoreTexts(user,best);
+  renderLongRead(user,best);
+  renderTop5(ranked.slice(0,5));
+  setSwitcher(mode);
+  window.scrollTo({top:0,behavior:"smooth"});
 }
 function topDims(user){return Object.entries(user).sort((a,b)=>b[1]-a[1])}
+function buildEditorial(best,user){
+  const top=topDims(user).slice(0,2).map(x=>DIM_NAMES[x[0]]).join(" × ");
+  return "你的结果更接近「"+best.name+"」这一历史原型。你最突出的能力组合是 "+top+"，这意味着你面对复杂局面时，通常不会平均使用所有能力，而是优先调用最顺手的那几种方式去理解局势、安排节奏并推进结果。";
+}
 function renderCoreTexts(user,best){
-  const t=topDims(user),a=t[0][0],b=t[1][0],low=t[t.length-1][0];
+  const t=topDims(user), a=t[0][0], b=t[1][0], low=t[t.length-1][0];
   const P={
     control:"你倾向于先把复杂问题结构化，明确目标、边界和资源，再推进。",
     creative:"你对新路径与非常规解法更敏感，容易从旧框架外寻找突破。",
@@ -451,7 +640,8 @@ function renderCoreTexts(user,best){
     drive:"你对行动、速度和窗口期更敏感，不愿无限等待完美条件。",
     insight:"你习惯先判断变量、风险与真实因果，再决定是否行动。"
   };
-  document.getElementById("portrait").textContent=P[a]+" "+P[b]+" 这两项共同构成了你与「"+best.name+"」最主要的相似来源。";
+  document.getElementById("portraitText").textContent=P[a]+" "+P[b]+" 这两项共同构成了你与「"+best.name+"」最主要的相似来源。";
+
   const path={
     control:"确定目标 → 划边界 → 排优先级 → 分配资源 → 稳定推进",
     creative:"发现限制 → 打破假设 → 生成新路径 → 快速验证 → 重组方案",
@@ -461,6 +651,7 @@ function renderCoreTexts(user,best){
     insight:"收集信息 → 找关键变量 → 排除噪音 → 判断概率 → 决策"
   };
   document.getElementById("pathText").textContent=path[a]+"。第二高维度「"+DIM_NAMES[b]+"」会在关键节点修正你的路径。";
+
   const S={
     control:"你擅长让混乱变得可管理，适合承担目标、节奏与资源协调责任。",
     creative:"当常规方案失效时，你更可能找到替代路径，适合创新与破局任务。",
@@ -470,6 +661,7 @@ function renderCoreTexts(user,best){
     insight:"你擅长降低重大误判概率，对信息质量、因果关系和风险结构更敏感。"
   };
   document.getElementById("strengthText").textContent=S[a]+" "+S[b];
+
   const B={
     control:"控制感过强时，你可能把本可灵活处理的问题也做成制度问题。",
     creative:"新鲜感过强时，你可能过早放弃仍需要时间验证的方案。",
@@ -479,6 +671,7 @@ function renderCoreTexts(user,best){
     insight:"分析过度时，你可能等待一个现实中永远不会出现的“足够确定”。"
   };
   document.getElementById("blindText").textContent="你的最低维度是「"+DIM_NAMES[low]+"」。它不等于缺点；更值得警惕的是优势被过度使用。"+B[a];
+
   const E={
     control:"目标明确、责任边界清晰、允许你掌控流程",
     creative:"问题开放、容忍试错、允许提出新路线",
@@ -490,37 +683,40 @@ function renderCoreTexts(user,best){
   document.getElementById("envText").textContent="更适合你的环境通常具备两个条件："+E[a]+"；以及"+E[b]+"。";
 }
 function renderLongRead(user,best){
-  const t=topDims(user),a=t[0][0],b=t[1][0],low=t[t.length-1][0];
+  const t=topDims(user), a=t[0][0], b=t[1][0], low=t[t.length-1][0];
   const figPairs=DIM_KEYS.map((k,i)=>[k,best.v[i]]).sort((x,y)=>y[1]-x[1]);
-  const fa=figPairs[0][0],fb=figPairs[1][0],flow=figPairs[figPairs.length-1][0];
+  const fa=figPairs[0][0], fb=figPairs[1][0], flow=figPairs[figPairs.length-1][0];
   const overlap=[a,b].filter(k=>[fa,fb].includes(k));
   const overlapText=overlap.length?overlap.map(k=>"「"+DIM_NAMES[k]+"」").join("与"):"整体结构与节奏";
   const gapKey=DIM_KEYS.slice().sort((x,y)=>Math.abs(user[y]-best.v[DIM_KEYS.indexOf(y)])-Math.abs(user[x]-best.v[DIM_KEYS.indexOf(x)]))[0];
   const box=document.getElementById("longRead");
   box.innerHTML=`
-    <div class="block"><b>① 原型核心</b><p>${best.name}（${best.era}）在本测试中被抽象为「${best.type}」型人物。其核心不是某段具体历史，而是：${best.tag} 你与 TA 的匹配，主要来自 ${overlapText} 上的相近结构。</p></div>
+    <div class="block"><b>① 原型核心</b><p>${best.name}（${best.era}）在本测试中被抽象为「${best.type}」型人物。其核心不是某段具体历史，而是：${best.tag}。你与 TA 的匹配，主要来自 ${overlapText} 上的相近结构。</p></div>
     <div class="block"><b>② 你们最像的地方</b><p>你的最高维度是「${DIM_NAMES[a]}」与「${DIM_NAMES[b]}」，而 ${best.name} 原型最突出的维度是「${DIM_NAMES[fa]}」与「${DIM_NAMES[fb]}」。这意味着你们处理复杂问题时，都更容易优先调用这些能力，而不是平均使用所有能力。</p></div>
     <div class="block"><b>③ 你和 TA 并不完全一样</b><p>相似度不是复制。你们差异相对更明显的维度是「${DIM_NAMES[gapKey]}」。因此，你可能会在某些情境里做出与 ${best.name} 原型不同的选择：同样的目标，你更可能用自己的节奏、关系处理方式或风险偏好完成。</p></div>
     <div class="block"><b>④ 这个原型对你的实际意义</b><p>把 ${best.name} 当成一面镜子，而不是标签。真正有价值的不是“像谁”，而是识别你天然更会用的能力，并判断它们在什么环境里会变成优势、在什么情况下会被用过头。尤其要留意你的低维度「${DIM_NAMES[low]}」和人物原型的低维度「${DIM_NAMES[flow]}」：它们往往就是盲区出现的地方。</p></div>`;
 }
 function renderDims(user){
-  const box=document.getElementById("dims");box.innerHTML="";
+  const box=document.getElementById("dims"); box.innerHTML="";
   DIM_KEYS.forEach(k=>{
-    const d=document.createElement("div");d.className="dim";
+    const d=document.createElement("div"); d.className="dim";
     d.innerHTML='<div class="dimTop"><span>'+DIM_NAMES[k]+'</span><b>'+user[k]+'</b></div><div class="bar"><i style="width:'+user[k]+'%"></i></div>';
     box.appendChild(d);
   });
 }
 function renderTop5(arr){
-  const box=document.getElementById("top5");box.innerHTML="";
+  const box=document.getElementById("top5"); box.innerHTML="";
   arr.forEach((x,i)=>{
-    const r=document.createElement("div");r.className="rank";
-    r.innerHTML='<b>0'+(i+1)+' · '+x.name+' <small>'+x.era+' · '+x.region+'</small></b><span>'+x.sim.toFixed(1)+'%</span>';
-    box.appendChild(r);
+    const card=document.createElement("div"); card.className="rankCard";
+    card.innerHTML='<div class="rankThumb"><img src="'+buildPortraitSVG(x,420,520)+'" alt="'+x.name+'人物肖像"></div>\
+      <div class="rankInfo"><b>0'+(i+1)+' · '+x.name+'</b><small>'+x.era+' · '+x.region+'</small><span>'+x.sim.toFixed(1)+'%</span></div>';
+    box.appendChild(card);
   });
 }
 function rerank(m){
-  if(!last)return; renderTop5(rank(last.user,m).slice(0,5));setSwitcher(m);
+  if(!last) return;
+  renderTop5(rank(last.user,m).slice(0,5));
+  setSwitcher(m);
 }
 function setSwitcher(m){
   document.getElementById("sMixed").classList.toggle("active",m==="mixed");
@@ -531,7 +727,7 @@ function poly(vals,cx,cy,r){
   return vals.map((v,i)=>{const a=-Math.PI/2+i*Math.PI*2/6,rr=r*v/100;return (cx+Math.cos(a)*rr).toFixed(1)+","+(cy+Math.sin(a)*rr).toFixed(1)}).join(" ");
 }
 function renderRadar(user,best){
-  const svg=document.getElementById("radar"),cx=260,cy=235,r=150;let s="";
+  const svg=document.getElementById("radar"), cx=260, cy=235, r=150; let s="";
   [20,40,60,80,100].forEach(l=>s+='<polygon points="'+poly([l,l,l,l,l,l],cx,cy,r)+'" fill="none" stroke="rgba(201,167,109,'+(l===100?'.28':'.11')+')" />');
   for(let i=0;i<6;i++){const a=-Math.PI/2+i*Math.PI*2/6,x=cx+Math.cos(a)*r,y=cy+Math.sin(a)*r;s+='<line x1="'+cx+'" y1="'+cy+'" x2="'+x+'" y2="'+y+'" stroke="rgba(201,167,109,.12)"/>'}
   s+='<polygon points="'+poly(best.v,cx,cy,r)+'" fill="rgba(255,255,255,.015)" stroke="rgba(200,190,170,.35)" stroke-width="2" stroke-dasharray="6 5"/>';
@@ -540,176 +736,210 @@ function renderRadar(user,best){
   s+='<text x="260" y="452" fill="#6f6962" font-size="11" text-anchor="middle">实线：你 · 虚线：'+best.name+'原型</text>';
   svg.innerHTML=s;
 }
+
+function archetypeColor(type){
+  const map={
+    strategist:["#2d2238","#a8814b"], organizer:["#1e2331","#c39b61"], creator:["#3b2430","#c6976a"],
+    thinker:["#202833","#b48a58"], reformer:["#2d1f1f","#b87157"], warrior:["#2b2222","#c07f57"],
+    humanist:["#2b2532","#bb9a76"], scientist:["#1e2733","#8eb0c7"], artist:["#342435","#cf8ba0"],
+    statesman:["#26242f","#c59a5a"], explorer:["#263233","#87b0a1"], teacher:["#2e2d25","#c0aa73"],
+    survivor:["#2e2622","#c68f63"], visionary:["#232638","#a28cd0"], institutionalist:["#272223","#c58a5c"]
+  };
+  return map[type] || ["#24252e","#c9a86b"];
+}
+function buildPortraitSVG(person,w=720,h=900){
+  const [c1,c2]=archetypeColor(person.archetype);
+  const regionLabel=person.region==="中国"?"ZHONGGUO":"WORLD FIGURE";
+  const svg = `
+  <svg xmlns="http://www.w3.org/2000/svg" width="${w}" height="${h}" viewBox="0 0 ${w} ${h}">
+    <defs>
+      <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0%" stop-color="${c1}"/>
+        <stop offset="100%" stop-color="${c2}"/>
+      </linearGradient>
+      <radialGradient id="rg" cx="50%" cy="22%" r="70%">
+        <stop offset="0%" stop-color="rgba(255,255,255,.28)"/>
+        <stop offset="100%" stop-color="rgba(255,255,255,0)"/>
+      </radialGradient>
+    </defs>
+    <rect width="${w}" height="${h}" rx="34" fill="#0f1014"/>
+    <rect x="14" y="14" width="${w-28}" height="${h-28}" rx="26" fill="url(#g)" opacity=".90"/>
+    <rect x="28" y="28" width="${w-56}" height="${h-56}" rx="22" fill="none" stroke="rgba(231,201,150,.34)"/>
+    <circle cx="${w/2}" cy="${h*0.35}" r="${Math.min(w,h)*0.24}" fill="rgba(255,255,255,.06)" stroke="rgba(255,255,255,.12)"/>
+    <path d="M ${w*0.5} ${h*0.18} 
+             c ${w*0.11} 0 ${w*0.17} ${h*0.08} ${w*0.17} ${h*0.18}
+             c 0 ${h*0.10} -${w*0.08} ${h*0.18} -${w*0.17} ${h*0.18}
+             c -${w*0.09} 0 -${w*0.17} -${h*0.08} -${w*0.17} -${h*0.18}
+             c 0 -${h*0.10} ${w*0.06} -${h*0.18} ${w*0.17} -${h*0.18} z"
+          fill="rgba(15,16,20,.76)"/>
+    <path d="M ${w*0.31} ${h*0.68}
+             c ${w*0.06} -${h*0.15} ${w*0.26} -${h*0.15} ${w*0.38} 0
+             c ${w*0.09} ${h*0.11} ${w*0.10} ${h*0.20} ${w*0.10} ${h*0.26}
+             H ${w*0.21}
+             c 0 -${h*0.09} ${w*0.03} -${h*0.17} ${w*0.10} -${h*0.26} z"
+          fill="rgba(15,16,20,.82)"/>
+    <circle cx="${w*0.35}" cy="${h*0.30}" r="${w*0.014}" fill="rgba(231,201,150,.55)"/>
+    <circle cx="${w*0.65}" cy="${h*0.30}" r="${w*0.014}" fill="rgba(231,201,150,.55)"/>
+    <path d="M ${w*0.18} ${h*0.74} H ${w*0.82}" stroke="rgba(231,201,150,.35)" stroke-width="1"/>
+    <text x="${w*0.07}" y="${h*0.10}" fill="rgba(255,255,255,.76)" font-family="Georgia,serif" font-size="${w*0.04}" letter-spacing="4">HISTORIA</text>
+    <text x="${w*0.07}" y="${h*0.83}" fill="#f2ede5" font-family="Microsoft YaHei, PingFang SC, sans-serif" font-size="${w*0.09}" font-weight="700">${person.name}</text>
+    <text x="${w*0.07}" y="${h*0.88}" fill="rgba(242,237,229,.74)" font-family="Microsoft YaHei, PingFang SC, sans-serif" font-size="${w*0.034}">${person.era}</text>
+    <text x="${w*0.07}" y="${h*0.93}" fill="rgba(231,201,150,.82)" font-family="Georgia,serif" font-size="${w*0.026}" letter-spacing="2">${regionLabel} · ${person.type}</text>
+    <text x="${w*0.90}" y="${h*0.10}" fill="rgba(231,201,150,.55)" font-family="Georgia,serif" font-size="${w*0.05}" text-anchor="end">NO.${String(PEOPLE.findIndex(x=>x.name===person.name)+1).padStart(3,"0")}</text>
+  </svg>`;
+  return "data:image/svg+xml;charset=UTF-8,"+encodeURIComponent(svg);
+}
+
 function restart(){
   document.getElementById("result").style.display="none";
   document.getElementById("hero").style.display="grid";
+  const cta=document.getElementById("mobileCTA"); if(cta && window.innerWidth<=700) cta.style.display="block";
   window.scrollTo({top:0,behavior:"smooth"});
 }
 function copySummary(){
-  if(!last)return;const t=topDims(last.user).slice(0,2).map(x=>DIM_NAMES[x[0]]).join(" × ");
-  const text="HISTORIA 历史人格原型测试 V3\n我的历史人格原型："+last.best.name+"\n匹配模式："+modeName(last.mode)+"\n相似度："+last.best.sim.toFixed(1)+"%\n核心维度："+t+"\n"+last.best.tag;
+  if(!last) return;
+  const t=topDims(last.user).slice(0,2).map(x=>DIM_NAMES[x[0]]).join(" × ");
+  const text="HISTORIA 历史人格原型测试 V5\n我的历史人格原型："+last.best.name+"\n匹配模式："+modeName(last.mode)+"\n相似度："+last.best.sim.toFixed(1)+"%\n核心维度："+t+"\n"+last.best.tag;
   navigator.clipboard?.writeText(text).then(()=>alert("结果文案已复制")).catch(()=>prompt("复制下面的结果：",text));
 }
+
+async function makePoster(){
+  if(!last) return null;
+  const c=document.createElement("canvas"); c.width=1170; c.height=2532; const x=c.getContext("2d");
+  const g=x.createLinearGradient(0,0,0,2532); g.addColorStop(0,"#0b0b0f"); g.addColorStop(.45,"#121219"); g.addColorStop(1,"#0a0a0d");
+  x.fillStyle=g; x.fillRect(0,0,c.width,c.height);
+  x.fillStyle="rgba(224,191,132,.05)";
+  for(let i=0;i<280;i++){x.fillRect((i*97)%1170,(i*173)%2532,2,2)}
+  x.strokeStyle="rgba(224,191,132,.26)"; x.lineWidth=2;
+  roundRect(x,64,64,1042,2404,34,false,true);
+
+  x.fillStyle="#dfc48d"; x.font="700 34px Georgia"; x.fillText("HISTORIA",96,126);
+  x.fillStyle="#766d62"; x.font="24px Microsoft YaHei"; x.fillText("历史人格原型测试 · 杂志版结果海报",96,166);
+
+  const img=new Image();
+  img.src=buildPortraitSVG(last.best, 760, 920);
+  await new Promise(res=>{img.onload=res; img.onerror=res;});
+  roundImageCard(x,img,82,220,1006,1160,32);
+
+  x.fillStyle="#f2ede5"; x.font="600 74px Microsoft YaHei"; x.fillText("我的历史人格原型",96,1460);
+  x.fillStyle="#e4c58d"; x.font="700 118px Microsoft YaHei"; x.fillText(last.best.name,96,1598);
+
+  x.fillStyle="#9a9185"; x.font="28px Microsoft YaHei";
+  x.fillText(last.best.era+" · "+last.best.region+" · "+last.best.type,98,1650);
+
+  x.fillStyle="#e2c38b"; x.font="700 108px Georgia"; x.fillText(last.best.sim.toFixed(1)+"%",96,1810);
+  x.fillStyle="#8d8378"; x.font="26px Microsoft YaHei"; x.fillText("人格相似度 · "+modeName(last.mode),98,1854);
+
+  x.strokeStyle="rgba(224,191,132,.25)"; x.beginPath(); x.moveTo(96,1902); x.lineTo(1070,1902); x.stroke();
+  x.fillStyle="#e5ddd0"; x.font="36px Microsoft YaHei"; wrapText(x,"“"+last.best.tag+"”",96,1978,970,54,4);
+
+  const td=topDims(last.user).slice(0,3);
+  x.fillStyle="#8f867a"; x.font="24px Microsoft YaHei"; x.fillText("你的核心维度",96,2212);
+  td.forEach((d,i)=>{
+    const yy=2270+i*78;
+    x.fillStyle="#d6cbbd"; x.font="30px Microsoft YaHei"; x.fillText(DIM_NAMES[d[0]],96,yy);
+    x.fillStyle="#e0bf84"; x.font="700 34px Georgia"; x.fillText(String(d[1]),302,yy);
+    x.fillStyle="#2a282d"; roundRect(x,364,yy-24,610,12,6,true,false);
+    const gg=x.createLinearGradient(364,0,974,0); gg.addColorStop(0,"#8a6a3d"); gg.addColorStop(1,"#d9b87e");
+    x.fillStyle=gg; roundRect(x,364,yy-24,610*d[1]/100,12,6,true,false);
+  });
+
+  x.fillStyle="#71685f"; x.font="21px Microsoft YaHei"; x.fillText("120 位中外人物 · 36 题 · 6 维行为向量 · HISTORIA V5",96,2446);
+  return c.toDataURL("image/png");
+}
 function roundRect(ctx,x,y,w,h,r,fill,stroke){
-  ctx.beginPath();ctx.moveTo(x+r,y);ctx.arcTo(x+w,y,x+w,y+h,r);ctx.arcTo(x+w,y+h,x,y+h,r);ctx.arcTo(x,y+h,x,y,r);ctx.arcTo(x,y,x+w,y,r);
-  if(fill)ctx.fill();if(stroke)ctx.stroke();
+  ctx.beginPath();
+  ctx.moveTo(x+r,y); ctx.arcTo(x+w,y,x+w,y+h,r); ctx.arcTo(x+w,y+h,x,y+h,r); ctx.arcTo(x,y+h,x,y,r); ctx.arcTo(x,y,x+w,y,r);
+  if(fill) ctx.fill(); if(stroke) ctx.stroke();
+}
+function roundImageCard(ctx,img,x,y,w,h,r){
+  ctx.save();
+  ctx.beginPath();
+  ctx.moveTo(x+r,y); ctx.arcTo(x+w,y,x+w,y+h,r); ctx.arcTo(x+w,y+h,x,y+h,r); ctx.arcTo(x,y+h,x,y,r); ctx.arcTo(x,y,x+w,y,r);
+  ctx.closePath(); ctx.clip();
+  ctx.drawImage(img,x,y,w,h);
+  ctx.restore();
+  ctx.strokeStyle="rgba(224,191,132,.16)"; ctx.lineWidth=2; roundRect(ctx,x,y,w,h,r,false,true);
 }
 function wrapText(ctx,text,x,y,maxWidth,lineHeight,maxLines=99){
   let lines=[],line="";
-  for(const ch of text){const test=line+ch;if(ctx.measureText(test).width>maxWidth&&line){lines.push(line);line=ch}else line=test}
-  if(line)lines.push(line);if(lines.length>maxLines){lines=lines.slice(0,maxLines);lines[maxLines-1]=lines[maxLines-1].slice(0,-1)+"…"}
-  lines.forEach((l,i)=>ctx.fillText(l,x,y+i*lineHeight));return y+lines.length*lineHeight;
+  for(const ch of text){
+    const test=line+ch;
+    if(ctx.measureText(test).width>maxWidth && line){lines.push(line); line=ch}else line=test;
+  }
+  if(line) lines.push(line);
+  if(lines.length>maxLines){lines=lines.slice(0,maxLines); lines[maxLines-1]=lines[maxLines-1].slice(0,-1)+"…"}
+  lines.forEach((l,i)=>ctx.fillText(l,x,y+i*lineHeight));
+  return y+lines.length*lineHeight;
 }
-function makePoster(){
-  if(!last)return null;
-  const c=document.createElement("canvas");c.width=1080;c.height=1440;const x=c.getContext("2d");
-  const g=x.createLinearGradient(0,0,1080,1440);g.addColorStop(0,"#0b0b0e");g.addColorStop(.55,"#151219");g.addColorStop(1,"#0b0c10");x.fillStyle=g;x.fillRect(0,0,1080,1440);
-  // subtle paper/noise-like stars
-  x.fillStyle="rgba(221,189,133,.045)";
-  for(let i=0;i<220;i++){const px=(i*97)%1080,py=(i*173)%1440;x.fillRect(px,py,2,2)}
-  x.strokeStyle="rgba(221,189,133,.24)";x.lineWidth=2;roundRect(x,58,58,964,1324,34,false,true);
-  x.fillStyle="#d9bb85";x.font="700 30px Georgia";x.fillText("HISTORIA",90,118);
-  x.fillStyle="#81776a";x.font="22px Microsoft YaHei";x.fillText("历史人格原型测试 · V3",90,158);
-  x.fillStyle="#f0e9df";x.font="600 66px Microsoft YaHei";x.fillText("我的历史人格原型",90,292);
-  x.fillStyle="#e0bf84";x.font="600 116px Microsoft YaHei";x.fillText(last.best.name,90,432);
-  x.fillStyle="#9a9185";x.font="26px Microsoft YaHei";x.fillText(last.best.era+" · "+last.best.region+" · "+last.best.type,92,482);
-  x.fillStyle="#e0bf84";x.font="700 102px Georgia";x.fillText(last.best.sim.toFixed(1)+"%",90,635);
-  x.fillStyle="#8c8377";x.font="24px Microsoft YaHei";x.fillText("人格相似度 · "+modeName(last.mode),92,677);
-
-  x.strokeStyle="rgba(224,191,132,.35)";x.beginPath();x.moveTo(92,735);x.lineTo(988,735);x.stroke();
-  x.fillStyle="#e6ded3";x.font="34px Microsoft YaHei";wrapText(x,"“"+last.best.tag+"”",92,806,850,52,4);
-
-  const td=topDims(last.user).slice(0,3);
-  x.fillStyle="#8f867a";x.font="24px Microsoft YaHei";x.fillText("你的核心维度",92,1000);
-  td.forEach((d,i)=>{
-    const yy=1060+i*72;x.fillStyle="#d6cbbd";x.font="28px Microsoft YaHei";x.fillText(DIM_NAMES[d[0]],92,yy);
-    x.fillStyle="#e0bf84";x.font="700 32px Georgia";x.fillText(String(d[1]),300,yy);
-    x.fillStyle="#2a282d";roundRect(x,360,yy-23,570,12,6,true,false);
-    const gg=x.createLinearGradient(360,0,930,0);gg.addColorStop(0,"#8a6a3d");gg.addColorStop(1,"#d9b87e");x.fillStyle=gg;roundRect(x,360,yy-23,570*d[1]/100,12,6,true,false);
-  });
-  x.fillStyle="#756d63";x.font="20px Microsoft YaHei";x.fillText("120 位中外人物 · 36 题 · 6 维行为向量",92,1322);
-  x.fillStyle="#574f48";x.font="18px Microsoft YaHei";x.fillText("仅用于自我观察与娱乐性人格探索",92,1356);
-  return c.toDataURL("image/png");
-}
-function openPoster(){
-  posterDataUrl=makePoster();if(!posterDataUrl)return;
-  document.getElementById("posterImg").src=posterDataUrl;document.getElementById("posterModal").classList.add("open");
+async function openPoster(){
+  posterDataUrl=await makePoster();
+  if(!posterDataUrl) return;
+  document.getElementById("posterImg").src=posterDataUrl;
+  document.getElementById("posterModal").classList.add("open");
 }
 function closePoster(){document.getElementById("posterModal").classList.remove("open")}
-function modalBg(e){if(e.target.id==="posterModal")closePoster()}
-function downloadPoster(){
-  if(!posterDataUrl)posterDataUrl=makePoster();const a=document.createElement("a");a.href=posterDataUrl;a.download="HISTORIA_"+last.best.name+"_人格原型.png";a.click();
+function modalBg(e){if(e.target.id==="posterModal") closePoster()}
+async function downloadPoster(){
+  if(!posterDataUrl) posterDataUrl=await makePoster();
+  const a=document.createElement("a"); a.href=posterDataUrl; a.download="HISTORIA_"+last.best.name+"_人格原型.png"; a.click();
 }
 
-// ===== V4 PWA / Mobile H5 =====
-let deferredInstallPrompt=null;
-
-window.addEventListener("beforeinstallprompt",(e)=>{
-  e.preventDefault();
-  deferredInstallPrompt=e;
-});
-
-window.addEventListener("appinstalled",()=>{
-  deferredInstallPrompt=null;
-  closeInstallSheet();
-});
-
-function isiOS(){
-  return /iphone|ipad|ipod/i.test(navigator.userAgent);
-}
-function isStandalone(){
-  return window.matchMedia("(display-mode: standalone)").matches || window.navigator.standalone===true;
-}
+/* PWA */
+window.addEventListener("beforeinstallprompt",(e)=>{e.preventDefault(); deferredInstallPrompt=e;});
+window.addEventListener("appinstalled",()=>{deferredInstallPrompt=null; closeInstallSheet();});
+function isiOS(){return /iphone|ipad|ipod/i.test(navigator.userAgent)}
+function isStandalone(){return window.matchMedia("(display-mode: standalone)").matches || window.navigator.standalone===true}
 function openInstallSheet(type="generic"){
-  const sheet=document.getElementById("installSheet");
-  const title=document.getElementById("installTitle");
-  const desc=document.getElementById("installDesc");
-  const steps=document.getElementById("installSteps");
+  const sheet=document.getElementById("installSheet"), title=document.getElementById("installTitle"), desc=document.getElementById("installDesc"), steps=document.getElementById("installSteps");
   if(type==="ios"){
     title.textContent="添加到 iPhone / iPad 主屏幕";
     desc.textContent="Safari 不会弹出自动安装按钮，请按下面 3 步操作。";
-    steps.innerHTML=`
-      <div class="step"><b>1</b><span>使用 Safari 打开这个测试页面。</span></div>
+    steps.innerHTML=`<div class="step"><b>1</b><span>使用 Safari 打开这个测试页面。</span></div>
       <div class="step"><b>2</b><span>点击底部或顶部的“分享”按钮。</span></div>
-      <div class="step"><b>3</b><span>向下找到“添加到主屏幕”，确认名称后点击“添加”。</span></div>`;
+      <div class="step"><b>3</b><span>选择“添加到主屏幕”，确认名称后点击“添加”。</span></div>`;
   }else if(type==="android"){
     title.textContent="安装 HISTORIA";
     desc.textContent="如果浏览器没有自动弹出安装窗口，可以使用浏览器菜单手动添加。";
-    steps.innerHTML=`
-      <div class="step"><b>1</b><span>点击浏览器右上角菜单。</span></div>
+    steps.innerHTML=`<div class="step"><b>1</b><span>点击浏览器右上角菜单。</span></div>
       <div class="step"><b>2</b><span>选择“安装应用”或“添加到主屏幕”。</span></div>
       <div class="step"><b>3</b><span>确认后即可从桌面以独立窗口打开。</span></div>`;
   }else{
     title.textContent="添加 HISTORIA 到桌面";
     desc.textContent="部署到 HTTPS 后，Chrome / Edge / Safari 可以把它作为 PWA 添加到主屏幕。";
-    steps.innerHTML=`
-      <div class="step"><b>1</b><span>先把本文件夹部署到 HTTPS 网站。</span></div>
+    steps.innerHTML=`<div class="step"><b>1</b><span>先把本文件夹部署到 HTTPS 网站。</span></div>
       <div class="step"><b>2</b><span>手机浏览器打开网址后点击“添加到桌面”。</span></div>
       <div class="step"><b>3</b><span>安装后可获得独立启动图标、全屏窗口和离线缓存。</span></div>`;
   }
   sheet.classList.add("open");
 }
 function closeInstallSheet(){document.getElementById("installSheet").classList.remove("open")}
-function installSheetBg(e){if(e.target.id==="installSheet")closeInstallSheet()}
-
+function installSheetBg(e){if(e.target.id==="installSheet") closeInstallSheet()}
 async function installApp(){
-  if(isStandalone()){
-    alert("HISTORIA 已经以桌面应用模式运行。");
-    return;
-  }
+  if(isStandalone()){alert("HISTORIA 已经以桌面应用模式运行。"); return;}
   if(deferredInstallPrompt){
     deferredInstallPrompt.prompt();
-    try{
-      await deferredInstallPrompt.userChoice;
-    }catch(e){}
-    deferredInstallPrompt=null;
-    return;
+    try{await deferredInstallPrompt.userChoice;}catch(e){}
+    deferredInstallPrompt=null; return;
   }
   if(isiOS()) openInstallSheet("ios");
   else if(/android/i.test(navigator.userAgent)) openInstallSheet("android");
   else openInstallSheet("generic");
 }
-
 async function shareApp(){
-  const data={
-    title:"HISTORIA · 历史人格原型测试",
-    text:"36 道题，在 120 位中外历史人物中寻找与你最接近的行为原型。",
-    url:location.protocol.startsWith("http")?location.href:undefined
-  };
-  if(navigator.share){
-    try{await navigator.share(data);return}catch(e){}
-  }
-  if(data.url && navigator.clipboard){
-    await navigator.clipboard.writeText(data.url);
-    alert("测试链接已复制。");
-  }else{
-    alert("当前是本地文件。部署到网站后即可直接分享测试链接。");
-  }
+  const data={title:"HISTORIA · 历史人格原型测试", text:"36 道题，在 120 位中外历史人物中寻找与你最接近的行为原型。", url:location.protocol.startsWith("http")?location.href:undefined};
+  if(navigator.share){try{await navigator.share(data); return;}catch(e){}}
+  if(data.url && navigator.clipboard){await navigator.clipboard.writeText(data.url); alert("测试链接已复制。");}
+  else alert("当前是本地文件。部署到网站后即可直接分享测试链接。");
 }
 
-// Splash
 window.addEventListener("load",()=>{
   setTimeout(()=>document.getElementById("splash")?.classList.add("hide"),950);
-  setTimeout(()=>{const s=document.getElementById("splash"); if(s) s.style.display="none"},1600);
+  setTimeout(()=>{const s=document.getElementById("splash"); if(s) s.style.display="none";},1600);
 });
-
-// Hide mobile global CTA once the quiz/result starts.
-const _startQuizV4=startQuiz;
-startQuiz=function(){
-  document.getElementById("mobileCTA").style.display="none";
-  _startQuizV4();
-}
-const _restartV4=restart;
-restart=function(){
-  _restartV4();
-  if(window.innerWidth<=600) document.getElementById("mobileCTA").style.display="block";
-}
-
-// Service worker only works on http(s), not file://
 if("serviceWorker" in navigator && location.protocol.startsWith("http")){
   window.addEventListener("load",()=>navigator.serviceWorker.register("./sw.js").catch(()=>{}));
 }
-
 </script>
 </body>
 </html>
