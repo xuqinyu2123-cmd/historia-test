@@ -1,4 +1,4 @@
-const CACHE="historia-v8-final-release-20260903";
+const CACHE="historia-v8-1-stable-final-20260903";
 const CORE=[
   "./",
   "./index.html",

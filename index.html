@@ -559,7 +559,7 @@ body:after{
 @keyframes portraitShimmer{to{background-position-x:-220%}}
 
 
-/* ===== HISTORIA V8.0 FINAL RELEASE ===== */
+/* ===== HISTORIA V8.1 FINAL RELEASE ===== */
 .portraitWrap{
   isolation:isolate;
 }
@@ -738,7 +738,7 @@ body:after{
       <h2>你的行为画像</h2>
       <p id="portraitText"></p>
       <div class="radarDims" style="margin-top:18px">
-        <div class="radarBox"><svg id="radar" viewBox="0 0 520 480"></svg></div>
+        <div class="radarBox"><svg id="radar" viewBox="0 0 520 480"><text x="260" y="240" fill="#6f6962" font-size="12" text-anchor="middle">正在生成行为画像…</text></svg></div>
         <div id="dims" class="dims"></div>
       </div>
     </div>
@@ -784,7 +784,7 @@ body:after{
   </div>
 
   <div class="footer">
-    <span>HISTORIA · Final Release · V8.0</span>
+    <span>HISTORIA · Final Release · V8.1</span>
     <button class="footLink" onclick="openInfo('about')">关于测试</button>
     <button class="footLink" onclick="openInfo('privacy')">隐私说明</button>
     <button class="footLink" onclick="openInfo('sources')">图片与资料来源</button>
@@ -923,11 +923,15 @@ function renderResultState(state){
 
   document.getElementById("portraitMain").alt=best.name+"人物肖像";
   setMainPortrait(best);
-  renderNarrative(best,user);
-  renderDims(user);
-  renderRadar(user,best.v);
-  renderTop5(ranked.slice(0,5));
-  setSwitcher(stateMode);
+  // 各结果模块独立渲染：某一个模块异常时，不再拖垮后续全部结果区。
+  const safeRender=(fn)=>{ try{ fn(); }catch(err){ console.error("[HISTORIA render]",err); } };
+
+  safeRender(()=>renderCoreTexts(user,best));
+  safeRender(()=>renderDims(user));
+  safeRender(()=>renderRadar(user,best));
+  safeRender(()=>renderLongRead(user,best));
+  safeRender(()=>renderTop5(ranked.slice(0,5)));
+  safeRender(()=>setSwitcher(stateMode));
   document.getElementById("result").classList.add("show");
   window.scrollTo({top:0,behavior:"smooth"});
 }
@@ -1128,7 +1132,7 @@ function restart(){
 function copySummary(){
   if(!last) return;
   const t=topDims(last.user).slice(0,2).map(x=>DIM_NAMES[x[0]]).join(" × ");
-  const text="HISTORIA 历史人格原型测试 V8.0\n我的历史人格原型："+last.best.name+"\n匹配模式："+modeName(last.mode)+"\n相似度："+last.best.sim.toFixed(1)+"%\n核心维度："+t+"\n"+last.best.tag;
+  const text="HISTORIA 历史人格原型测试 V8.1\n我的历史人格原型："+last.best.name+"\n匹配模式："+modeName(last.mode)+"\n相似度："+last.best.sim.toFixed(1)+"%\n核心维度："+t+"\n"+last.best.tag;
   navigator.clipboard?.writeText(text).then(()=>alert("结果文案已复制")).catch(()=>prompt("复制下面的结果：",text));
 }
 
@@ -1311,7 +1315,7 @@ async function makePoster(){
   x.textAlign="right";
   x.fillStyle="#8a806f";
   x.font="22px Georgia";
-  x.fillText("HISTORIA JOURNAL · V8.0",1078,2392);
+  x.fillText("HISTORIA JOURNAL · V8.1",1078,2392);
   x.textAlign="left";
 
   try{
@@ -1334,7 +1338,7 @@ async function makePoster(){
     y.fillStyle="#9e9589"; y.font="29px Microsoft YaHei"; y.fillText(last.best.era+" · "+last.best.region+" · "+last.best.type,96,1616);
     y.fillStyle="#e5c68f"; y.font="700 108px Georgia"; y.fillText(last.best.sim.toFixed(1)+"%",94,1766);
     y.fillStyle="#e7ded2"; y.font="36px Microsoft YaHei"; wrapText(y,"“"+last.best.tag+"”",94,1848,970,54,4);
-    y.fillStyle="#726960"; y.font="22px Microsoft YaHei"; y.fillText("36 道情境题 · 120 位中外人物 · 6 维行为向量 · HISTORIA V8.0",94,2392);
+    y.fillStyle="#726960"; y.font="22px Microsoft YaHei"; y.fillText("36 道情境题 · 120 位中外人物 · 6 维行为向量 · HISTORIA V8.1",94,2392);
     return c2.toDataURL("image/png");
   }
 }
@@ -1863,7 +1867,7 @@ function warmPortraitCandidates(){
 if ("serviceWorker" in navigator && location.protocol.startsWith("http")) {
   window.addEventListener("load", async () => {
     try {
-      const reg = await navigator.serviceWorker.register("./sw.js?v=8.0");
+      const reg = await navigator.serviceWorker.register("./sw.js?v=8.1");
       await reg.update();
 
       let refreshed = false;
