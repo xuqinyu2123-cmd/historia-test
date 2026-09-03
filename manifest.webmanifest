@@ -1,7 +1,7 @@
 {
   "name": "AEVEMORA 历史人格原型测试",
   "short_name": "AEVEMORA",
-  "description": "AEVEMORA V8.4：稳定视觉修复版。",
+  "description": "AEVEMORA V8.5：重构测试答题页的排版、视觉层次和交互节奏。",
   "lang": "zh-CN",
   "start_url": "./index.html",
   "scope": "./",
