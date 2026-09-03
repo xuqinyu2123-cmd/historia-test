@@ -1,7 +1,7 @@
 {
   "name": "HISTORIA · 历史人格原型测试",
   "short_name": "HISTORIA",
-  "description": "36 道情境题，在 120 位中外历史人物中寻找与你最接近的行为原型。",
+  "description": "36 道情境题，在 120 位中外历史人物中寻找与你最接近的行为原型。V6 支持真实照片 / 历史画像混合人物肖像。",
   "lang": "zh-CN",
   "start_url": "./index.html",
   "scope": "./",

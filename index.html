@@ -47,9 +47,7 @@ body:after{
   color:rgba(207,174,118,.06);
 }
 .wrap{max-width:1220px;margin:auto;padding:18px 16px 80px;position:relative;z-index:1}
-.topbar{
-  display:flex;justify-content:space-between;align-items:center;padding:6px 2px 18px;
-}
+.topbar{display:flex;justify-content:flex-start;align-items:center;padding:6px 2px 18px}
 .brand{font:700 14px/1 Georgia,serif;letter-spacing:.3em;color:#e3c48c}
 .topbar .sub{font-size:11px;color:#706a64;letter-spacing:.08em}
 .card{
@@ -341,6 +339,92 @@ body:after{
   .titleLine{display:block}
   .rankGrid{grid-template-columns:repeat(2,1fr)}
 }
+
+/* ===== V5.2 极简封面修正版 ===== */
+.topbar{justify-content:flex-start}
+.topbar .sub,.heroTags,.modeTitle,.installHint,.bookNote{display:none!important}
+.bookTitle span,.bookTitle small{display:none!important}
+.hero{padding-top:72px}
+.hero h1{margin-top:0}
+.bookTitle strong{font-size:112px}
+.stats{margin-top:28px}
+.stat{padding:14px 16px}
+.stat span:empty{display:none}
+@media(max-width:700px){
+  .mobileHeroTop{justify-content:flex-start}
+  .hero{padding-top:28px}
+  .stats{grid-template-columns:repeat(3,1fr)}
+  .stat{padding:11px 8px;text-align:center}
+}
+
+
+.topbar .sub{display:none!important}.topbar{justify-content:flex-start!important}
+
+/* ===== V6 真实肖像 / 历史插画混合版 ===== */
+.portraitWrap{
+  position:relative;
+  background:
+    radial-gradient(circle at 50% 22%,rgba(207,174,118,.10),transparent 40%),
+    linear-gradient(180deg,#15151a,#0d0e12);
+}
+.portraitWrap img,
+.rankThumb img{
+  filter:saturate(.72) contrast(1.08) brightness(.90) sepia(.08);
+  transition:filter .25s ease, transform .25s ease;
+}
+.portraitWrap img:hover,
+.rankThumb img:hover{
+  filter:saturate(.90) contrast(1.04) brightness(.96) sepia(.03);
+}
+.portraitWrap::after,
+.rankThumb::after{
+  content:"";
+  position:absolute;inset:0;pointer-events:none;
+  background:
+    linear-gradient(180deg,rgba(10,10,12,.02),rgba(10,10,12,.06)),
+    radial-gradient(circle at 50% 26%,transparent 38%,rgba(9,9,12,.22) 100%);
+}
+.rankThumb{position:relative;background:#0f1014}
+.portraitCredit{
+  position:absolute;left:12px;right:12px;bottom:10px;z-index:2;
+  display:flex;justify-content:space-between;gap:8px;align-items:center;
+  padding:7px 9px;border-radius:10px;
+  background:rgba(10,10,13,.58);backdrop-filter:blur(8px);
+  border:1px solid rgba(255,255,255,.04);
+  font-size:10px;color:#93897e;
+}
+.portraitCredit a{color:#b8a587;text-decoration:none}
+.portraitBadge{
+  position:absolute;right:13px;top:13px;z-index:3;
+  padding:7px 9px;border-radius:999px;
+  background:rgba(10,10,13,.62);backdrop-filter:blur(8px);
+  border:1px solid rgba(207,174,118,.16);
+  color:#d2b57f;font-size:10px;letter-spacing:.05em
+}
+.portraitLoading{
+  position:absolute;inset:0;display:grid;place-items:center;z-index:1;
+  color:#756d64;font-size:12px;letter-spacing:.08em
+}
+.portraitFallbackNote{
+  display:none;
+  position:absolute;left:50%;top:50%;z-index:2;
+  transform:translate(-50%,-50%);
+  width:78%;text-align:center;color:#928778;
+  font:400 13px/1.8 Georgia,"Songti SC",serif;
+}
+.portraitWrap.fallback .portraitFallbackNote{display:block}
+.portraitWrap.fallback img{opacity:.58}
+.v6PortraitIntro{
+  margin-top:14px;padding:14px 16px;border-radius:14px;
+  border:1px solid rgba(207,174,118,.12);
+  background:rgba(207,174,118,.035);
+  color:#a89d90;font-size:12px;line-height:1.75
+}
+@media(max-width:700px){
+  .portraitCredit{font-size:9px}
+  .portraitBadge{font-size:9px}
+}
+
 </style>
 </head>
 <body>
@@ -357,27 +441,22 @@ body:after{
 <div class="wrap">
   <div class="topbar">
     <div class="brand">HISTORIA</div>
-    <div class="sub">V5 · 杂志精修版 · MOBILE H5 / PWA</div>
+    
   </div>
 
   <section id="hero" class="card hero fade">
     <div class="mobileHeroTop">
       <div class="miniBrand">HISTORIA</div>
-      <div class="tag">H5 · PWA</div>
+      
     </div>
     <div>
-      <div class="eyebrow">PERSONALITY × HISTORY × JOURNAL AESTHETICS</div>
+      
       <h1>寻找你的<br>历史人格原型</h1>
       <p>通过 36 个情境问题，把你的选择转换成六维行为向量，再与 120 位中外历史人物的“原型化行为模型”进行匹配。你得到的不是一个简单的标签，而是一种面对世界的方式。</p>
       <div class="leadQuote">你像谁，并不只取决于气质，而是取决于：当局面复杂、关系纠缠、信息不完整时，你会优先调用怎样的判断、韧性、创造力与行动方式。</div>
-      <div class="heroTags">
-        <div class="tag">120 位中外人物</div>
-        <div class="tag">6 维人格向量</div>
-        <div class="tag">人物肖像卡</div>
-        <div class="tag">分享海报</div>
-      </div>
+      
 
-      <div class="modeTitle">选择匹配范围</div>
+      
       <div class="modes">
         <button class="mode active" data-mode="mixed" onclick="setMode('mixed')"><b>中外混合</b><small>120 位人物一起匹配</small></button>
         <button class="mode" data-mode="china" onclick="setMode('china')"><b>只看中国</b><small>60 位中国人物</small></button>
@@ -389,12 +468,12 @@ body:after{
         <button class="btn ghost" onclick="installApp()">添加到桌面</button>
         <button class="btn ghost" onclick="shareApp()">分享测试</button>
       </div>
-      <div class="installHint">添加到桌面后，可像独立 App 一样从主屏幕打开。HTTPS 环境下会启用离线缓存与 PWA 安装。</div>
+      
 
       <div class="stats">
-        <div class="stat"><b>120</b><span>历史人物原型</span></div>
-        <div class="stat"><b>36</b><span>题目数量</span></div>
-        <div class="stat"><b>6</b><span>行为维度</span></div>
+        <div class="stat"><b>120</b></div>
+        <div class="stat"><b>36</b></div>
+        <div class="stat"><b>6</b></div>
       </div>
     </div>
 
@@ -402,10 +481,10 @@ body:after{
       <div class="book">
         <div class="bookTitle">
           <strong>史</strong>
-          <span>ARCHETYPE</span>
-          <small>JUDGEMENT · RESILIENCE<br>CREATION · EMPATHY · DRIVE · CONTROL</small>
+          
+          
         </div>
-        <div class="bookNote"><span>NO. 01 / 120</span><b>HISTORIA JOURNAL</b></div>
+        
       </div>
     </div>
   </section>
@@ -422,7 +501,13 @@ body:after{
       <div class="leftPage">
         <div class="issue"><b>HISTORIA</b><span id="issueLabel">ISSUE / 01</span></div>
         <div class="frame">
-          <div class="portraitWrap"><img id="portraitMain" alt="人物肖像"></div>
+          <div id="portraitMainWrap" class="portraitWrap">
+            <div id="portraitLoading" class="portraitLoading">正在载入人物肖像…</div>
+            <img id="portraitMain" alt="人物肖像">
+            <div id="portraitFallbackNote" class="portraitFallbackNote">该人物暂无稳定可用的公开肖像，已切换为统一风格的历史原型插画。</div>
+            <div id="portraitBadge" class="portraitBadge">HISTORICAL PORTRAIT</div>
+            <div id="portraitCredit" class="portraitCredit"><span>人物肖像</span><a id="portraitSource" target="_blank" rel="noopener">查看来源</a></div>
+          </div>
         </div>
         <div id="leftQuote" class="leftQuote"></div>
         <div class="factGrid">
@@ -431,6 +516,7 @@ body:after{
           <div class="fact"><b id="coreDimB">—</b><span>第二维度</span></div>
           <div class="fact"><b id="poolSize">120</b><span>当前匹配库</span></div>
         </div>
+        <div class="v6PortraitIntro">近现代人物优先调用真实照片/肖像；古代人物优先调用历史画像、雕塑或经典绘画。所有图片统一使用深色杂志滤镜，若在线肖像不可用则自动回退为原型插画。</div>
       </div>
 
       <div class="rightPage">
@@ -510,7 +596,7 @@ body:after{
     </div>
   </div>
 
-  <div class="footer">HISTORIA · Journal Edition · Mobile H5 / PWA · V5</div>
+  <div class="footer">HISTORIA · Journal Edition · V6</div>
 </div>
 
 <div id="installSheet" onclick="installSheetBg(event)">
@@ -610,9 +696,8 @@ function showResult(){
   document.getElementById("poolSize").textContent=poolFor(mode).length;
   document.getElementById("issueLabel").textContent="ISSUE / "+String(PEOPLE.findIndex(x=>x.name===best.name)+1).padStart(3,"0");
 
-  const portraitURL=buildPortraitSVG(best, 720, 900);
-  document.getElementById("portraitMain").src=portraitURL;
   document.getElementById("portraitMain").alt=best.name+"人物肖像";
+  setMainPortrait(best);
 
   document.getElementById("tagline").textContent="“"+best.tag+"”";
   document.getElementById("editorialText").textContent=buildEditorial(best, user);
@@ -708,9 +793,12 @@ function renderTop5(arr){
   const box=document.getElementById("top5"); box.innerHTML="";
   arr.forEach((x,i)=>{
     const card=document.createElement("div"); card.className="rankCard";
-    card.innerHTML='<div class="rankThumb"><img src="'+buildPortraitSVG(x,420,520)+'" alt="'+x.name+'人物肖像"></div>\
+    card.innerHTML='<div class="rankThumb"><img alt="'+x.name+'人物肖像"></div>\
       <div class="rankInfo"><b>0'+(i+1)+' · '+x.name+'</b><small>'+x.era+' · '+x.region+'</small><span>'+x.sim.toFixed(1)+'%</span></div>';
     box.appendChild(card);
+    const img=card.querySelector("img");
+    img.src=buildPortraitSVG(x,420,520);
+    hydrateRankPortrait(img,x);
   });
 }
 function rerank(m){
@@ -940,6 +1028,220 @@ window.addEventListener("load",()=>{
 if("serviceWorker" in navigator && location.protocol.startsWith("http")){
   window.addEventListener("load",()=>navigator.serviceWorker.register("./sw.js").catch(()=>{}));
 }
+
+// ===== V6 人物肖像系统：Wikipedia / Wikimedia 公开缩略图 + 本地风格化回退 =====
+
+// 少量标题别名，解决中文维基百科页面名与本项目人物名不完全一致的问题。
+const WIKI_ALIASES = {
+  "秦始皇":"秦始皇",
+  "汉武帝":"汉武帝",
+  "曹操":"曹操",
+  "刘备":"刘备",
+  "诸葛亮":"诸葛亮",
+  "司马懿":"司馬懿",
+  "周瑜":"周瑜",
+  "陶渊明":"陶淵明",
+  "王羲之":"王羲之",
+  "李世民":"唐太宗",
+  "武则天":"武則天",
+  "李白":"李白",
+  "杜甫":"杜甫",
+  "王维":"王維",
+  "韩愈":"韓愈",
+  "白居易":"白居易",
+  "范仲淹":"范仲淹",
+  "王安石":"王安石",
+  "司马光":"司馬光",
+  "苏轼":"蘇軾",
+  "岳飞":"岳飛",
+  "朱熹":"朱熹",
+  "忽必烈":"忽必烈",
+  "朱元璋":"明太祖",
+  "朱棣":"明成祖",
+  "郑和":"鄭和",
+  "王阳明":"王守仁",
+  "张居正":"張居正",
+  "戚继光":"戚繼光",
+  "李时珍":"李時珍",
+  "徐霞客":"徐霞客",
+  "康熙":"康熙帝",
+  "雍正":"雍正帝",
+  "乾隆":"乾隆帝",
+  "林则徐":"林則徐",
+  "曾国藩":"曾國藩",
+  "左宗棠":"左宗棠",
+  "李鸿章":"李鴻章",
+  "梁启超":"梁啟超",
+  "蔡元培":"蔡元培",
+  "鲁迅":"魯迅",
+  "胡适":"胡適",
+  "徐悲鸿":"徐悲鴻",
+  "齐白石":"齊白石",
+  "钱学森":"錢學森",
+  "邓稼先":"鄧稼先",
+  "袁隆平":"袁隆平",
+
+  "苏格拉底":"蘇格拉底",
+  "柏拉图":"柏拉圖",
+  "亚里士多德":"亞里斯多德",
+  "亚历山大大帝":"亞歷山大大帝",
+  "尤利乌斯·凯撒":"尤利烏斯·凱撒",
+  "奥古斯都":"奧古斯都",
+  "马可·奥勒留":"馬可·奧理略",
+  "克娄巴特拉七世":"克麗奧佩脫拉七世",
+  "查理曼":"查理曼",
+  "圣女贞德":"聖女貞德",
+  "达·芬奇":"李奧納多·達文西",
+  "米开朗基罗":"米開朗基羅",
+  "拉斐尔":"拉斐爾",
+  "马基雅维利":"尼科洛·馬基雅維利",
+  "伽利略":"伽利略·伽利萊",
+  "牛顿":"艾薩克·牛頓",
+  "莎士比亚":"威廉·莎士比亞",
+  "伊丽莎白一世":"伊丽莎白一世",
+  "彼得大帝":"彼得大帝",
+  "叶卡捷琳娜二世":"葉卡捷琳娜二世",
+  "乔治·华盛顿":"乔治·华盛顿",
+  "托马斯·杰斐逊":"托马斯·杰斐逊",
+  "本杰明·富兰克林":"本杰明·富兰克林",
+  "亚伯拉罕·林肯":"亚伯拉罕·林肯",
+  "拿破仑":"拿破仑一世",
+  "俾斯麦":"奥托·冯·俾斯麦",
+  "丘吉尔":"温斯顿·丘吉尔",
+  "富兰克林·罗斯福":"富兰克林·德拉诺·罗斯福",
+  "甘地":"圣雄甘地",
+  "纳尔逊·曼德拉":"纳尔逊·曼德拉",
+  "马丁·路德·金":"马丁·路德·金",
+  "达尔文":"查尔斯·达尔文",
+  "玛丽·居里":"玛丽·居里",
+  "爱因斯坦":"阿尔伯特·爱因斯坦",
+  "尼古拉·特斯拉":"尼古拉·特斯拉",
+  "托马斯·爱迪生":"托马斯·爱迪生",
+  "迈克尔·法拉第":"迈克尔·法拉第",
+  "詹姆斯·麦克斯韦":"詹姆斯·克拉克·麦克斯韦",
+  "艾达·洛芙莱斯":"爱达·勒芙蕾丝",
+  "弗洛伦斯·南丁格尔":"弗洛伦斯·南丁格尔",
+  "巴赫":"约翰·塞巴斯蒂安·巴赫",
+  "莫扎特":"沃尔夫冈·阿马德乌斯·莫扎特",
+  "贝多芬":"路德维希·范·贝多芬",
+  "梵高":"文森特·梵高",
+  "毕加索":"巴勃罗·毕加索",
+  "托尔斯泰":"列夫·托尔斯泰",
+  "陀思妥耶夫斯基":"费奥多尔·陀思妥耶夫斯基",
+  "维克多·雨果":"维克多·雨果",
+  "尼采":"弗里德里希·尼采",
+  "康德":"伊曼努尔·康德",
+  "亚当·斯密":"亚当·斯密",
+  "凯恩斯":"约翰·梅纳德·凯恩斯",
+  "弗洛伊德":"西格蒙德·弗洛伊德",
+  "荣格":"卡尔·荣格",
+  "路易·巴斯德":"路易·巴斯德",
+  "亚历山大·弗莱明":"亚历山大·弗莱明",
+  "艾伦·图灵":"艾伦·图灵",
+  "冯·诺依曼":"约翰·冯·诺依曼",
+  "格蕾丝·霍珀":"葛麗絲·霍普",
+  "沃尔特·迪士尼":"华特·迪士尼"
+};
+
+const portraitCache = new Map();
+
+function isModernFigure(person){
+  const s=(person.era||"")+" "+(person.name||"");
+  return /近代|现代|近现代|美国|德国|英国|法国|俄罗斯|俄国|南非|印度|奥地利|荷兰|匈牙利|波兰|瑞士|苏格兰|西班牙/.test(s)
+    && !/古希腊|古罗马|古埃及|古马其顿|法兰克/.test(s);
+}
+
+async function fetchWikiPortrait(person){
+  if(portraitCache.has(person.name)) return portraitCache.get(person.name);
+
+  const title = WIKI_ALIASES[person.name] || person.name;
+  const candidates = [
+    "https://zh.wikipedia.org/api/rest_v1/page/summary/"+encodeURIComponent(title),
+    "https://en.wikipedia.org/api/rest_v1/page/summary/"+encodeURIComponent(title)
+  ];
+
+  let result=null;
+  for(const url of candidates){
+    try{
+      const r=await fetch(url,{headers:{"Accept":"application/json"}});
+      if(!r.ok) continue;
+      const d=await r.json();
+      const img=(d.originalimage&&d.originalimage.source)||(d.thumbnail&&d.thumbnail.source);
+      if(img){
+        result={
+          url:img,
+          source:(d.content_urls&&d.content_urls.desktop&&d.content_urls.desktop.page)||url,
+          title:d.title||person.name,
+          mode:isModernFigure(person)?"真实照片 / 经典肖像":"历史画像 / 经典艺术形象"
+        };
+        break;
+      }
+    }catch(e){}
+  }
+  portraitCache.set(person.name,result);
+  return result;
+}
+
+async function setMainPortrait(person){
+  const wrap=document.getElementById("portraitMainWrap");
+  const img=document.getElementById("portraitMain");
+  const loading=document.getElementById("portraitLoading");
+  const source=document.getElementById("portraitSource");
+  const badge=document.getElementById("portraitBadge");
+
+  if(!wrap||!img) return;
+  wrap.classList.remove("fallback");
+  if(loading) loading.style.display="grid";
+  img.style.opacity="0";
+
+  const data=await fetchWikiPortrait(person);
+  if(data){
+    img.onload=()=>{
+      if(loading) loading.style.display="none";
+      img.style.opacity="1";
+    };
+    img.onerror=()=>{
+      fallbackMainPortrait(person);
+    };
+    img.src=data.url;
+    if(source){
+      source.href=data.source;
+      source.textContent="Wikipedia / Wikimedia";
+    }
+    if(badge) badge.textContent=data.mode;
+  }else{
+    fallbackMainPortrait(person);
+  }
+}
+function fallbackMainPortrait(person){
+  const wrap=document.getElementById("portraitMainWrap");
+  const img=document.getElementById("portraitMain");
+  const loading=document.getElementById("portraitLoading");
+  const source=document.getElementById("portraitSource");
+  const badge=document.getElementById("portraitBadge");
+  if(loading) loading.style.display="none";
+  if(wrap) wrap.classList.add("fallback");
+  if(img){
+    img.style.opacity="1";
+    img.src=buildPortraitSVG(person,720,900);
+  }
+  if(source){
+    source.removeAttribute("href");
+    source.textContent="本地回退插画";
+  }
+  if(badge) badge.textContent="风格化历史插画";
+}
+
+async function hydrateRankPortrait(img,person){
+  const data=await fetchWikiPortrait(person);
+  if(data){
+    img.onerror=()=>{img.src=buildPortraitSVG(person,420,520)};
+    img.src=data.url;
+  }else{
+    img.src=buildPortraitSVG(person,420,520);
+  }
+}
+
 </script>
 </body>
 </html>
