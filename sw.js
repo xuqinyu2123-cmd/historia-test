@@ -1,4 +1,4 @@
-const CACHE="historia-v8-1-stable-final-20260903";
+const CACHE="aevemora-v8-2-brand-edition-20260903";
 const CORE=[
   "./",
   "./index.html",

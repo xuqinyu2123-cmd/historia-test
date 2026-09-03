@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<title>HISTORIA · 历史人格原型测试</title>
+<title>AEVEMORA · 历史人格原型测试</title>
 <link rel="manifest" href="manifest.webmanifest">
 <meta name="theme-color" content="#0b0b0f">
 <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
@@ -12,7 +12,7 @@
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<meta name="apple-mobile-web-app-title" content="HISTORIA">
+<meta name="apple-mobile-web-app-title" content="AEVEMORA">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 <meta name="format-detection" content="telephone=no">
 <style>
@@ -34,7 +34,7 @@ body{
   min-height:100vh;overflow-x:hidden;
 }
 body:before{
-  content:"CHRONICLE · HISTORY · ARCHETYPE · JOURNAL · HISTORIA · CHRONICLE";
+  content:"CHRONICLE · HISTORY · ARCHETYPE · JOURNAL · AEVEMORA · CHRONICLE";
   position:fixed;left:-8vw;top:8vh;width:135vw;
   white-space:nowrap;pointer-events:none;z-index:0;
   transform:rotate(-12deg);
@@ -559,7 +559,7 @@ body:after{
 @keyframes portraitShimmer{to{background-position-x:-220%}}
 
 
-/* ===== HISTORIA V8.1 FINAL RELEASE ===== */
+/* ===== AEVEMORA V8.2 BRAND EDITION ===== */
 .portraitWrap{
   isolation:isolate;
 }
@@ -617,7 +617,7 @@ body:after{
   <div class="splashNoise"></div>
   <div class="splashCore">
     <div class="splashRing"><b>史</b></div>
-    <div class="splashBrand">HISTORIA</div>
+    <div class="splashBrand">AEVEMORA</div>
     <div class="splashSub">PERSONALITY · HISTORY · ARCHETYPE</div>
     <div class="splashLine"><i></i></div>
   </div>
@@ -625,13 +625,13 @@ body:after{
 
 <div class="wrap">
   <div class="topbar">
-    <div class="brand">HISTORIA</div>
+    <div class="brand">AEVEMORA</div>
     
   </div>
 
   <section id="hero" class="card hero fade">
     <div class="mobileHeroTop">
-      <div class="miniBrand">HISTORIA</div>
+      <div class="miniBrand">AEVEMORA</div>
       
     </div>
     <div>
@@ -686,7 +686,7 @@ body:after{
   <section id="result" class="result fade">
     <div class="card magazine">
       <div class="leftPage">
-        <div class="issue"><b>HISTORIA</b><span id="issueLabel">ISSUE / 01</span></div>
+        <div class="issue"><b>AEVEMORA</b><span id="issueLabel">ISSUE / 01</span></div>
         <div class="frame">
           <div id="portraitMainWrap" class="portraitWrap">
             <div id="portraitLoading" class="portraitLoading portraitSkeleton">正在载入人物肖像…</div>
@@ -784,7 +784,7 @@ body:after{
   </div>
 
   <div class="footer">
-    <span>HISTORIA · Final Release · V8.1</span>
+    <span>AEVEMORA · Final Release · V8.2</span>
     <button class="footLink" onclick="openInfo('about')">关于测试</button>
     <button class="footLink" onclick="openInfo('privacy')">隐私说明</button>
     <button class="footLink" onclick="openInfo('sources')">图片与资料来源</button>
@@ -794,7 +794,7 @@ body:after{
 <div id="installSheet" onclick="installSheetBg(event)">
   <div class="sheet">
     <div class="sheetHandle"></div>
-    <h3 id="installTitle">添加 HISTORIA 到桌面</h3>
+    <h3 id="installTitle">添加 AEVEMORA 到桌面</h3>
     <p id="installDesc">安装后可以从手机主屏幕直接打开，界面更接近独立 App。</p>
     <div id="installSteps" class="steps"></div>
     <button class="btn ghost closeSheet" onclick="closeInstallSheet()">关闭</button>
@@ -803,7 +803,7 @@ body:after{
 
 <div id="infoModal" class="infoModal" onclick="infoModalBg(event)">
   <div class="infoCard">
-    <div class="infoMeta" id="infoMeta">HISTORIA</div>
+    <div class="infoMeta" id="infoMeta">AEVEMORA</div>
     <h3 id="infoTitle">关于测试</h3>
     <div id="infoBody"></div>
     <div class="infoCloseRow"><button class="btn ghost" onclick="closeInfo()">关闭</button></div>
@@ -924,7 +924,7 @@ function renderResultState(state){
   document.getElementById("portraitMain").alt=best.name+"人物肖像";
   setMainPortrait(best);
   // 各结果模块独立渲染：某一个模块异常时，不再拖垮后续全部结果区。
-  const safeRender=(fn)=>{ try{ fn(); }catch(err){ console.error("[HISTORIA render]",err); } };
+  const safeRender=(fn)=>{ try{ fn(); }catch(err){ console.error("[AEVEMORA render]",err); } };
 
   safeRender(()=>renderCoreTexts(user,best));
   safeRender(()=>renderDims(user));
@@ -1114,7 +1114,7 @@ function buildPortraitSVG(person,w=720,h=900){
     <circle cx="${w*0.35}" cy="${h*0.30}" r="${w*0.014}" fill="rgba(231,201,150,.55)"/>
     <circle cx="${w*0.65}" cy="${h*0.30}" r="${w*0.014}" fill="rgba(231,201,150,.55)"/>
     <path d="M ${w*0.18} ${h*0.74} H ${w*0.82}" stroke="rgba(231,201,150,.35)" stroke-width="1"/>
-    <text x="${w*0.07}" y="${h*0.10}" fill="rgba(255,255,255,.76)" font-family="Georgia,serif" font-size="${w*0.04}" letter-spacing="4">HISTORIA</text>
+    <text x="${w*0.07}" y="${h*0.10}" fill="rgba(255,255,255,.76)" font-family="Georgia,serif" font-size="${w*0.04}" letter-spacing="4">AEVEMORA</text>
     <text x="${w*0.07}" y="${h*0.83}" fill="#f2ede5" font-family="Microsoft YaHei, PingFang SC, sans-serif" font-size="${w*0.09}" font-weight="700">${person.name}</text>
     <text x="${w*0.07}" y="${h*0.88}" fill="rgba(242,237,229,.74)" font-family="Microsoft YaHei, PingFang SC, sans-serif" font-size="${w*0.034}">${person.era}</text>
     <text x="${w*0.07}" y="${h*0.93}" fill="rgba(231,201,150,.82)" font-family="Georgia,serif" font-size="${w*0.026}" letter-spacing="2">${regionLabel} · ${person.type}</text>
@@ -1132,7 +1132,7 @@ function restart(){
 function copySummary(){
   if(!last) return;
   const t=topDims(last.user).slice(0,2).map(x=>DIM_NAMES[x[0]]).join(" × ");
-  const text="HISTORIA 历史人格原型测试 V8.1\n我的历史人格原型："+last.best.name+"\n匹配模式："+modeName(last.mode)+"\n相似度："+last.best.sim.toFixed(1)+"%\n核心维度："+t+"\n"+last.best.tag;
+  const text="AEVEMORA 历史人格原型测试 V8.2\n我的历史人格原型："+last.best.name+"\n匹配模式："+modeName(last.mode)+"\n相似度："+last.best.sim.toFixed(1)+"%\n核心维度："+t+"\n"+last.best.tag;
   navigator.clipboard?.writeText(text).then(()=>alert("结果文案已复制")).catch(()=>prompt("复制下面的结果：",text));
 }
 
@@ -1224,7 +1224,7 @@ async function makePoster(){
   // 头部信息
   x.fillStyle="#dec288";
   x.font="700 34px Georgia";
-  x.fillText("HISTORIA",94,122);
+  x.fillText("AEVEMORA",94,122);
   x.fillStyle="#746c61";
   x.font="24px Microsoft YaHei";
   x.fillText("Historical Archetype Report",94,162);
@@ -1315,7 +1315,7 @@ async function makePoster(){
   x.textAlign="right";
   x.fillStyle="#8a806f";
   x.font="22px Georgia";
-  x.fillText("HISTORIA JOURNAL · V8.1",1078,2392);
+  x.fillText("AEVEMORA JOURNAL · V8.2",1078,2392);
   x.textAlign="left";
 
   try{
@@ -1331,14 +1331,14 @@ async function makePoster(){
     y.fillStyle="#0b0b10"; y.fillRect(0,0,1170,2532);
     y.strokeStyle="rgba(224,191,132,.22)"; y.lineWidth=2;
     roundRect(y,58,58,1054,2416,34,false,true);
-    y.fillStyle="#dec288"; y.font="700 34px Georgia"; y.fillText("HISTORIA",94,122);
+    y.fillStyle="#dec288"; y.font="700 34px Georgia"; y.fillText("AEVEMORA",94,122);
     roundImageCard(y,backup,96,228,978,1058,28);
     y.fillStyle="#f3ece2"; y.font="600 72px Microsoft YaHei"; y.fillText("我的历史人格原型",94,1428);
     y.fillStyle="#e2c38b"; y.font="700 120px Microsoft YaHei"; y.fillText(last.best.name,94,1566);
     y.fillStyle="#9e9589"; y.font="29px Microsoft YaHei"; y.fillText(last.best.era+" · "+last.best.region+" · "+last.best.type,96,1616);
     y.fillStyle="#e5c68f"; y.font="700 108px Georgia"; y.fillText(last.best.sim.toFixed(1)+"%",94,1766);
     y.fillStyle="#e7ded2"; y.font="36px Microsoft YaHei"; wrapText(y,"“"+last.best.tag+"”",94,1848,970,54,4);
-    y.fillStyle="#726960"; y.font="22px Microsoft YaHei"; y.fillText("36 道情境题 · 120 位中外人物 · 6 维行为向量 · HISTORIA V8.1",94,2392);
+    y.fillStyle="#726960"; y.font="22px Microsoft YaHei"; y.fillText("36 道情境题 · 120 位中外人物 · 6 维行为向量 · AEVEMORA V8.2",94,2392);
     return c2.toDataURL("image/png");
   }
 }
@@ -1377,7 +1377,7 @@ function closePoster(){document.getElementById("posterModal").classList.remove("
 function modalBg(e){if(e.target.id==="posterModal") closePoster()}
 async function downloadPoster(){
   if(!posterDataUrl) posterDataUrl=await makePoster();
-  const a=document.createElement("a"); a.href=posterDataUrl; a.download="HISTORIA_"+last.best.name+"_人格原型.png"; a.click();
+  const a=document.createElement("a"); a.href=posterDataUrl; a.download="AEVEMORA_"+last.best.name+"_人格原型.png"; a.click();
 }
 
 /* PWA */
@@ -1394,13 +1394,13 @@ function openInstallSheet(type="generic"){
       <div class="step"><b>2</b><span>点击底部或顶部的“分享”按钮。</span></div>
       <div class="step"><b>3</b><span>选择“添加到主屏幕”，确认名称后点击“添加”。</span></div>`;
   }else if(type==="android"){
-    title.textContent="安装 HISTORIA";
+    title.textContent="安装 AEVEMORA";
     desc.textContent="如果浏览器没有自动弹出安装窗口，可以使用浏览器菜单手动添加。";
     steps.innerHTML=`<div class="step"><b>1</b><span>点击浏览器右上角菜单。</span></div>
       <div class="step"><b>2</b><span>选择“安装应用”或“添加到主屏幕”。</span></div>
       <div class="step"><b>3</b><span>确认后即可从桌面以独立窗口打开。</span></div>`;
   }else{
-    title.textContent="添加 HISTORIA 到桌面";
+    title.textContent="添加 AEVEMORA 到桌面";
     desc.textContent="部署到 HTTPS 后，Chrome / Edge / Safari 可以把它作为 PWA 添加到主屏幕。";
     steps.innerHTML=`<div class="step"><b>1</b><span>先把本文件夹部署到 HTTPS 网站。</span></div>
       <div class="step"><b>2</b><span>手机浏览器打开网址后点击“添加到桌面”。</span></div>
@@ -1411,7 +1411,7 @@ function openInstallSheet(type="generic"){
 function closeInstallSheet(){document.getElementById("installSheet").classList.remove("open")}
 function installSheetBg(e){if(e.target.id==="installSheet") closeInstallSheet()}
 async function installApp(){
-  if(isStandalone()){alert("HISTORIA 已经以桌面应用模式运行。"); return;}
+  if(isStandalone()){alert("AEVEMORA 已经以桌面应用模式运行。"); return;}
   if(deferredInstallPrompt){
     deferredInstallPrompt.prompt();
     try{await deferredInstallPrompt.userChoice;}catch(e){}
@@ -1422,7 +1422,7 @@ async function installApp(){
   else openInstallSheet("generic");
 }
 async function shareApp(){
-  const data={title:"HISTORIA · 历史人格原型测试", text:"36 道题，在 120 位中外历史人物中寻找与你最接近的行为原型。HISTORIA Final Edition 已上线。", url:location.protocol.startsWith("http")?location.href:undefined};
+  const data={title:"AEVEMORA · 历史人格原型测试", text:"36 道题，在 120 位中外历史人物中寻找与你最接近的行为原型。AEVEMORA Final Edition 已上线。", url:location.protocol.startsWith("http")?location.href:undefined};
   if(navigator.share){try{await navigator.share(data); return;}catch(e){}}
   if(data.url && navigator.clipboard){await navigator.clipboard.writeText(data.url); alert("测试链接已复制。");}
   else alert("当前是本地文件。部署到网站后即可直接分享测试链接。");
@@ -1437,9 +1437,9 @@ function openInfo(type){
   if(!title||!body||!meta||!modal) return;
   const pages={
     about:{
-      meta:"ABOUT HISTORIA",
+      meta:"ABOUT AEVEMORA",
       title:"关于测试",
-      body:`<p>HISTORIA 是一个以“历史人物原型”进行映射的人格探索产品。它通过 36 道情境选择题，将你的行为倾向转化为 6 维向量，再与 120 位中外历史人物的原型化行为模型进行匹配。</p>
+      body:`<p>AEVEMORA 是一个以“历史人物原型”进行映射的人格探索产品。它通过 36 道情境选择题，将你的行为倾向转化为 6 维向量，再与 120 位中外历史人物的原型化行为模型进行匹配。</p>
       <p>它不是在告诉你“你就是谁”，而是在帮助你识别：当信息不完整、局面复杂、关系纠缠时，你更倾向于调用哪些能力，以及这种能力组合最接近哪一类历史人物的行为结构。</p>
       <ul>
         <li>适合做自我观察、社交分享、兴趣探索</li>
@@ -1465,7 +1465,7 @@ function openInfo(type){
       <ul>
         <li>人物资料与图像来源：公开可访问的 Wikipedia / Wikimedia 页面摘要与缩略图</li>
         <li>人物原型建模：基于公开历史叙事所做的抽象化行为向量映射</li>
-        <li>页面与海报设计：HISTORIA Journal Edition</li>
+        <li>页面与海报设计：AEVEMORA Journal Edition</li>
       </ul>
       <p>若你计划长期商用，建议后续逐步建立“自托管人物图片库 + 单独来源说明页”，让线上稳定性和授权管理更可控。</p>`
     }
@@ -1867,7 +1867,7 @@ function warmPortraitCandidates(){
 if ("serviceWorker" in navigator && location.protocol.startsWith("http")) {
   window.addEventListener("load", async () => {
     try {
-      const reg = await navigator.serviceWorker.register("./sw.js?v=8.1");
+      const reg = await navigator.serviceWorker.register("./sw.js?v=8.2");
       await reg.update();
 
       let refreshed = false;

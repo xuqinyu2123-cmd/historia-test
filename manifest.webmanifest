@@ -1,7 +1,7 @@
 {
-  "name": "HISTORIA 历史人格原型测试",
-  "short_name": "HISTORIA",
-  "description": "HISTORIA V8.1 Stable Final：修复结果页行为画像、雷达图、优势/盲区/环境及长文区渲染。",
+  "name": "AEVEMORA 历史人格原型测试",
+  "short_name": "AEVEMORA",
+  "description": "AEVEMORA V8.2：36 道情境题，在 120 位中外历史人物中寻找与你最接近的行为原型。",
   "lang": "zh-CN",
   "start_url": "./index.html",
   "scope": "./",
