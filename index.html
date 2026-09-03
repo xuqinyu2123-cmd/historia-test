@@ -677,7 +677,7 @@ body:after{
 @keyframes portraitShimmer{to{background-position-x:-220%}}
 
 
-/* ===== AEVEMORA V8.3 BRAND EDITION ===== */
+/* ===== AEVEMORA V8.4 BRAND EDITION ===== */
 .portraitWrap{
   isolation:isolate;
 }
@@ -719,6 +719,81 @@ body:after{
 @media(max-width:700px){
   .fastPortraitHint{display:none}
 }
+
+
+/* ===== V8.4 首页时间原型装置：移除“史”字 ===== */
+.book,.bookTitle{display:none!important}
+.heroSigil{
+  width:min(92%,430px);aspect-ratio:.84;position:relative;border-radius:28px;
+  border:1px solid rgba(207,174,118,.18);
+  background:
+    radial-gradient(circle at 50% 43%,rgba(218,184,126,.055),transparent 34%),
+    linear-gradient(145deg,rgba(245,236,219,.045),rgba(255,255,255,.008)),#121217;
+  box-shadow:inset 0 0 0 1px rgba(255,255,255,.018),0 30px 70px rgba(0,0,0,.26);
+  overflow:hidden
+}
+.heroSigil:before{
+  content:"";position:absolute;inset:22px;border:1px solid rgba(207,174,118,.11);border-radius:20px
+}
+.heroSigilGlow{
+  position:absolute;left:50%;top:47%;width:76%;aspect-ratio:1;transform:translate(-50%,-50%);
+  border-radius:50%;background:radial-gradient(circle,rgba(213,174,112,.07),rgba(213,174,112,.018) 38%,transparent 69%)
+}
+.heroSigilRing{
+  position:absolute;left:50%;top:47%;border-radius:50%;transform:translate(-50%,-50%);
+  border:1px solid rgba(215,180,120,.13)
+}
+.heroSigilRing.ringA{width:70%;aspect-ratio:1}
+.heroSigilRing.ringB{width:52%;aspect-ratio:1;border-color:rgba(215,180,120,.17)}
+.heroSigilRing.ringC{width:27%;aspect-ratio:1;border-color:rgba(215,180,120,.13)}
+.heroSigilArc{
+  position:absolute;left:50%;top:47%;transform:translate(-50%,-50%);border-radius:50%
+}
+.heroSigilArc.arcA{
+  width:61%;aspect-ratio:1;border-top:1.4px solid rgba(226,190,126,.72);
+  border-right:1.4px solid transparent;border-bottom:1.4px solid transparent;border-left:1.4px solid transparent;
+  animation:heroOrbitA 11s linear infinite
+}
+.heroSigilArc.arcB{
+  width:42%;aspect-ratio:1;border-bottom:1px solid rgba(226,190,126,.42);
+  border-left:1px solid transparent;border-top:1px solid transparent;border-right:1px solid transparent;
+  animation:heroOrbitB 16s linear infinite
+}
+.heroSigilAxis{position:absolute;left:50%;top:47%;transform:translate(-50%,-50%)}
+.heroSigilAxis.axisH{
+  width:60%;height:1px;background:linear-gradient(90deg,transparent,rgba(219,181,117,.11),transparent)
+}
+.heroSigilAxis.axisV{
+  height:60%;width:1px;background:linear-gradient(180deg,transparent,rgba(219,181,117,.11),transparent)
+}
+.heroSigilCore{
+  position:absolute;left:50%;top:47%;width:50px;height:50px;transform:translate(-50%,-50%);
+  border-radius:50%;display:grid;place-items:center;border:1px solid rgba(223,187,126,.18);
+  box-shadow:0 0 0 13px rgba(223,187,126,.015),0 0 34px rgba(223,187,126,.035)
+}
+.heroSigilCore i{
+  width:6px;height:6px;border-radius:50%;background:#d9b679;box-shadow:0 0 16px rgba(217,182,121,.42)
+}
+.heroSigilTicks{
+  position:absolute;left:50%;top:47%;width:70%;aspect-ratio:1;transform:translate(-50%,-50%)
+}
+.heroSigilTicks span{
+  position:absolute;left:50%;top:0;width:1px;height:8px;background:rgba(217,181,119,.26);
+  transform-origin:0 150px;transform:rotate(calc(var(--i)*30deg))
+}
+.heroSigilCaption{
+  position:absolute;left:50%;bottom:56px;transform:translateX(-50%);white-space:nowrap;
+  font:600 10px/1 Georgia,serif;color:#7f7467;letter-spacing:.25em
+}
+@keyframes heroOrbitA{
+  from{transform:translate(-50%,-50%) rotate(0)}
+  to{transform:translate(-50%,-50%) rotate(360deg)}
+}
+@keyframes heroOrbitB{
+  from{transform:translate(-50%,-50%) rotate(360deg)}
+  to{transform:translate(-50%,-50%) rotate(0)}
+}
+@media(prefers-reduced-motion:reduce){.heroSigilArc{animation:none!important}}
 
 </style>
 
@@ -819,13 +894,22 @@ body:after{
     </div>
 
     <div class="heroVisual">
-      <div class="book">
-        <div class="bookTitle">
-          <strong>史</strong>
-          
-          
+      <div class="heroSigil" aria-hidden="true">
+        <div class="heroSigilGlow"></div>
+        <div class="heroSigilRing ringA"></div>
+        <div class="heroSigilRing ringB"></div>
+        <div class="heroSigilRing ringC"></div>
+        <div class="heroSigilArc arcA"></div>
+        <div class="heroSigilArc arcB"></div>
+        <div class="heroSigilAxis axisV"></div>
+        <div class="heroSigilAxis axisH"></div>
+        <div class="heroSigilCore"><i></i></div>
+        <div class="heroSigilTicks">
+          <span style="--i:0"></span><span style="--i:1"></span><span style="--i:2"></span><span style="--i:3"></span>
+          <span style="--i:4"></span><span style="--i:5"></span><span style="--i:6"></span><span style="--i:7"></span>
+          <span style="--i:8"></span><span style="--i:9"></span><span style="--i:10"></span><span style="--i:11"></span>
         </div>
-        
+        <div class="heroSigilCaption">PAST · SELF · ARCHETYPE</div>
       </div>
     </div>
   </section>
@@ -938,7 +1022,7 @@ body:after{
   </div>
 
   <div class="footer">
-    <span>AEVEMORA · Final Release · V8.3</span>
+    <span>AEVEMORA · Stable Visual · V8.4</span>
     <button class="footLink" onclick="openInfo('about')">关于测试</button>
     <button class="footLink" onclick="openInfo('privacy')">隐私说明</button>
     <button class="footLink" onclick="openInfo('sources')">图片与资料来源</button>
@@ -1076,6 +1160,13 @@ function renderResultState(state){
   document.getElementById("issueLabel").textContent="ISSUE / "+String(PEOPLE.findIndex(x=>x.name===best.name)+1).padStart(3,"0");
 
   document.getElementById("portraitMain").alt=best.name+"人物肖像";
+
+  // 主结果叙事
+  const taglineEl=document.getElementById("tagline");
+  const editorialEl=document.getElementById("editorialText");
+  if(taglineEl) taglineEl.textContent=best.tag;
+  if(editorialEl) editorialEl.textContent=buildEditorial(best,user);
+
   setMainPortrait(best);
   // 各结果模块独立渲染：某一个模块异常时，不再拖垮后续全部结果区。
   const safeRender=(fn)=>{ try{ fn(); }catch(err){ console.error("[AEVEMORA render]",err); } };
@@ -1286,7 +1377,7 @@ function restart(){
 function copySummary(){
   if(!last) return;
   const t=topDims(last.user).slice(0,2).map(x=>DIM_NAMES[x[0]]).join(" × ");
-  const text="AEVEMORA 历史人格原型测试 V8.3\n我的历史人格原型："+last.best.name+"\n匹配模式："+modeName(last.mode)+"\n相似度："+last.best.sim.toFixed(1)+"%\n核心维度："+t+"\n"+last.best.tag;
+  const text="AEVEMORA 历史人格原型测试 V8.4\n我的历史人格原型："+last.best.name+"\n匹配模式："+modeName(last.mode)+"\n相似度："+last.best.sim.toFixed(1)+"%\n核心维度："+t+"\n"+last.best.tag;
   navigator.clipboard?.writeText(text).then(()=>alert("结果文案已复制")).catch(()=>prompt("复制下面的结果：",text));
 }
 
@@ -1469,7 +1560,7 @@ async function makePoster(){
   x.textAlign="right";
   x.fillStyle="#8a806f";
   x.font="22px Georgia";
-  x.fillText("AEVEMORA JOURNAL · V8.3",1078,2392);
+  x.fillText("AEVEMORA JOURNAL · V8.4",1078,2392);
   x.textAlign="left";
 
   try{
@@ -1492,7 +1583,7 @@ async function makePoster(){
     y.fillStyle="#9e9589"; y.font="29px Microsoft YaHei"; y.fillText(last.best.era+" · "+last.best.region+" · "+last.best.type,96,1616);
     y.fillStyle="#e5c68f"; y.font="700 108px Georgia"; y.fillText(last.best.sim.toFixed(1)+"%",94,1766);
     y.fillStyle="#e7ded2"; y.font="36px Microsoft YaHei"; wrapText(y,"“"+last.best.tag+"”",94,1848,970,54,4);
-    y.fillStyle="#726960"; y.font="22px Microsoft YaHei"; y.fillText("36 道情境题 · 120 位中外人物 · 6 维行为向量 · AEVEMORA V8.3",94,2392);
+    y.fillStyle="#726960"; y.font="22px Microsoft YaHei"; y.fillText("36 道情境题 · 120 位中外人物 · 6 维行为向量 · AEVEMORA V8.4",94,2392);
     return c2.toDataURL("image/png");
   }
 }
@@ -1780,6 +1871,38 @@ function wikiApiURL(lang,title,size){
   return base+"?"+q.toString();
 }
 
+function wikiSearchURL(lang,query,size){
+  const base="https://"+lang+".wikipedia.org/w/api.php";
+  const q=new URLSearchParams({
+    action:"query",
+    generator:"search",
+    gsrsearch:query,
+    gsrlimit:"1",
+    prop:"pageimages",
+    piprop:"thumbnail|original",
+    pithumbsize:String(size),
+    format:"json",
+    origin:"*"
+  });
+  return base+"?"+q.toString();
+}
+
+function wikiSummaryURL(lang,title){
+  return "https://"+lang+".wikipedia.org/api/rest_v1/page/summary/"+encodeURIComponent(title);
+}
+
+function parseWikiSummary(data){
+  if(!data) return null;
+  const img=(data.thumbnail&&data.thumbnail.source)||(data.originalimage&&data.originalimage.source);
+  if(!img) return null;
+  return {
+    title:data.title||"",
+    thumb:img,
+    original:(data.originalimage&&data.originalimage.source)||img,
+    source:data.content_urls&&data.content_urls.desktop&&data.content_urls.desktop.page
+  };
+}
+
 async function fetchWithTimeout(url,ms=2600){
   const controller=new AbortController();
   const timer=setTimeout(()=>controller.abort(),ms);
@@ -1811,34 +1934,54 @@ async function fetchWikiPortrait(person){
   if(portraitRequestCache.has(person.name)) return portraitRequestCache.get(person.name);
 
   const task=(async()=>{
-    const title=WIKI_ALIASES[person.name] || person.name;
+    const alias=WIKI_ALIASES[person.name] || person.name;
 
-    // pageimages 比 REST summary 返回内容更小，只拿图片字段。
-    const attempts=[
-      ["zh", title],
-      ["en", title]
-    ];
-
-    for(const [lang,t] of attempts){
+    const finish=(parsed,lang,fallbackTitle)=>{
+      if(!parsed || !(parsed.thumb || parsed.original)) return null;
+      const result={
+        url:parsed.thumb || parsed.original,
+        original:parsed.original || parsed.thumb,
+        source:parsed.source || ("https://"+lang+".wikipedia.org/wiki/"+encodeURIComponent(parsed.title||fallbackTitle)),
+        title:parsed.title||person.name,
+        mode:isModernFigure(person)?"真实照片 / 经典肖像":"历史画像 / 经典艺术形象"
+      };
+      portraitCache.set(person.name,result);
       try{
-        const r=await fetchWithTimeout(wikiApiURL(lang,t,640),2600);
-        if(!r.ok) continue;
-        const parsed=parseWikiPageImage(await r.json());
-        if(parsed && (parsed.thumb || parsed.original)){
-          const pageURL="https://"+lang+".wikipedia.org/wiki/"+encodeURIComponent(parsed.title||t);
-          const result={
-            // 主图默认使用 640px thumbnail，避免加载超大的 original。
-            url:parsed.thumb || parsed.original,
-            original:parsed.original || parsed.thumb,
-            source:pageURL,
-            title:parsed.title||person.name,
-            mode:isModernFigure(person)?"真实照片 / 经典肖像":"历史画像 / 经典艺术形象"
-          };
-          portraitCache.set(person.name,result);
-          try{
-            localStorage.setItem("historia_portrait_"+person.name,JSON.stringify({...result,_cachedAt:Date.now()}));
-          }catch(e){}
-          return result;
+        localStorage.setItem("historia_portrait_"+person.name,JSON.stringify({...result,_cachedAt:Date.now()}));
+      }catch(e){}
+      return result;
+    };
+
+    const exactTitles=[alias];
+    if(alias!==person.name) exactTitles.push(person.name);
+
+    // A. 精确图片查询
+    for(const t of exactTitles){
+      try{
+        const r=await fetchWithTimeout(wikiApiURL("zh",t,640),2200);
+        if(r.ok){
+          const hit=finish(parseWikiPageImage(await r.json()),"zh",t);
+          if(hit) return hit;
+        }
+      }catch(e){}
+    }
+
+    // B. 中文人物名搜索
+    try{
+      const r=await fetchWithTimeout(wikiSearchURL("zh",person.name,640),2400);
+      if(r.ok){
+        const hit=finish(parseWikiPageImage(await r.json()),"zh",person.name);
+        if(hit) return hit;
+      }
+    }catch(e){}
+
+    // C. REST summary 回退
+    for(const t of exactTitles){
+      try{
+        const r=await fetchWithTimeout(wikiSummaryURL("zh",t),2400);
+        if(r.ok){
+          const hit=finish(parseWikiSummary(await r.json()),"zh",t);
+          if(hit) return hit;
         }
       }catch(e){}
     }
@@ -1925,7 +2068,7 @@ async function setMainPortrait(person){
       data.url,
       ()=>markPortraitLoaded(img,loading),
       ()=>fallbackMainPortrait(person),
-      3200
+      5200
     );
     img.dataset.portraitUrl=data.url;
     img.dataset.portraitOrigin=data.source||"";
@@ -2021,7 +2164,7 @@ function warmPortraitCandidates(){
 if ("serviceWorker" in navigator && location.protocol.startsWith("http")) {
   window.addEventListener("load", async () => {
     try {
-      const reg = await navigator.serviceWorker.register("./sw.js?v=8.3");
+      const reg = await navigator.serviceWorker.register("./sw.js?v=8.4");
       await reg.update();
 
       let refreshed = false;
