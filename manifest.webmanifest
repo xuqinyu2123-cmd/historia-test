@@ -1,7 +1,7 @@
 {
   "name": "AEVEMORA",
   "short_name": "AEVEMORA",
-  "description": "AEVEMORA V9.1：修复最终答题页雕塑视觉，并让历史背景每道题都切换。",
+  "description": "AEVEMORA V9.3.1：多文明动态答题版，120 位人物肖像已内嵌，适配 GitHub 网页端上传限制。",
   "lang": "zh-CN",
   "start_url": "./index.html",
   "scope": "./",
