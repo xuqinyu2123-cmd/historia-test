@@ -921,7 +921,7 @@ body:after{
 @keyframes portraitShimmer{to{background-position-x:-220%}}
 
 
-/* ===== AEVEMORA V8.9 BRAND EDITION ===== */
+/* ===== AEVEMORA V9.0 BRAND EDITION ===== */
 .portraitWrap{
   isolation:isolate;
 }
@@ -1491,6 +1491,422 @@ body.quizMode .footer{opacity:0;pointer-events:none;height:0;margin:0;padding:0;
   .editorial{padding:18px 16px;border-radius:20px}
   .section{padding:22px;border-radius:22px}
 }
+
+/* ===== V9.0 最终答题页 · 5号为主 + 1号展馆 + 6号史诗光影 ===== */
+.quiz{
+  width:min(1480px,calc(100% - 28px));
+  max-width:none;
+  min-height:840px;
+  margin:12px auto 26px;
+  padding:0;
+  overflow:hidden;
+  position:relative;
+  border-radius:28px;
+  border:1px solid rgba(203,166,103,.20);
+  background:#0b0d10;
+  box-shadow:0 36px 120px rgba(0,0,0,.42), inset 0 0 0 1px rgba(255,255,255,.018);
+}
+.quiz:before{
+  content:"";
+  position:absolute;
+  inset:0;
+  z-index:0;
+  pointer-events:none;
+  background:
+    radial-gradient(720px 420px at 88% 24%,rgba(211,168,98,.13),transparent 66%),
+    radial-gradient(480px 360px at 14% 34%,rgba(199,160,98,.08),transparent 72%),
+    linear-gradient(180deg,rgba(255,255,255,.018),transparent 42%);
+}
+.quizBackdrop{position:absolute;inset:0;z-index:0;overflow:hidden;pointer-events:none}
+.quizBackdrop:before{
+  content:"";position:absolute;inset:-3%;
+  background-image:var(--quiz-bg-image);
+  background-size:cover;background-position:center;
+  opacity:.28;filter:saturate(.72) contrast(1.04) brightness(.54);
+  transform:scale(1.04);
+}
+.quizBackdrop:after{
+  content:"";position:absolute;inset:0;
+  background:
+    linear-gradient(90deg,rgba(6,8,11,.95) 0%,rgba(7,9,12,.80) 32%,rgba(7,9,12,.48) 62%,rgba(5,7,10,.72) 100%),
+    linear-gradient(180deg,rgba(5,6,9,.38),rgba(5,6,9,.12) 40%,rgba(5,6,9,.68) 100%);
+}
+.quizCinematicTop,.quizCinemaLayout,.quizCinemaNav{position:relative;z-index:2}
+.quizCinematicTop{
+  min-height:98px;
+  display:grid;
+  grid-template-columns:340px minmax(0,1fr) 210px;
+  gap:24px;
+  align-items:center;
+  padding:18px 30px;
+  border-bottom:1px solid rgba(205,171,111,.14);
+  background:linear-gradient(180deg,rgba(5,7,10,.72),rgba(8,9,12,.42));
+  backdrop-filter:blur(10px);
+}
+.quizBrandBlock strong{
+  display:block;
+  color:#e2c48d;
+  font:700 34px/1 Georgia,serif;
+  letter-spacing:.24em;
+}
+.quizBrandBlock span{
+  display:block;margin-top:8px;
+  color:#9c8b75;
+  font-size:10px;letter-spacing:.14em;
+}
+.quizProgressRail{
+  display:grid;
+  grid-template-columns:auto minmax(140px,1fr) auto;
+  align-items:center;
+  gap:18px;
+}
+.quizProgressRail>span{
+  color:#a98a59;
+  font:600 10px Georgia,serif;
+  letter-spacing:.20em;
+}
+.quizProgressRail .pbar{
+  height:5px;
+  border-radius:99px;
+  border:1px solid rgba(205,171,111,.18);
+  background:rgba(12,13,17,.82);
+  overflow:hidden;
+}
+.quizProgressRail .pbar i{
+  display:block;height:100%;width:0;
+  background:linear-gradient(90deg,#9a6d35,#e7c684 72%,#fff2ca);
+  box-shadow:0 0 14px rgba(225,188,122,.28);
+  transition:width .28s ease;
+}
+.quizProgressRail b{
+  color:#e1c087;
+  font:500 18px Georgia,serif;
+  min-width:68px;
+}
+.quizCuratedMeta{text-align:right}
+.quizCuratedMeta span{
+  display:block;color:#9e8a70;
+  font:500 9px Georgia,serif;letter-spacing:.22em;
+}
+.quizCuratedMeta strong{
+  display:block;margin-top:6px;
+  color:#cfa663;font:600 14px Georgia,serif;letter-spacing:.12em;
+}
+.quizCinemaLayout{
+  display:grid;
+  grid-template-columns:420px minmax(0,1fr);
+  min-height:655px;
+}
+.quizDossier{
+  padding:26px 18px 26px 28px;
+  border-right:1px solid rgba(205,171,111,.12);
+}
+.dossierCover{
+  position:relative;height:100%;
+  min-height:602px;
+  padding:18px;
+  border:1px solid rgba(198,158,92,.22);
+  background:
+    linear-gradient(180deg,rgba(255,255,255,.025),rgba(255,255,255,.006)),
+    rgba(10,12,15,.72);
+  box-shadow:0 20px 60px rgba(0,0,0,.28),inset 0 0 0 1px rgba(255,255,255,.018);
+  overflow:hidden;
+}
+.dossierCover:before,.dossierCover:after{
+  content:"";position:absolute;width:34px;height:34px;pointer-events:none;
+}
+.dossierCover:before{
+  left:8px;top:8px;border-left:1px solid rgba(220,184,119,.32);border-top:1px solid rgba(220,184,119,.32)
+}
+.dossierCover:after{
+  right:8px;bottom:8px;border-right:1px solid rgba(220,184,119,.32);border-bottom:1px solid rgba(220,184,119,.32)
+}
+.dossierHead{
+  position:relative;z-index:2;
+  display:flex;justify-content:space-between;align-items:flex-start;gap:14px;
+}
+.dossierHead strong{
+  display:block;color:#d8b474;
+  font:600 11px Georgia,serif;letter-spacing:.20em;
+}
+.dossierHead span{
+  display:block;margin-top:5px;color:#756c61;
+  font:500 9px Georgia,serif;letter-spacing:.12em;
+}
+#dossierIndex{
+  color:#b3935f!important;
+  font:600 18px Georgia,serif!important;
+  letter-spacing:.08em!important;
+}
+.dossierPortrait{
+  position:relative;
+  height:360px;
+  margin-top:18px;
+  overflow:hidden;
+  border:1px solid rgba(205,171,111,.13);
+  background:
+    radial-gradient(circle at 50% 20%,rgba(218,184,126,.08),transparent 48%),
+    #0d0f12;
+}
+.dossierPortrait img{
+  width:100%;height:100%;object-fit:cover;object-position:center 22%;
+  filter:saturate(.70) contrast(1.07) brightness(.78) sepia(.10);
+  opacity:.96;
+}
+.dossierPortraitShade{
+  position:absolute;inset:0;
+  background:
+    linear-gradient(90deg,transparent 0%,rgba(5,7,10,.06) 52%,rgba(5,7,10,.66) 100%),
+    linear-gradient(180deg,transparent 52%,rgba(5,7,10,.64) 100%);
+}
+.dossierTraits{
+  position:absolute;right:18px;top:76px;width:132px;
+  display:grid;gap:18px;
+}
+.dossierTraits div{padding-bottom:12px;border-bottom:1px solid rgba(205,171,111,.18)}
+.dossierTraits span{
+  display:block;color:#b18d56;font:500 8px Georgia,serif;letter-spacing:.22em;
+}
+.dossierTraits b{
+  display:block;margin-top:5px;color:#d7c6ac;font-size:11px;font-weight:600;
+}
+.dossierTraits small{
+  display:block;margin-top:4px;color:#766f67;font-size:8px;line-height:1.5;
+}
+.dossierCurrent{
+  position:relative;margin:-42px 18px 0;padding:18px 20px;
+  border:1px solid rgba(205,171,111,.18);
+  background:rgba(9,11,14,.86);
+  box-shadow:0 14px 30px rgba(0,0,0,.24);
+}
+.dossierCurrent span{
+  color:#957a50;font:500 8px Georgia,serif;letter-spacing:.22em;
+}
+.dossierCurrent h3{
+  margin:8px 0 0;color:#e3c58d;
+  font:600 25px/1.2 Georgia,"Songti SC",serif;
+}
+.dossierCurrent p{
+  margin:5px 0 0;color:#9b8060;
+  font:500 10px Georgia,serif;letter-spacing:.18em;
+}
+.dossierQuote{
+  display:grid;grid-template-columns:28px 1fr;gap:8px;
+  margin-top:18px;padding:16px 18px;
+  background:
+    linear-gradient(180deg,rgba(211,174,107,.08),rgba(211,174,107,.025)),
+    rgba(31,24,17,.46);
+  border:1px solid rgba(205,171,111,.15);
+}
+.dossierQuote span{
+  color:#c7a366;font:600 32px/1 Georgia,serif;
+}
+.dossierQuote p{
+  margin:0;color:#b5a897;font:400 11px/1.85 Georgia,"Songti SC",serif;
+}
+.quizQuestionStage{
+  align-self:stretch;
+  display:flex;flex-direction:column;
+  padding:42px 52px 30px;
+  background:
+    radial-gradient(620px 380px at 92% 18%,rgba(211,169,99,.08),transparent 68%),
+    linear-gradient(90deg,rgba(8,10,13,.42),rgba(8,10,13,.20));
+}
+.questionHeaderLine{
+  display:flex;justify-content:space-between;align-items:center;gap:20px;
+  color:#a98956;
+  font:500 11px Georgia,serif;
+  letter-spacing:.16em;
+}
+.questionHeaderLine span:last-child{color:#796f63;font-size:9px;letter-spacing:.22em}
+.question{
+  max-width:940px;
+  margin:22px 0 8px;
+  color:#f0d8aa;
+  font:600 42px/1.32 Georgia,"Songti SC",serif;
+  letter-spacing:-.025em;
+  text-wrap:balance;
+}
+.questionSub{
+  color:#887d70;font-size:13px;line-height:1.7;
+}
+.questionOrnament{
+  display:flex;align-items:center;gap:12px;
+  margin:22px 0 24px;
+  max-width:420px;
+}
+.questionOrnament i{
+  height:1px;flex:1;background:linear-gradient(90deg,rgba(199,159,91,.42),rgba(199,159,91,.06));
+}
+.questionOrnament i:last-child{transform:scaleX(-1)}
+.questionOrnament b{
+  width:8px;height:8px;border:1px solid rgba(210,171,105,.55);transform:rotate(45deg);
+}
+.answers{
+  display:grid;gap:13px;
+  max-width:980px;
+}
+.answer{
+  position:relative;
+  width:100%;
+  min-height:76px;
+  border:1px solid rgba(193,148,78,.26);
+  background:
+    linear-gradient(90deg,rgba(188,139,68,.045),transparent 18%),
+    rgba(16,18,23,.82);
+  color:#d8cab8;
+  padding:17px 62px 17px 18px;
+  display:flex;align-items:center;gap:18px;
+  border-radius:4px;
+  text-align:left;cursor:pointer;
+  overflow:hidden;
+  transition:.18s ease;
+  box-shadow:inset 0 0 0 1px rgba(255,255,255,.008);
+}
+.answer:after{
+  content:"✦";
+  position:absolute;right:24px;top:50%;transform:translateY(-50%);
+  color:rgba(196,154,89,.26);font-size:17px;
+  transition:.18s ease;
+}
+.answer:hover{
+  transform:translateX(5px);
+  border-color:rgba(220,174,102,.58);
+  color:#f0dfc5;
+  background:
+    linear-gradient(90deg,rgba(188,139,68,.10),transparent 24%),
+    rgba(21,22,27,.94);
+}
+.answer:hover:after{color:#dcb774;transform:translate(2px,-50%)}
+.answer.selected{
+  border-color:rgba(230,186,113,.82);
+  color:#f3dec0;
+  background:
+    linear-gradient(90deg,rgba(182,128,57,.20),rgba(83,57,28,.17)),
+    rgba(25,23,22,.95);
+  box-shadow:0 0 0 1px rgba(230,186,113,.10),0 12px 30px rgba(0,0,0,.16);
+}
+.answer.selected:after{color:#edca8d}
+.letter{
+  flex:0 0 48px;width:48px;height:48px;
+  border-radius:50%;
+  display:grid;place-items:center;
+  border:1px solid rgba(204,159,89,.46);
+  color:#dcb677;
+  font:500 18px Georgia,serif;
+  background:
+    radial-gradient(circle,rgba(208,167,100,.08),transparent 70%),
+    rgba(10,12,15,.54);
+}
+.answer.selected .letter{
+  border-color:#e0b66f;
+  color:#f1cd8a;
+  box-shadow:0 0 0 6px rgba(206,162,93,.04);
+}
+.choiceGuide{
+  display:grid;grid-template-columns:34px 1fr;gap:13px;
+  max-width:920px;margin-top:24px;padding-top:18px;
+  border-top:1px solid rgba(205,171,111,.13);
+}
+.guideIcon{
+  width:30px;height:30px;display:grid;place-items:center;
+  color:#d0a965;font-size:17px;
+}
+.choiceGuide strong{
+  color:#c89f5c;font-size:13px;font-weight:600;
+}
+.choiceGuide p{
+  margin:5px 0 0;color:#766e64;font-size:10px;line-height:1.75;
+}
+.quizCinemaNav{
+  min-height:72px;
+  display:grid;grid-template-columns:180px 1fr 180px;
+  align-items:center;gap:18px;
+  padding:12px 28px;
+  border-top:1px solid rgba(205,171,111,.13);
+  background:rgba(6,8,11,.76);
+  backdrop-filter:blur(10px);
+}
+.quizNavBtn,.quizMarkBtn{
+  height:46px;
+  border:1px solid rgba(197,155,87,.26);
+  background:rgba(24,20,16,.54);
+  color:#cbb89c;
+  cursor:pointer;
+  font-size:13px;
+  transition:.18s ease;
+}
+.quizNavBtn:hover:not(:disabled),.quizMarkBtn:hover{
+  border-color:rgba(220,177,104,.54);
+  color:#edd2a4;
+  background:rgba(47,34,22,.62);
+}
+.quizNavBtn:disabled{
+  opacity:.26;cursor:not-allowed;
+}
+.quizNavBtn.next{
+  justify-self:end;width:180px;
+  background:linear-gradient(180deg,#dac08e,#b48b4d);
+  color:#17130e;
+  border-color:#e4c796;
+  font-weight:700;
+}
+.quizMarkBtn{
+  justify-self:center;
+  min-width:220px;
+  border-color:rgba(205,171,111,.17);
+  background:rgba(11,13,16,.56);
+  color:#8f8272;
+}
+.quizMarkBtn.marked{
+  color:#e1bc7a;
+  border-color:rgba(220,177,104,.48);
+  background:rgba(103,70,30,.18);
+}
+
+@media(max-width:1120px){
+  .quizCinematicTop{grid-template-columns:260px 1fr 160px}
+  .quizBrandBlock strong{font-size:28px}
+  .quizCinemaLayout{grid-template-columns:340px minmax(0,1fr)}
+  .quizQuestionStage{padding:36px 34px 28px}
+  .question{font-size:36px}
+  .dossierTraits{display:none}
+}
+@media(max-width:820px){
+  .quiz{width:100%;margin:0;border-radius:0;min-height:100svh}
+  .quizCinematicTop{
+    grid-template-columns:1fr;
+    gap:12px;padding:16px 18px;
+  }
+  .quizBrandBlock span,.quizCuratedMeta{display:none}
+  .quizProgressRail{grid-template-columns:1fr auto}
+  .quizProgressRail>span{display:none}
+  .quizCinemaLayout{display:block}
+  .quizDossier{
+    padding:18px;border-right:0;border-bottom:1px solid rgba(205,171,111,.12)
+  }
+  .dossierCover{
+    min-height:0;display:grid;grid-template-columns:112px 1fr;gap:14px;padding:14px
+  }
+  .dossierHead{grid-column:1/-1}
+  .dossierPortrait{height:150px;margin:0}
+  .dossierCurrent{margin:0;padding:15px}
+  .dossierCurrent h3{font-size:20px}
+  .dossierQuote{display:none}
+  .quizQuestionStage{padding:26px 18px 22px}
+  .question{font-size:30px;line-height:1.38}
+  .answer{min-height:70px;padding:15px 48px 15px 14px}
+  .letter{width:40px;height:40px;flex-basis:40px;font-size:15px}
+  .choiceGuide{margin-top:20px}
+  .quizCinemaNav{
+    position:sticky;bottom:0;z-index:8;
+    grid-template-columns:1fr 1fr;
+    padding:10px 12px max(10px,env(safe-area-inset-bottom));
+  }
+  .quizMarkBtn{display:none}
+  .quizNavBtn,.quizNavBtn.next{width:100%;justify-self:stretch}
+}
+
 </style>
 
 <link rel="preconnect" href="https://zh.wikipedia.org" crossorigin>
@@ -1612,47 +2028,83 @@ body.quizMode .footer{opacity:0;pointer-events:none;height:0;margin:0;padding:0;
 
   <section id="quiz" class="card quiz">
     <div class="quizBackdrop" aria-hidden="true"></div>
-    <div class="quizBackdropCaption">EDITORIAL FEATURE</div>
-    <div class="quizTopbar">
-      <div class="quizProgressMeta">
-        <span>AEVEMORA · DECISION PROFILE</span>
+
+    <div class="quizCinematicTop">
+      <div class="quizBrandBlock">
+        <strong>AEVEMORA</strong>
+        <span>历史人格原型测试 / HISTORICAL PERSONALITY TEST</span>
+      </div>
+      <div class="quizProgressRail">
+        <span>QUESTION PROGRESS</span>
+        <div class="pbar"><i id="progress"></i></div>
         <b id="qnum">01 / 36</b>
       </div>
-      <div class="pbar"><i id="progress"></i></div>
+      <div class="quizCuratedMeta">
+        <span>CURATED DOSSIER</span>
+        <strong id="featureLabel">FEATURE / 01</strong>
+      </div>
     </div>
 
-    <div class="quizLayout">
-      <aside class="quizAside">
-        <div class="quizAsideLabel">QUESTION</div>
-        <div class="quizIndex">
-          <strong id="qnumBig">01</strong>
-          <span>/ 36</span>
-        </div>
+    <div class="quizCinemaLayout">
+      <aside class="quizDossier">
+        <div class="dossierCover">
+          <div class="dossierHead">
+            <div>
+              <strong id="dossierIssue">PORTRAIT ISSUE</strong>
+              <span id="dossierVolume">VOL. I · DECISION</span>
+            </div>
+            <span id="dossierIndex">01</span>
+          </div>
 
-        <div class="quizGlyph" aria-hidden="true">
-          <div class="quizGlyphRing ring1"></div>
-          <div class="quizGlyphRing ring2"></div>
-          <div class="quizGlyphRing ring3"></div>
-          <div class="quizGlyphArc"></div>
-          <i></i>
-        </div>
+          <div class="dossierPortrait">
+            <img src="./dossier-statue.svg" alt="" aria-hidden="true">
+            <div class="dossierPortraitShade"></div>
+            <div class="dossierTraits">
+              <div><span>ARCHETYPE</span><b id="dossierTraitA">判断方式</b><small>你如何处理复杂局面</small></div>
+              <div><span>WISDOM</span><b id="dossierTraitB">决策习惯</b><small>你优先调用什么能力</small></div>
+              <div><span>LEGACY</span><b id="dossierTraitC">行为倾向</b><small>你的选择如何形成风格</small></div>
+            </div>
+          </div>
 
-        <div class="quizAsideRule"></div>
-        <p>凭第一反应作答。<br>选择你现实中更可能做出的决定。</p>
+          <div class="dossierCurrent">
+            <span>CURRENT DOSSIER</span>
+            <h3 id="dossierTitle">决策与秩序</h3>
+            <p id="dossierSubtitle">DECISION & ORDER</p>
+          </div>
+
+          <div class="dossierQuote">
+            <span>“</span>
+            <p id="dossierQuote">真正的选择不在于理想答案，而在于复杂局面中你本能调用的判断方式。</p>
+          </div>
+        </div>
       </aside>
 
-      <div class="quizMain">
-        <div class="questionEyebrow">WHEN YOU HAVE TO DECIDE</div>
-        <div class="questionMetaBand">
-          <span id="questionTheme">PORTRAIT ISSUE</span>
-          <span id="questionPhase">FEATURE / 01 · Q01</span>
+      <main class="quizQuestionStage">
+        <div class="questionHeaderLine">
+          <span id="questionPhase">QUESTION 01 / 36</span>
+          <span id="questionTheme">DECISION PROFILE</span>
         </div>
-        <div class="questionStage">
-          <div id="question" class="question"></div>
-          <div id="answers" class="answers"></div>
-          <div class="note"><span>提示</span> 不要选择“理想中的自己”，而选择“平时真正会做的自己”。</div>
+
+        <div id="question" class="question"></div>
+        <div class="questionSub">在这个情境中，选择最接近你真实反应的一项。</div>
+        <div class="questionOrnament"><i></i><b></b><i></i></div>
+
+        <div id="answers" class="answers"></div>
+
+        <div class="choiceGuide">
+          <div class="guideIcon">▦</div>
+          <div>
+            <strong>选择指引</strong>
+            <p>基于你的直觉选择最符合你倾向的答案。没有绝对的对错，真实的自我探索来自诚实的选择。</p>
+          </div>
         </div>
-      </div>
+      </main>
+    </div>
+
+    <div class="quizCinemaNav">
+      <button id="prevQuestionBtn" class="quizNavBtn" onclick="prevQuestion()">← <span>上一题</span></button>
+      <button id="markQuestionBtn" class="quizMarkBtn" onclick="toggleMarkQuestion()">☆ <span>标记本题</span></button>
+      <button id="nextQuestionBtn" class="quizNavBtn next" onclick="nextQuestion()" disabled><span>下一题</span> →</button>
     </div>
   </section>
 
@@ -1758,7 +2210,7 @@ body.quizMode .footer{opacity:0;pointer-events:none;height:0;margin:0;padding:0;
   </div>
 
   <div class="footer">
-    <span>AEVEMORA · Visual Flagship Edition · V8.9</span>
+    <span>AEVEMORA · Final Quiz Edition · V9.0</span>
     <button class="footLink" onclick="openInfo('about')">关于测试</button>
     <button class="footLink" onclick="openInfo('privacy')">隐私说明</button>
     <button class="footLink" onclick="openInfo('sources')">图片与资料来源</button>
@@ -1800,7 +2252,7 @@ const QUESTIONS=[["面对一个复杂任务，你更倾向于：", [["先拆目�
 const DIM_KEYS=["control","creative","resilience","empathy","drive","insight"];
 const DIM_NAMES={control:"统筹掌控",creative:"开放创造",resilience:"稳定韧性",empathy:"共情协作",drive:"行动进取",insight:"判断洞察"};
 
-let mode="mixed", current=0, scores={control:0,creative:0,resilience:0,empathy:0,drive:0,insight:0}, last=null, posterDataUrl=null, deferredInstallPrompt=null;
+let mode="mixed", current=0, scores={control:0,creative:0,resilience:0,empathy:0,drive:0,insight:0}, answerHistory=[], markedQuestions=new Set(), last=null, posterDataUrl=null, deferredInstallPrompt=null;
 
 function setMode(m){
   mode=m;
@@ -1812,22 +2264,35 @@ function poolFor(m){
   if(m==="foreign") return PEOPLE.filter(p=>p.region==="外国");
   return PEOPLE;
 }
+function resetScores(){
+  scores={control:0,creative:0,resilience:0,empathy:0,drive:0,insight:0};
+}
+function recalcScores(){
+  resetScores();
+  answerHistory.forEach(item=>{
+    if(!item || !item.delta) return;
+    Object.entries(item.delta).forEach(([k,v])=>scores[k]+=v);
+  });
+}
 function startQuiz(){
   document.body.classList.add("quizMode");
   document.getElementById("hero").style.display="none";
-  setQuizBackdrop(current);
   document.getElementById("result").style.display="none";
   document.getElementById("quiz").style.display="block";
   const cta=document.getElementById("mobileCTA"); if(cta) cta.style.display="none";
-  current=0; scores={control:0,creative:0,resilience:0,empathy:0,drive:0,insight:0};
-  renderQuestion(); window.scrollTo({top:0,behavior:"smooth"});
+  current=0;
+  answerHistory=[];
+  markedQuestions=new Set();
+  resetScores();
+  renderQuestion();
+  window.scrollTo({top:0,behavior:"smooth"});
 }
 function renderQuestion(){
   const q=QUESTIONS[current];
   const quiz=document.getElementById("quiz");
   const question=document.getElementById("question");
   const qnum=document.getElementById("qnum");
-  const qnumBig=document.getElementById("qnumBig");
+  const phase=document.getElementById("questionPhase");
 
   if(quiz){
     quiz.classList.remove("quizStepIn");
@@ -1839,50 +2304,90 @@ function renderQuestion(){
   question.textContent=q[0];
   const no=String(current+1).padStart(2,"0");
   if(qnum) qnum.textContent=no+" / "+QUESTIONS.length;
-  if(qnumBig) qnumBig.textContent=no;
-  const meta=QUIZ_EDITORIAL_META[Math.floor(current/6)%QUIZ_EDITORIAL_META.length]||QUIZ_EDITORIAL_META[0];
-  const phase=document.getElementById("questionPhase");
-  if(phase) phase.textContent=meta.phase+" · Q"+no;
-
-  document.getElementById("progress").style.width=(current/QUESTIONS.length*100)+"%";
+  if(phase) phase.textContent="QUESTION "+no+" / "+QUESTIONS.length;
+  document.getElementById("progress").style.width=((current+1)/QUESTIONS.length*100)+"%";
 
   const box=document.getElementById("answers");
   box.innerHTML="";
   q[1].forEach((a,i)=>{
     const b=document.createElement("button");
-    b.className="answer";
-    b.style.animationDelay=(i*42)+"ms";
+    b.className="answer"+(answerHistory[current]?.option===i?" selected":"");
+    b.style.animationDelay=(i*38)+"ms";
     b.innerHTML='<span class="letter">'+String.fromCharCode(65+i)+'</span><span>'+a[0]+'</span>';
-    b.onclick=()=>choose(a[1]);
+    b.onclick=()=>selectAnswer(i);
     box.appendChild(b);
   });
+
+  const prev=document.getElementById("prevQuestionBtn");
+  const next=document.getElementById("nextQuestionBtn");
+  const mark=document.getElementById("markQuestionBtn");
+  if(prev) prev.disabled=current===0;
+  if(next){
+    next.disabled=!answerHistory[current];
+    next.innerHTML=current===QUESTIONS.length-1?'<span>查看结果</span> →':'<span>下一题</span> →';
+  }
+  if(mark){
+    const marked=markedQuestions.has(current);
+    mark.classList.toggle("marked",marked);
+    mark.innerHTML=(marked?"★":"☆")+' <span>'+(marked?"已标记":"标记本题")+'</span>';
+  }
+}
+function selectAnswer(optionIndex){
+  const q=QUESTIONS[current];
+  const selected=q[1][optionIndex];
+  answerHistory[current]={option:optionIndex,delta:selected[1]};
+  document.querySelectorAll("#answers .answer").forEach((el,i)=>el.classList.toggle("selected",i===optionIndex));
+  const next=document.getElementById("nextQuestionBtn");
+  if(next) next.disabled=false;
+}
+function prevQuestion(){
+  if(current<=0) return;
+  current--;
+  renderQuestion();
+  window.scrollTo({top:0,behavior:"smooth"});
+}
+function toggleMarkQuestion(){
+  if(markedQuestions.has(current)) markedQuestions.delete(current);
+  else markedQuestions.add(current);
+  renderQuestion();
+}
+function nextQuestion(){
+  if(!answerHistory[current]) return;
+  if(current<QUESTIONS.length-1){
+    current++;
+    if(current>=30 && current%2===0){
+      recalcScores();
+      warmPortraitCandidates();
+    }
+    if(current===35){
+      try{
+        recalcScores();
+        const u=normalize();
+        const winner=rank(u,mode)[0];
+        if(winner){
+          fetchWikiPortrait(winner).then(data=>{
+            if(data && data.url){
+              const im=new Image();
+              im.decoding="async";
+              im.fetchPriority="high";
+              im.src=data.url;
+            }
+          }).catch(()=>{});
+        }
+      }catch(e){}
+    }
+    renderQuestion();
+    window.scrollTo({top:0,behavior:"smooth"});
+    return;
+  }
+  recalcScores();
+  showResult();
 }
 function choose(d){
-  Object.entries(d).forEach(([k,v])=>scores[k]+=v);
-  current++;
-
-  // 最后几题后台预热候选人；第 35 题后额外预热当时排名第一的人物。
-  if(current>=30 && current<QUESTIONS.length && current%2===0){
-    warmPortraitCandidates();
-  }
-  if(current===35){
-    try{
-      const u=normalize();
-      const winner=rank(u,mode)[0];
-      if(winner){
-        fetchWikiPortrait(winner).then(data=>{
-          if(data && data.url){
-            const im=new Image();
-            im.decoding="async";
-            im.fetchPriority="high";
-            im.src=data.url;
-          }
-        }).catch(()=>{});
-      }
-    }catch(e){}
-  }
-
-  current>=QUESTIONS.length?showResult():renderQuestion();
+  // 兼容旧调用：当前新版使用 selectAnswer + nextQuestion。
+  const q=QUESTIONS[current];
+  const idx=q[1].findIndex(a=>a[1]===d);
+  selectAnswer(idx>=0?idx:0);
 }
 function normalize(){
   const vals=DIM_KEYS.map(k=>scores[k]), mn=Math.min(...vals), mx=Math.max(...vals), o={};
@@ -2141,7 +2646,7 @@ function restart(){
 function copySummary(){
   if(!last) return;
   const t=topDims(last.user).slice(0,2).map(x=>DIM_NAMES[x[0]]).join(" × ");
-  const text="AEVEMORA 历史人格原型测试 V8.9\n我的历史人格原型："+last.best.name+"\n匹配模式："+modeName(last.mode)+"\n相似度："+last.best.sim.toFixed(1)+"%\n核心维度："+t+"\n"+last.best.tag;
+  const text="AEVEMORA 历史人格原型测试 V9.0\n我的历史人格原型："+last.best.name+"\n匹配模式："+modeName(last.mode)+"\n相似度："+last.best.sim.toFixed(1)+"%\n核心维度："+t+"\n"+last.best.tag;
   navigator.clipboard?.writeText(text).then(()=>alert("结果文案已复制")).catch(()=>prompt("复制下面的结果：",text));
 }
 
@@ -2362,7 +2867,7 @@ function renderPosterCanvas(x,img,compactFallback=false){
   x.textAlign="right";
   x.fillStyle="#8a806f";
   x.font="22px Georgia";
-  x.fillText("AEVEMORA JOURNAL · V8.9",1074,2390);
+  x.fillText("AEVEMORA JOURNAL · V9.0",1074,2390);
   x.textAlign="left";
 }
 
@@ -2662,26 +3167,58 @@ const QUIZ_BACKDROPS=[
   "./quiz-bg-5.svg",
   "./quiz-bg-6.svg"
 ];
-const QUIZ_EDITORIAL_META=[
-  {theme:"PORTRAIT ISSUE", caption:"PORTRAIT ISSUE · FEATURED FIGURE", phase:"FEATURE / 01"},
-  {theme:"ATLAS FEATURE", caption:"ATLAS FEATURE · CIVILIZATION MAP", phase:"FEATURE / 02"},
-  {theme:"ARCHIVE SPECIAL", caption:"ARCHIVE SPECIAL · MEMORY DOSSIER", phase:"FEATURE / 03"},
-  {theme:"FIGURE ESSAY", caption:"FIGURE ESSAY · MONUMENTAL FORM", phase:"FEATURE / 04"},
-  {theme:"COSMIC STUDY", caption:"COSMIC STUDY · OBSERVATION ORDER", phase:"FEATURE / 05"},
-  {theme:"CHRONICLE COVER", caption:"CHRONICLE COVER · HISTORY STAGE", phase:"FEATURE / 06"}
+
+const QUIZ_DOSSIERS=[
+  {
+    issue:"PORTRAIT ISSUE",volume:"VOL. I · DECISION",title:"决策与秩序",subtitle:"DECISION & ORDER",
+    a:"判断方式",b:"决策习惯",c:"行为倾向",
+    quote:"真正的选择不在于理想答案，而在于复杂局面中你本能调用的判断方式。"
+  },
+  {
+    issue:"ATLAS FEATURE",volume:"VOL. II · CHANGE",title:"变化与创造",subtitle:"CHANGE & CREATION",
+    a:"变化反应",b:"开放程度",c:"创造路径",
+    quote:"当环境发生变化，人往往会暴露自己最真实的适应方式与创造倾向。"
+  },
+  {
+    issue:"ARCHIVE SPECIAL",volume:"VOL. III · RELATION",title:"关系与协作",subtitle:"RELATION & ALLIANCE",
+    a:"关系判断",b:"协作习惯",c:"边界方式",
+    quote:"人与人的连接会放大性格：你如何倾听、协调、坚持，也会决定你如何影响群体。"
+  },
+  {
+    issue:"FIGURE ESSAY",volume:"VOL. IV · PRESSURE",title:"压力与韧性",subtitle:"PRESSURE & RESILIENCE",
+    a:"压力反应",b:"恢复速度",c:"稳定方式",
+    quote:"压力不会创造性格，它更像一道强光，让你原本的韧性、控制与选择方式变得清晰。"
+  },
+  {
+    issue:"COSMIC STUDY",volume:"VOL. V · ACTION",title:"行动与取舍",subtitle:"ACTION & TRADEOFF",
+    a:"行动节奏",b:"风险偏好",c:"推进方式",
+    quote:"真正区分人的，常常不是知道什么，而是在不确定中愿意如何行动，以及愿意承担什么代价。"
+  },
+  {
+    issue:"CHRONICLE COVER",volume:"VOL. VI · INSIGHT",title:"洞察与价值",subtitle:"INSIGHT & VALUE",
+    a:"洞察重点",b:"价值排序",c:"长期取向",
+    quote:"当信息不完整、答案不唯一时，你优先相信什么，往往最接近你的核心人格结构。"
+  }
 ];
 
 function setQuizBackdrop(index){
   const quiz=document.getElementById("quiz");
   if(!quiz) return;
   const groupIndex=Math.floor(index/6)%QUIZ_BACKDROPS.length;
-  const bg=QUIZ_BACKDROPS[groupIndex];
-  const meta=QUIZ_EDITORIAL_META[groupIndex]||QUIZ_EDITORIAL_META[0];
-  quiz.style.setProperty("--quiz-bg-image",'url("'+bg+'")');
-  const cap=document.querySelector('.quizBackdropCaption');
-  if(cap) cap.textContent=meta.caption;
-  const theme=document.getElementById('questionTheme');
-  if(theme) theme.textContent=meta.theme;
+  quiz.style.setProperty("--quiz-bg-image",'url("'+QUIZ_BACKDROPS[groupIndex]+'")');
+  const meta=QUIZ_DOSSIERS[groupIndex]||QUIZ_DOSSIERS[0];
+  const set=(id,value)=>{const el=document.getElementById(id);if(el)el.textContent=value;};
+  set("featureLabel","FEATURE / "+String(groupIndex+1).padStart(2,"0"));
+  set("dossierIssue",meta.issue);
+  set("dossierVolume",meta.volume);
+  set("dossierIndex",String(groupIndex+1).padStart(2,"0"));
+  set("dossierTitle",meta.title);
+  set("dossierSubtitle",meta.subtitle);
+  set("dossierTraitA",meta.a);
+  set("dossierTraitB",meta.b);
+  set("dossierTraitC",meta.c);
+  set("dossierQuote",meta.quote);
+  set("questionTheme",meta.issue);
 }
 
 
@@ -3002,7 +3539,7 @@ function warmPortraitCandidates(){
 if ("serviceWorker" in navigator && location.protocol.startsWith("http")) {
   window.addEventListener("load", async () => {
     try {
-      const reg = await navigator.serviceWorker.register("./sw.js?v=8.9");
+      const reg = await navigator.serviceWorker.register("./sw.js?v=9.0");
       await reg.update();
 
       let refreshed = false;

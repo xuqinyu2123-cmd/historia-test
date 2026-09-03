@@ -1,41 +1,30 @@
-AEVEMORA V8.9 · 视觉旗舰版
+AEVEMORA V9.0 · 最终答题页定稿版
 
-这是在 V8.8 杂志大片版基础上的进一步统一升级版本。
+本次按最终确认的设计稿落地：
+5号“杂志专题风格”为主体
++ 1号“博物馆展陈”的历史空间感
++ 6号“电影史诗”的光影与气氛。
 
-本次重点：
-1. 结果页升级为更完整的“封面 / 专题大片”语言
-- 左页人物肖像更像杂志封面
-- 右页标题区、相似度区、解读区统一成 cover story 风格
-- 下方内容卡片、雷达图、Top5 区块统一到同一视觉系统
+核心变化：
+- 顶部重新设计为品牌 + 进度 + CURATED DOSSIER 三段式信息栏
+- 左侧加入真正的“档案封面 / 人物展陈”视觉区
+- 使用本地 dossier-statue.svg，保证离线和加载稳定
+- 右侧题目区改为大片式标题和四个大选项
+- 加入选择指引、上下题导航、标记题目功能
+- 点击答案后先高亮，再点击“下一题”，不会误触后立刻跳页
+- 支持返回上一题并修改答案，分数会自动重算
+- 36 题仍按 6 个章节切换历史背景与 dossier 文案
+- 结果页和海报继续沿用 V8.9 视觉旗舰版
 
-2. 分享海报重做为旗舰视觉版
-- 更强封面感
-- 更统一的品牌排版
-- 更高级的相似度展示
-- 更完整的专题叙事和维度卡片
+GitHub 覆盖：
+index.html
+sw.js
+manifest.webmanifest
+icon-192.png
+icon-512.png
+apple-touch-icon.png
+dossier-statue.svg
+quiz-bg-1.svg ~ quiz-bg-6.svg
 
-3. 答题页升级为大片级交互页面
-- 问题区改为舞台式 question stage
-- 新增 editorial meta band
-- 标题、字体位置、信息层级重新排布
-- 选项卡片更有质感，视觉更完整
-
-4. 保留的能力
-- 36 题测试逻辑
-- 120 位中外历史人物匹配
-- 结果页人物肖像加载与缓存
-- 分享海报导出
-- PWA / 安装 / 缓存
-- 答题背景轮换
-
-建议覆盖 GitHub 文件：
-- index.html
-- sw.js
-- manifest.webmanifest
-- icon-192.png
-- icon-512.png
-- apple-touch-icon.png
-- quiz-bg-1.svg ~ quiz-bg-6.svg（如需一起替换）
-
-测试建议链接：
-https://xuqinyu2123-cmd.github.io/historia-test/?v=8.9
+首次测试：
+https://xuqinyu2123-cmd.github.io/historia-test/?v=9.0

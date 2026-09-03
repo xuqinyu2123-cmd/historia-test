@@ -1,7 +1,7 @@
 {
   "name": "AEVEMORA",
   "short_name": "AEVEMORA",
-  "description": "AEVEMORA V8.9：视觉旗舰版，统一升级结果页、分享海报与答题页为大片级视觉。",
+  "description": "AEVEMORA V9.0：最终答题页定稿版，融合杂志专题、博物馆展陈与电影史诗光影。",
   "lang": "zh-CN",
   "start_url": "./index.html",
   "scope": "./",
